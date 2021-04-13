@@ -3,7 +3,7 @@ package app.poderes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Poder {
+public abstract class Poder {
     
     public List<Poder> Poderes = new ArrayList<>();
 

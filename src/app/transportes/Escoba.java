@@ -1,3 +1,5 @@
-Public class Escoba extends Transporte {
+package app.tranportes;
+
+public class Escoba extends Transporte {
     
 }
