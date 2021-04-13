@@ -1,4 +1,4 @@
-package app.tranportes;
+package app.transportes;
 
 public class Escoba extends Transporte {
     

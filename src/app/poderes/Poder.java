@@ -4,31 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Poder {
-    
-    public List<Poder> Poderes = new ArrayList<>();
 
-        public void inicializarCatalogo(){
-
-    private String nombreDelPoder;
-
-    private String descripcionDelPoder;
-
+    private String nombre;
+    private String descripcion;
     private String tipoDeHabilidad;
 
-    public String getnombreDelPoder() {
-        return nombreDelPoder;
-    }
-    public void setnombreDelPoder(String nombreDelPoder) {
-            this.nombreDelPoder = nombreDelPoder;
-        }
+    public List<Poder> Poderes = new ArrayList<>(); // Creo la clase poder no tendria que tener una lista de poderes
+                                                    // sino mejor la clase Perosnaje.
 
-    public String getdescripcionDelPoder(){
-        return nombreDelPoder;
-    }
-    public void setdescripcionDelPoder(String descripcionDelPoder){
-        this.descripcionDelPoder = descripcionDelPoder;
+    public String getNombre() {
+        return this.nombre;
     }
 
-}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return this.descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
 }
