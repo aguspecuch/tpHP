@@ -2,15 +2,17 @@ import java.util.ArrayList;
 import java.util.List;
 public class Poder {
     
-public List<Poder> Poderes = new ArrayList<>();
-
-    public void inicializarCatalogo(){
-
+private List<String> poderes = new ArrayList<>();
 private String nombreDelPoder;
-
 private String descripcionDelPoder;
+    
+public List<String> getPoderes(){
+    return poderes;
+}
 
-private String tipoDeHabilidad;
+public void setPoderes(List <String> poderes){
+    this.poderes = poderes;
+}
 
 public String getnombreDelPoder() {
     return nombreDelPoder;
@@ -20,7 +22,7 @@ public void setnombreDelPoder(String nombreDelPoder) {
     }
 
 public String getdescripcionDelPoder(){
-    return nombreDelPoder;
+    return descripcionDelPoder;
 }
 public void setdescripcionDelPoder(String descripcionDelPoder){
     this.descripcionDelPoder = descripcionDelPoder;
