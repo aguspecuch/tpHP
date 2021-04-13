@@ -1,6 +1,6 @@
 package app.personajes;
 
-public class Criatura extends Personaje {
+public abstract class Criatura extends Personaje {
     
 }
 
