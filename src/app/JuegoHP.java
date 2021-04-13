@@ -16,4 +16,10 @@ public class JuegoHP {
         return this.nombreJuego;
     }
 
+    public List<Personaje> personajes = new ArrayList<>();
+
+    public List<Artefacto> artefactos = new ArrayList<>();
+
+    public List<Transpote> transportes = new ArrayList<>();
+
 }
