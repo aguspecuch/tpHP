@@ -1,4 +1,5 @@
 package app.artefactos;
+import app.poderes.*;
 
 public abstract class Artefacto {
 

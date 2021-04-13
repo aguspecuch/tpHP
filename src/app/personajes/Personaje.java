@@ -1,5 +1,5 @@
 package app.personajes;
 
-public class Personaje {
+public abstract class Personaje {
     
 }
