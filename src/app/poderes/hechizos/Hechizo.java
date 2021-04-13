@@ -1,6 +1,6 @@
 package app.poderes.hechizos;
 
-public static abstract class Hechizo extends Poder {
+public abstract class Hechizo extends Poder {
     
     private boolean esOscuro;
     private int nivelDanio;

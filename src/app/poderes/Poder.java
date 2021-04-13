@@ -3,7 +3,7 @@ package app.poderes;
 import java.util.ArrayList;
 import java.util.List;
 
-public static abstract class Poder {
+public abstract class Poder {
 
     private String nombre;
     private String descripcion;
