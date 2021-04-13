@@ -1,4 +1,5 @@
-public class Metamorfosis extends Poder
-{
+package app.poderes;
+
+public class Metamorfosis extends Poder {
     
 }
