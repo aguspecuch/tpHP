@@ -29,6 +29,6 @@ package app.personajes;
     public void setEdad(int edad) {
         this.edad = edad; 
     }   
- 
-
 }
+
+

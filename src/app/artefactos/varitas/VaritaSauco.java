@@ -1,4 +1,4 @@
-package app.artefactos;
+package app.artefactos.varitas;
 
 import app.interfaces.IReliquiaMuerte;
 
