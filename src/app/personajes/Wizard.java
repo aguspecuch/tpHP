@@ -1,5 +1,7 @@
 package app.personajes;
 
-public class Wizard extends Persona {
+import app.interfaces.IHaceMagia;
+
+public class Wizard extends Persona implements IHaceMagia {
     
 }

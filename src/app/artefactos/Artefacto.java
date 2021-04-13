@@ -1,7 +1,9 @@
 package app.artefactos;
+
+import app.interfaces.IEsMagico;
 import app.poderes.*;
 
-public abstract class Artefacto {
+public abstract class Artefacto implements IEsMagico {
 
     private String nombre;
     private double amplificadorDeDanio;
