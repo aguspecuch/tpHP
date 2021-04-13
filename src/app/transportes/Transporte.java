@@ -1,4 +1,4 @@
-package app.Transporte;
+package app.transportes;
 
 public class Transporte {
     
