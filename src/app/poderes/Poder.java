@@ -1,31 +1,33 @@
-package app.poderes;
-
 import java.util.ArrayList;
 import java.util.List;
-
-public abstract class Poder {
-
-    private String nombre;
-    private String descripcion;
-    private String tipoDeHabilidad;
-
-    public List<Poder> Poderes = new ArrayList<>(); // Creo la clase poder no tendria que tener una lista de poderes
-                                                    // sino mejor la clase Perosnaje.
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }                   
-                                    
-    public String getNombre() {
-        return this.nombre;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+public class Poder {
     
-    public String getDescripcion() {
-        return this.descripcion;
+private List<String> poderes = new ArrayList<>();
+private String nombreDelPoder;
+private String descripcionDelPoder;
+    
+public List<String> getPoderes(){
+    return poderes;
+}
+
+public void setPoderes(List <String> poderes){
+    this.poderes = poderes;
+}
+
+public String getnombreDelPoder() {
+    return nombreDelPoder;
+}
+public void setnombreDelPoder(String nombreDelPoder) {
+        this.nombreDelPoder = nombreDelPoder;
     }
+
+public String getdescripcionDelPoder(){
+    return descripcionDelPoder;
+}
+public void setdescripcionDelPoder(String descripcionDelPoder){
+    this.descripcionDelPoder = descripcionDelPoder;
+}
+
+}
 
 }
