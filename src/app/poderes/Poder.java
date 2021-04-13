@@ -1,8 +1,4 @@
 package app.poderes;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Poder {
 
     private String nombre;

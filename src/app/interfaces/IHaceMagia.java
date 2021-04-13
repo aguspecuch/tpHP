@@ -1,5 +1,9 @@
 package app.interfaces;
 
+import app.poderes.*;
+import app.artefactos.*;
+import app.personajes.*;
+
 public interface IHaceMagia {
 
     void setEnergiaMagica(int energiaMagica);
@@ -12,7 +16,7 @@ public interface IHaceMagia {
 
     Artefacto getArtefacto();
 
-    void aprenderHechizo(Hechizo hechizo);
+    void aprender(Hechizo h);
 
     void atacar(Personaje personaje, Hechizo hechizo);
 
