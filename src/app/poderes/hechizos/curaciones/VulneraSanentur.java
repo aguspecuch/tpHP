@@ -1,5 +1,5 @@
 package app.poderes.hechizos.curaciones;
 
-public class VulneraSanentur {
+public class VulneraSanentur extends HechizoCuracion {
     
 }
