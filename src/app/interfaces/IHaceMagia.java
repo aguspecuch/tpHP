@@ -1,6 +1,7 @@
 package app.interfaces;
 
 import app.poderes.*;
+import app.poderes.hechizos.*;
 import app.artefactos.*;
 import app.personajes.*;
 

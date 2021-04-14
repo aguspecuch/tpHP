@@ -1,8 +1,9 @@
 package app.personajes;
 
 import app.artefactos.Artefacto;
+import app.interfaces.*;
 
-public class Elfo extends Criatura {
+public class Elfo extends Criatura implements IHaceMagia {
     
     private int energiaMagica;
     private Artefacto artefacto;

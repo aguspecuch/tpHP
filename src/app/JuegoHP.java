@@ -1,5 +1,11 @@
 package app;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import app.personajes.*;
+import app.transportes.*;
+
 public class JuegoHP {
     
     private String nombreJuego;
