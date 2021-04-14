@@ -16,7 +16,7 @@ public interface IHaceMagia {
 
     Artefacto getArtefacto();
 
-    void aprender(Hechizo h);
+    void aprender(Hechizo hechizo);
 
     void atacar(Personaje personaje, Hechizo hechizo);
 
