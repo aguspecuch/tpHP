@@ -7,6 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
  public abstract class Personaje {
 
+    //Constructor
+    public Personaje(String nombre, int salud, int edad) {
+        this.nombre = nombre;
+        this.salud = salud;
+        this.edad = edad;
+    }
+
     private String nombre;
     private int salud;
     private int edad;

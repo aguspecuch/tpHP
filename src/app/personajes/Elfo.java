@@ -2,12 +2,16 @@ package app.personajes;
 
 import app.artefactos.Artefacto;
 import app.interfaces.*;
+import app.poderes.hechizos.Hechizo;
 
-public class Elfo extends Criatura implements IHaceMagia {
+import java.util.ArrayList;
+import java.util.List;
+
+abstract class Elfo extends Criatura implements IHaceMagia {
     
     private int energiaMagica;
     private Artefacto artefacto;
-
+    private List<Hechizo> hechizos = new ArrayList<>();
         
     public int getEnergiaMagica() {
         return this.energiaMagica;
@@ -25,6 +29,12 @@ public class Elfo extends Criatura implements IHaceMagia {
         this.artefacto = artefacto; 
     } 
 
-    
+    public List<Hechizo> getHechizos() {
+        return this.hechizos;
+    }
+
+    public void setHechizos(List<Hechizo> hechizos) {
+        this.hechizos = hechizos;
+    }
 }
 
