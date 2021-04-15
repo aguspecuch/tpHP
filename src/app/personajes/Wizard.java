@@ -1,13 +1,12 @@
 package app.personajes;
 
-import app.artefactos.Artefacto;
+import java.util.*;
+import app.artefactos.*;
+import app.artefactos.varitas.*;
 import app.interfaces.*;
-import app.poderes.Poder;
-import app.poderes.hechizos.Hechizo;
+import app.poderes.*;
+import app.poderes.hechizos.*;
 import app.transportes.Escoba;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Wizard extends Persona implements IHaceMagia {
 
@@ -70,31 +69,12 @@ public class Wizard extends Persona implements IHaceMagia {
     // Y como puedo instanciar Wizard porque es concreta, entonces le puedo crear un constructor 
     // (y descartamos automáticamente el que es por defecto al crear uno):
 
-    public Wizard(int energiaMagica, Artefacto artefacto, Escoba escoba, Poder poderInicial, boolean magoOscuro, List<Hechizo> hechizos) {
-        
-        this.energiaMagica = 150; /* Le asigno directamente el máximo, pero podría 
-        complejizarse esta asignación de un int.*/
-        
-        if (artefacto != Null) {
-            this.artefacto = artefacto; 
-        } else {
-            this.artefacto = new VaritaPorDefecto(); // Fijarse si se puede asignar una varita random.
-        }
-
-        if (artefacto != Null) {
-            this.escoba = escoba; 
-        } else {
-            this.escoba = new Escoba();
-        }
-
-        this.poderInicial = 200; // Número arbitrario.
-        /* Dependiendo del tipo de mago podemos crear un constructor para cada subclase 
-        (aún no creada) de Wizard y les asignamos un número manual o aleatoriamente. */
-
-        this.magoOscuro = false;
-
-        this.hechizos = Null;
-
+    public Wizard(boolean magoOscuro) {
+        this.energiaMagica = 150; // Le asigno directamente el máximo.
+        this.escoba = null;
+        this.poderInicial = null; 
+        this.magoOscuro = magoOscuro;
+        this.hechizos = null;
     }
 
     /* También podemos crear constructores en subclases de Wizard (aún no creadas) e inicializar valores

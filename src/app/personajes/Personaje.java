@@ -1,10 +1,9 @@
 package app.personajes;
 
+import java.util.*;
 import app.poderes.*;
 import app.artefactos.*;
 
-import java.util.ArrayList;
-import java.util.List;
  public abstract class Personaje {
 
     private String nombre;

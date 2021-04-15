@@ -1,11 +1,9 @@
 package app.personajes;
 
+import java.util.*;
 import app.artefactos.Artefacto;
 import app.interfaces.*;
 import app.poderes.hechizos.Hechizo;
-
-import java.util.ArrayList;
-import java.util.List;
 
 abstract class Elfo extends Criatura implements IHaceMagia {
     

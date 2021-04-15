@@ -1,8 +1,6 @@
 package app;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.*;
 import app.personajes.*;
 import app.transportes.*;
 
@@ -24,7 +22,10 @@ public class JuegoHP {
 
     public List<Personaje> personajes = new ArrayList<>();
 
+    public List<Escoba> escobas = new ArrayList<>();
+
     public List<Transporte> transportes = new ArrayList<>();
 
-    
+    //Y acá se pueden instanciar los poderes y artefactos.
+
 }
