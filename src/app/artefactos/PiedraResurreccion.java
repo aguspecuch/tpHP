@@ -6,7 +6,7 @@ public class PiedraResurreccion extends Artefacto implements IReliquiaMuerte {
 
     // CONSTRUCTOR
     
-    public PiedraResurreccion(String nombre, int amplificadorDeDanio, int amplificadorDeCuracion) {
+    public PiedraResurreccion(String nombre, double amplificadorDeDanio, double amplificadorDeCuracion) {
         this.setNombre(nombre);
         this.setAmplificadorDeDanio(amplificadorDeDanio);
         this.setAmplificadorDeCuracion(amplificadorDeCuracion);

@@ -6,7 +6,7 @@ public class Horrocrux extends Artefacto implements IReliquiaMuerte {
 
     // CONSTRUCTOR
     
-    public Horrocrux(String nombre, int amplificadorDeDanio, int amplificadorDeCuracion) {
+    public Horrocrux(String nombre, double amplificadorDeDanio, double amplificadorDeCuracion) {
         this.setNombre(nombre);
         this.setAmplificadorDeDanio(amplificadorDeDanio);
         this.setAmplificadorDeCuracion(amplificadorDeCuracion);

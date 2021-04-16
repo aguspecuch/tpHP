@@ -6,7 +6,7 @@ public class VaritaSauco extends Varita implements IReliquiaMuerte {
 
     // CONSTRUCTOR
     
-    public VaritaSauco(String nombre, int amplificadorDeDanio, int amplificadorDeCuracion) {
+    public VaritaSauco(String nombre, double amplificadorDeDanio, double amplificadorDeCuracion) {
         this.setNombre(nombre);
         this.setAmplificadorDeDanio(amplificadorDeDanio);
         this.setAmplificadorDeCuracion(amplificadorDeCuracion);
