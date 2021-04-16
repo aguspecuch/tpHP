@@ -1,7 +1,5 @@
 package app.personajes;
 
-import app.interfaces.*;
-
 public class Dementor extends Criatura {
 
     @Override
@@ -14,5 +12,5 @@ public class Dementor extends Criatura {
         return false;
     }
 
-    
+   
 }
