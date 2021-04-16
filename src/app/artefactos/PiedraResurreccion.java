@@ -1,8 +1,18 @@
 package app.artefactos;
 
-import app.interfaces.IReliquiaMuerte;
+import app.interfaces.*;
 
 public class PiedraResurreccion extends Artefacto implements IReliquiaMuerte {
+
+    // CONSTRUCTOR
+    
+    public PiedraResurreccion(String nombre, int amplificadorDeDanio, int amplificadorDeCuracion) {
+        this.setNombre(nombre);
+        this.setAmplificadorDeDanio(amplificadorDeDanio);
+        this.setAmplificadorDeCuracion(amplificadorDeCuracion);
+    }
+
+    // METODOS DE LAS INTERFACES
 
     @Override
     public boolean esReliquiaMuerte() {

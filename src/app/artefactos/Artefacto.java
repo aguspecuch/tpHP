@@ -1,6 +1,6 @@
 package app.artefactos;
 
-import app.interfaces.IEsMagico;
+import app.interfaces.*;
 import app.poderes.*;
 
 public abstract class Artefacto implements IEsMagico {

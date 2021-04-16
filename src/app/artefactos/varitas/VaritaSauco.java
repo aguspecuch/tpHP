@@ -1,9 +1,19 @@
 package app.artefactos.varitas;
 
-import app.interfaces.IReliquiaMuerte;
+import app.interfaces.*;
 
 public class VaritaSauco extends Varita implements IReliquiaMuerte {
 
+    // CONSTRUCTOR
+    
+    public VaritaSauco(String nombre, int amplificadorDeDanio, int amplificadorDeCuracion) {
+        this.setNombre(nombre);
+        this.setAmplificadorDeDanio(amplificadorDeDanio);
+        this.setAmplificadorDeCuracion(amplificadorDeCuracion);
+    }
+
+    // METODOS DE LAS INTERFACES
+    
     @Override
     public boolean esReliquiaMuerte() {
         return true;
@@ -18,5 +28,4 @@ public class VaritaSauco extends Varita implements IReliquiaMuerte {
     public boolean esInvisible() {
         return false;
     }
-
 }
