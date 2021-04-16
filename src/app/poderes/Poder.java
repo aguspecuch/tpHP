@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 public class Poder {
@@ -13,6 +14,14 @@ public List<String> getPoderes(){
 public void setPoderes(List <String> poderes){
     this.poderes = poderes;
 }
+=======
+package app.poderes;
+
+public abstract class Poder {
+
+    private String nombre;
+    private String descripcion;
+>>>>>>> 8b912e4df3eebb4f2c01b82501f7e37b8670f3fb
 
 public String getnombreDelPoder() {
     return nombreDelPoder;

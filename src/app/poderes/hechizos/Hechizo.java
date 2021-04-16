@@ -1,5 +1,7 @@
 package app.poderes.hechizos;
 
+import app.poderes.*;
+
 public abstract class Hechizo extends Poder {
     
     private boolean esOscuro;
