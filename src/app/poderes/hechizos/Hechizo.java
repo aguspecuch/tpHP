@@ -3,33 +3,42 @@ package app.poderes.hechizos;
 import app.poderes.*;
 
 public abstract class Hechizo extends Poder {
-    
+
     private boolean esOscuro;
     private int nivelDanio;
     private int nivelCuracion;
     private int energiaMagica;
 
-    public void setEsOscuro(boolean esOscuro){
-        this.esOscuro = esOscuro;
-    }
-
-    public boolean getEsOscuro(){
+    public boolean getEsOscuro() {
         return this.esOscuro;
     }
 
-    public void nivelDanio(int nivelDanio){
-        this.nivelDanio = nivelDanio;
+    public void setEsOscuro(boolean esOscuro) {
+        this.esOscuro = esOscuro;
     }
 
-    public int getNivelDanio(){
+    public int getNivelDanio() {
         return this.nivelDanio;
     }
 
-    public void setNivelCuracion(int nivelCuracion){
+    public void setNivelDanio(int nivelDanio) {
+        this.nivelDanio = nivelDanio;
+    }
+
+    public int getNivelDuracion() {
+        return this.nivelCuracion;
+    }
+
+    public void setNivelCuracion(int nivelCuracion) {
         this.nivelCuracion = nivelCuracion;
     }
 
-    public int getNivelDuracion(){
-        return this.nivelCuracion;
+    public int getEnergiaMagica() {
+        return this.energiaMagica;
     }
+
+    public void setEnergiaMagica(int energiaMagica) {
+        this.energiaMagica = energiaMagica;
+    }
+
 }

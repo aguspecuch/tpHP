@@ -1,6 +1,6 @@
 package app.poderes;
 
-public class Poder {
+public abstract class Poder {
 
     private String nombre;
     private String descripcion;
