@@ -2,20 +2,29 @@ package app.personajes;
 
 import java.util.*;
 import app.artefactos.*;
-import app.artefactos.varitas.*;
 import app.interfaces.*;
 import app.poderes.*;
 import app.poderes.hechizos.*;
-import app.transportes.Escoba;
+import app.transportes.*;
 
 public class Wizard extends Persona implements IHaceMagia {
 
+    // CONSTRUCTOR
+
+    public Wizard(String nombre, Poder poderInicial, boolean magoOscuro) {
+        this.setNombre(nombre);
+        this.setSalud(100); // Le asigno directamente el máximo.
+        this.energiaMagica = 150; // Le asigno directamente el máximo.
+        this.poderInicial = poderInicial;
+        this.magoOscuro = magoOscuro;
+    }
+
     private int energiaMagica;
-    private Artefacto artefacto;
+    private List<Hechizo> hechizos = new ArrayList<>();
     private Escoba escoba;
     private Poder poderInicial;
+    private Artefacto artefacto;
     private boolean magoOscuro;
-    private List<Hechizo> hechizos = new ArrayList<>();
 
     public int getEnergiaMagica() {
         return this.energiaMagica;
@@ -23,6 +32,30 @@ public class Wizard extends Persona implements IHaceMagia {
 
     public void setEnergiaMagica(int energiaMagica) {
         this.energiaMagica = energiaMagica;
+    }
+    
+    public List<Hechizo> getHechizos() {
+        return this.hechizos;
+    }
+
+    public void setHechizos(List<Hechizo> hechizos) {
+        this.hechizos = hechizos;
+    }
+
+    public Escoba getEscoba() {
+        return this.escoba;
+    }
+
+    public void setEscoba(Escoba escoba) {
+        this.escoba = escoba;
+    }
+    
+    public Poder getPoderInicial() {
+        return this.poderInicial;
+    }
+
+    public void setPoderInicial(Poder poderInicial) {
+        this.poderInicial = poderInicial;
     }
 
     public Artefacto getArtefacto() {
@@ -33,22 +66,6 @@ public class Wizard extends Persona implements IHaceMagia {
         this.artefacto = artefacto;
     }
 
-    public Escoba getEscoba() {
-        return this.escoba;
-    }
-
-    public void setEscoba(Escoba escoba) {
-        this.escoba = escoba;
-    }
-
-    public Poder getPoderInicial() {
-        return this.poderInicial;
-    }
-
-    public void setPoderInicial(Poder poderInicial) {
-        this.poderInicial = poderInicial;
-    }
-
     public boolean getMagoOscuro() {
         return this.magoOscuro;
     }
@@ -57,28 +74,26 @@ public class Wizard extends Persona implements IHaceMagia {
         this.magoOscuro = magoOscuro;
     }
 
-    public List<Hechizo> getHechizos() {
-        return this.hechizos;
+    // METODOS DE LAS INTERFACES
+
+    @Override
+    public void setPoder(Poder poder) {
+        this.poderInicial = poder;
     }
 
-    public void setHechizos(List<Hechizo> hechizos) {
-        this.hechizos = hechizos;
+    @Override
+    public void aprender(Hechizo hechizo) {
+        this.getHechizos().add(hechizo);
+        
     }
 
-    // Los constructores no pueden estar en las clases abstractas, pero sí en las concretas.
-    // Y como puedo instanciar Wizard porque es concreta, entonces le puedo crear un constructor 
-    // (y descartamos automáticamente el que es por defecto al crear uno):
-
-    public Wizard(boolean magoOscuro) {
-        this.energiaMagica = 150; // Le asigno directamente el máximo.
-        this.escoba = null;
-        this.poderInicial = null; 
-        this.magoOscuro = magoOscuro;
-        this.hechizos = null;
+    @Override
+    public void atacar(Personaje personaje, Hechizo hechizo) {
+        
     }
 
-    /* También podemos crear constructores en subclases de Wizard (aún no creadas) e inicializar valores
-    distintos para cada una de ellas. Si hacemos eso, entonces deberíamos borrar este constructor y
-    declarar abstracta a la clase Wizard e instanciar directamente objetos de sus subclases. */
-
+    @Override
+    public void atacar(Personaje personaje, String hechizo) {
+        
+    }
 }

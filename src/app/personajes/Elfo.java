@@ -1,12 +1,21 @@
 package app.personajes;
 
 import java.util.*;
-import app.artefactos.Artefacto;
+import app.artefactos.*;
 import app.interfaces.*;
-import app.poderes.hechizos.Hechizo;
+import app.poderes.Poder;
+import app.poderes.hechizos.*;
 
-abstract class Elfo extends Criatura implements IHaceMagia {
+public class Elfo extends Criatura implements IHaceMagia {
     
+    // CONSTRUCTOR
+
+    public Elfo(String nombre) {
+        this.setNombre(nombre);
+        this.setSalud(100); // Le asigno directamente el máximo.
+        this.energiaMagica = 150; // Le asigno directamente el máximo.
+    }
+
     private int energiaMagica;
     private Artefacto artefacto;
     private List<Hechizo> hechizos = new ArrayList<>();
@@ -33,6 +42,43 @@ abstract class Elfo extends Criatura implements IHaceMagia {
 
     public void setHechizos(List<Hechizo> hechizos) {
         this.hechizos = hechizos;
+    }
+
+    // METODOS DE LAS INTERFACES
+
+    @Override
+    public boolean esInvisibleAMuggles() {
+        return true;
+    }
+
+    @Override
+    public boolean esInvisible() {
+        return false;
+    }
+
+    @Override
+    public void setPoder(Poder poder) {
+       
+    }
+
+    @Override
+    public Poder getPoderInicial() {
+        return null;
+    }
+
+    @Override
+    public void aprender(Hechizo hechizo) {
+        
+    }
+
+    @Override
+    public void atacar(Personaje personaje, Hechizo hechizo) {
+        
+    }
+
+    @Override
+    public void atacar(Personaje personaje, String hechizo) {
+        
     }
 }
 

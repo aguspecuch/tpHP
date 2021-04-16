@@ -1,19 +1,18 @@
 package app.personajes;
 
-import app.interfaces.IHaceMagia;
+import app.interfaces.*;
 
 public class Dementor extends Criatura {
 
     @Override
     public boolean esInvisibleAMuggles() {
-        // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
     @Override
     public boolean esInvisible() {
-        // TODO Auto-generated method stub
         return false;
     }
+
     
 }
