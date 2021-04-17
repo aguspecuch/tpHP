@@ -75,6 +75,15 @@ public class JuegoHP {
 
     // Y acá se pueden instanciar los poderes y artefactos.
 
+    // Esto seria lo primero que aparece cuando arranca el juego. Fijense si les gusta o quieren poner otra cosa.
+    // Le puse "Duelo Magico" para no ponerle tpHP lol
+    public void darBienvenida(){
+        System.out.println(" ______________________________");
+        System.out.println("|                              |");
+        System.out.println("| Bienvenidos a 'DUELO MAGICO' |");
+        System.out.println("|______________________________|");
+        System.out.println("");
+    }
     // Este seria el metodo principal donde podemos poner todos los metodos individuales donde instanciamos las cosas.
     public void inicializarCatalogo(){
         this.inicializarArtefactos();
