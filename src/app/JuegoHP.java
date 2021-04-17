@@ -230,6 +230,52 @@ public class JuegoHP {
 
         Wizard hermioneGranger = new Wizard("Hermione Granger", this.poderes.get(0), false);
         this.personajes.add(hermioneGranger);
+
+        Wizard albusDumbledore = new Wizard("Albus Dumbledore", this.poderes.get(0), false);
+        this.personajes.add(albusDumbledore);
+
+        Wizard lordVoldemort = new Wizard("Lord Voldemort", this.poderes.get(0), false);
+        this.personajes.add(lordVoldemort);
+
+        Wizard bellatrixLestrange = new Wizard("Bellatrix Lestrange", this.poderes.get(0), false);
+        this.personajes.add(bellatrixLestrange);
+
+        Wizard ronWeasly = new Wizard("Ron Weasly", this.poderes.get(0), false);
+        this.personajes.add(ronWeasly);
+
+        Wizard severusSnape = new Wizard("Severus Snape", this.poderes.get(0), false);
+        this.personajes.add(severusSnape);
+
+        Wizard dracoMalfoy = new Wizard("Draco Malfoy", this.poderes.get(0), false);
+        this.personajes.add(dracoMalfoy);
+
+        Muggle dudleyDursley = new Muggle("Dudley Dursley");
+        this.personajes.add(dudleyDursley);
+
+        Muggle vernonDursley = new Muggle("Vernon Dursley");
+        this.personajes.add(vernonDursley);
+
+        Muggle dudleyDursley = new Muggle("Dudley Dursley");
+        this.personajes.add(dudleyDursley);
+
+        Muggle petuniaDursley = new Muggle("Petunia Dursley");
+        this.personajes.add(petuniaDursley);
+
+        Elfo dobby = new Elfo("Dobby");
+        this.personajes.add(dobby);
+
+        Elfo kreacher = new Elfo("Kreacher");
+        this.personajes.add(kreacher);
+
+        Elfo winky = new Elfo("Winky");
+        this.personajes.add(winky);
+
+        Elfo hokey = new Elfo("Hokey");
+        this.personajes.add(hokey);
+
+        Dementor dementor = new Dementor("Dementor");
+        this.personajes.add(dementor);
+        
     }
 
     public void jugar() {
