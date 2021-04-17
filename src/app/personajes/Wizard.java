@@ -5,6 +5,7 @@ import app.artefactos.*;
 import app.interfaces.*;
 import app.poderes.*;
 import app.poderes.hechizos.*;
+import app.poderes.hechizos.ataques.*;
 import app.transportes.*;
 
 public class Wizard extends Persona implements IHaceMagia {
@@ -13,7 +14,7 @@ public class Wizard extends Persona implements IHaceMagia {
 
     public Wizard(String nombre, Poder poderInicial, boolean magoOscuro) {
         this.setNombre(nombre);
-        this.setSalud(100); // Le asigno directamente el máximo.
+        this.setSalud(100); 
         this.energiaMagica = 150; // Le asigno directamente el máximo.
         this.poderInicial = poderInicial;
         this.magoOscuro = magoOscuro;
@@ -88,12 +89,27 @@ public class Wizard extends Persona implements IHaceMagia {
     }
 
     @Override
-    public void atacar(Personaje personaje, Hechizo hechizo) {
-        
+    public void atacar(Personaje personaje, Hechizo h) {
+        if (personaje.estaVivo()) {
+            for (Hechizo hechizo : this.hechizos) {
+                if (h.equals(hechizo)) {
+                    
+                }
+            } 
+        }
+  
     }
 
     @Override
     public void atacar(Personaje personaje, String hechizo) {
         
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        HechizoAtaque hechizoAtaque = (HechizoAtaque)obj;
+        return hechizoAtaque.getNombre().equals(this.getNombre());
+    }
+
+
 }

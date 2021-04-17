@@ -32,7 +32,7 @@ public abstract class Personaje {
 
     // METODOS
 
-    public boolean estaVIVO() {
+    public boolean estaVivo() {
         if (this.salud > 0) {
             return true;
         }

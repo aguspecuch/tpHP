@@ -103,6 +103,7 @@ public class JuegoHP {
         this.artefactos.add(piedraResurreccion);
         VaritaSauco varitaSauco = new VaritaSauco("Varita de Sauco", 0.8, 0.5);
         this.artefactos.add(varitaSauco);
+        
     }
     // Metodo individual para instanciar PODERES
     public void inicializarPoderes(){
@@ -114,7 +115,7 @@ public class JuegoHP {
     // Metodo individual para instanciar HECHIZOS
     public void inicializarHechizos(){
 
-        SectumSempra sectumSempra = new SectumSempra("Sectum Sempra", true, 50, 20, 30); // 50 seria el daño, 20 la curacion y 30 el gasto de energiaMagica
+        SectumSempra sectumSempra = new SectumSempra("Sectum Sempra",true,50,20,30); // 50 seria el daño, 20 la curacion y 30 el gasto de energiaMagica
         this.hechizos.add(sectumSempra);
     }
 
@@ -128,8 +129,11 @@ public class JuegoHP {
     // Metodo individual para instanciar PERSONAJES
     public void inicializarPersonajes(){
 
-        Wizard wizard = new Wizard("Harry Potter", this.poderes.get(0), false); // El "this.poderes.get(0)" hace referencia al 1er Poder de la lista PODERES de JuegoHP. En este caso es SectumSempra.
-        this.personajes.add(wizard);
+        Wizard harryPotter = new Wizard("Harry Potter", this.poderes.get(0), false); // El "this.poderes.get(0)" hace referencia al 1er Poder de la lista PODERES de JuegoHP. En este caso es SectumSempra.
+        this.personajes.add(harryPotter);
+
+        Wizard hermioneGranger = new Wizard("Hermione Granger", this.poderes.get(0), false);
+        this.personajes.add(hermioneGranger);
     }
 
 

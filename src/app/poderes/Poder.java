@@ -2,7 +2,7 @@ package app.poderes;
 
 public abstract class Poder {
 
-    private String nombre;
+    protected String nombre;
     private String descripcion;
 
     public String getNombre() {

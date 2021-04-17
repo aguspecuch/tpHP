@@ -8,6 +8,7 @@ public abstract class Hechizo extends Poder {
     private int nivelDanio;
     private int nivelCuracion;
     private int energiaMagica;
+    public Object equals;
 
     public boolean getEsOscuro() {
         return this.esOscuro;

@@ -5,6 +5,7 @@ public class SectumSempra extends HechizoAtaque {
     // CONSTRUCTOR
     
     public SectumSempra(String nombre, boolean esOscuro, int nivelDanio, int nivelCuracion, int energiaMagica){
+        super();
         this.setNombre(nombre);
         this.setEsOscuro(esOscuro);
         this.setNivelDanio(nivelDanio);
