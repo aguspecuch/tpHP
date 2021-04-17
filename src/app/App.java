@@ -14,6 +14,9 @@ public class App {
 
         nombreJuego.inicializarCatalogo();
 
+        nombreJuego.darBienvenida();
+        nombreJuego.inicializarJugadores();
+
         nombreJuego.getPersonajes();
         nombreJuego.getHechizos();
 

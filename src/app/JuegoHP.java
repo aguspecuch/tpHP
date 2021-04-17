@@ -12,6 +12,8 @@ import app.transportes.*;
 
 public class JuegoHP {
 
+    public static Scanner Teclado = new Scanner(System.in);
+
     // CONSTRUCTOR
 
     public JuegoHP(String nombreJuego){
@@ -24,6 +26,7 @@ public class JuegoHP {
     private List<Hechizo> hechizos = new ArrayList<>();
     private List<Artefacto> artefactos = new ArrayList<>();
     private List<Transporte> transportes = new ArrayList<>();
+    private List<Jugador> jugadores = new ArrayList<>();
 
     public String getNombreJuego() {
         return this.nombreJuego;
@@ -73,6 +76,14 @@ public class JuegoHP {
         this.transportes = transportes;
     }
 
+    public List<Jugador> getJugadores() {
+        return this.jugadores;
+    }
+
+    public void setJugadores(List<Jugador> jugadores) {
+        this.jugadores = jugadores;
+    }
+
     // Y acá se pueden instanciar los poderes y artefactos.
 
     // Esto seria lo primero que aparece cuando arranca el juego. Fijense si les gusta o quieren poner otra cosa.
@@ -84,6 +95,77 @@ public class JuegoHP {
         System.out.println("|______________________________|");
         System.out.println("");
     }
+
+    // Esto seria un metodo para inicializar 2 jugadores (metodologia player vs player). Se les pide que ingrese su nombre y
+    // se llama a otro metodo elegirPersonaje() para que cada jugador pueda elegir su personaje de la lista. A su vez, dependiendo
+    // del personaje que elija le avisa que clase de personaje eligio (Mago, Elfo o Muggle).
+    
+    public void inicializarJugadores() {
+        
+        System.out.println("→ PLAYER 1");
+        System.out.println("");
+        System.out.println("♡ Ingrese su nombre de jugador:");
+        String nombreJugador = Teclado.nextLine();
+        
+        Personaje personajeElegido = this.elegirPersonaje();
+        
+        Jugador player1 = new Jugador(1, nombreJugador, personajeElegido);
+        this.getJugadores().add(player1);
+
+        System.out.println("");
+        System.out.println("→ PLAYER 2");
+        System.out.println("");
+        System.out.println("♡ Ingrese su nombre de jugador:");
+        nombreJugador = Teclado.nextLine();
+        System.out.println("");
+
+        personajeElegido = this.elegirPersonaje();
+
+        Jugador player2 = new Jugador(2, nombreJugador, personajeElegido);
+        this.getJugadores().add(player2);
+    }
+
+    // Este seria el metodo para que el jugador pueda elegir su personaje.
+    public Personaje elegirPersonaje(){
+        
+        System.out.println("");
+        System.out.println("♡ Seleccione su personaje:");
+        System.out.println("");
+        int contador = 1;
+        for (Personaje personaje : this.getPersonajes()) {
+            System.out.println(contador + ") " + personaje.getNombre());
+            contador++;
+        }
+        int nroPersonaje = Teclado.nextInt();
+        Teclado.nextLine();
+        nroPersonaje --;
+        Personaje personajeElegido = this.getPersonajes().get(nroPersonaje);
+
+        if (personajeElegido instanceof Wizard) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligio un mago!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (personajeElegido instanceof Elfo) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligio un Elfo!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (personajeElegido instanceof Muggle) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligio un Muggle!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (personajeElegido == null) {
+            System.out.println("EL NUMERO INGRESADO NO CORRESPONDE A NINGUN PERSONAJE.");
+        }
+
+        return personajeElegido;
+    }
+
     // Este seria el metodo principal donde podemos poner todos los metodos individuales donde instanciamos las cosas.
     public void inicializarCatalogo(){
         this.inicializarArtefactos();
