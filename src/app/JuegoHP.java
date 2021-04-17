@@ -16,7 +16,7 @@ public class JuegoHP {
 
     // CONSTRUCTOR
 
-    public JuegoHP(String nombreJuego){
+    public JuegoHP(String nombreJuego) {
         this.nombreJuego = nombreJuego;
     }
 
@@ -86,9 +86,10 @@ public class JuegoHP {
 
     // Y acá se pueden instanciar los poderes y artefactos.
 
-    // Esto seria lo primero que aparece cuando arranca el juego. Fijense si les gusta o quieren poner otra cosa.
+    // Esto seria lo primero que aparece cuando arranca el juego. Fijense si les
+    // gusta o quieren poner otra cosa.
     // Le puse "Duelo Magico" para no ponerle tpHP lol
-    public void darBienvenida(){
+    public void darBienvenida() {
         System.out.println(" ______________________________");
         System.out.println("|                              |");
         System.out.println("| Bienvenidos a 'DUELO MAGICO' |");
@@ -96,19 +97,22 @@ public class JuegoHP {
         System.out.println("");
     }
 
-    // Esto seria un metodo para inicializar 2 jugadores (metodologia player vs player). Se les pide que ingrese su nombre y
-    // se llama a otro metodo elegirPersonaje() para que cada jugador pueda elegir su personaje de la lista. A su vez, dependiendo
-    // del personaje que elija le avisa que clase de personaje eligio (Mago, Elfo o Muggle).
-    
+    // Esto seria un metodo para inicializar 2 jugadores (metodologia player vs
+    // player). Se les pide que ingrese su nombre y
+    // se llama a otro metodo elegirPersonaje() para que cada jugador pueda elegir
+    // su personaje de la lista. A su vez, dependiendo
+    // del personaje que elija le avisa que clase de personaje eligio (Mago, Elfo o
+    // Muggle).
+
     public void inicializarJugadores() {
-        
+
         System.out.println("→ PLAYER 1");
         System.out.println("");
         System.out.println("♡ Ingrese su nombre de jugador:");
         String nombreJugador = Teclado.nextLine();
-        
+
         Personaje personajeElegido = this.elegirPersonaje();
-        
+
         Jugador player1 = new Jugador(1, nombreJugador, personajeElegido);
         this.getJugadores().add(player1);
 
@@ -126,58 +130,61 @@ public class JuegoHP {
     }
 
     // Este seria el metodo para que el jugador pueda elegir su personaje.
-    public Personaje elegirPersonaje(){
-        
+    public Personaje elegirPersonaje() {
+
         System.out.println("");
         System.out.println("♡ Seleccione su personaje:");
         System.out.println("");
         int contador = 1;
-        for (Personaje personaje : this.getPersonajes()) {
+        for (Personaje personaje : this.personajes) {
             System.out.println(contador + ") " + personaje.getNombre());
             contador++;
         }
         int nroPersonaje = Teclado.nextInt();
         Teclado.nextLine();
-        nroPersonaje --;
-        Personaje personajeElegido = this.getPersonajes().get(nroPersonaje);
+        nroPersonaje--;
+        Personaje personajeElegido = this.personajes.get(nroPersonaje);
 
         if (personajeElegido instanceof Wizard) {
             System.out.println("-------------------------------");
             System.out.println("");
-            System.out.println("¡Eligio un mago!");
+            System.out.println("¡Eligió un mago!");
             System.out.println("");
             System.out.println("-------------------------------");
         } else if (personajeElegido instanceof Elfo) {
             System.out.println("-------------------------------");
             System.out.println("");
-            System.out.println("¡Eligio un Elfo!");
+            System.out.println("¡Eligió un Elfo!");
             System.out.println("");
             System.out.println("-------------------------------");
         } else if (personajeElegido instanceof Muggle) {
             System.out.println("-------------------------------");
             System.out.println("");
-            System.out.println("¡Eligio un Muggle!");
+            System.out.println("¡Eligió un Muggle!");
             System.out.println("");
             System.out.println("-------------------------------");
         } else if (personajeElegido == null) {
-            System.out.println("EL NUMERO INGRESADO NO CORRESPONDE A NINGUN PERSONAJE.");
+            System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN PERSONAJE.");
         }
-
         return personajeElegido;
     }
 
-    // Este seria el metodo principal donde podemos poner todos los metodos individuales donde instanciamos las cosas.
-    public void inicializarCatalogo(){
+    // Este seria el metodo principal donde podemos poner todos los metodos
+    // individuales donde instanciamos las cosas.
+    public void iniciarJuego() {
         this.inicializarArtefactos();
         this.inicializarPoderes();
         this.inicializarHechizos();
         this.inicializarTransportes();
         this.inicializarPersonajes();
     }
-    // Metodo individual para instanciar ARTEFACTOS
-    public void inicializarArtefactos(){
 
-        CapaInvisibilidad capaInvisibilidad = new CapaInvisibilidad("Capa de Invisibilidad", 0.1, 0.2); // Instancio el objeto CapaInvisibilidad
+    // Metodo individual para instanciar ARTEFACTOS
+    public void inicializarArtefactos() {
+
+        CapaInvisibilidad capaInvisibilidad = new CapaInvisibilidad("Capa de Invisibilidad", 0.1, 0.2); // Instancio el
+                                                                                                        // objeto
+                                                                                                        // CapaInvisibilidad
         this.artefactos.add(capaInvisibilidad); // Lo agrego a la lista de artefactos de JuegoHP
         Horrocrux horrocrux = new Horrocrux("Horrocrux", 0.5, 0.5);
         this.artefactos.add(horrocrux);
@@ -185,38 +192,47 @@ public class JuegoHP {
         this.artefactos.add(piedraResurreccion);
         VaritaSauco varitaSauco = new VaritaSauco("Varita de Sauco", 0.8, 0.5);
         this.artefactos.add(varitaSauco);
-        
+
     }
+
     // Metodo individual para instanciar PODERES
-    public void inicializarPoderes(){
+    public void inicializarPoderes() {
 
         Invisibilidad invisibilidad = new Invisibilidad("Invisibilidad", "Poder que te hace invisible");
         this.poderes.add(invisibilidad);
     }
 
     // Metodo individual para instanciar HECHIZOS
-    public void inicializarHechizos(){
+    public void inicializarHechizos() {
 
-        SectumSempra sectumSempra = new SectumSempra("Sectum Sempra",true,50,20,30); // 50 seria el daño, 20 la curacion y 30 el gasto de energiaMagica
+        SectumSempra sectumSempra = new SectumSempra("Sectum Sempra", true, 50, 20, 30); // 50 seria el daño, 20 la
+                                                                                         // curacion y 30 el gasto de
+                                                                                         // energiaMagica
         this.hechizos.add(sectumSempra);
     }
 
     // Metodo individual para instanciar TRANSPORTES
-    public void inicializarTransportes(){
+    public void inicializarTransportes() {
 
-        TrenExpresoHowards trenExpresoHowards = new TrenExpresoHowards("Tren Expreso de Howards", "Un tren magico que transporta a los estudiantes a Howarts");
+        TrenExpresoHowards trenExpresoHowards = new TrenExpresoHowards("Tren Expreso de Howards",
+                "Un tren magico que transporta a los estudiantes a Howarts");
         this.transportes.add(trenExpresoHowards);
     }
 
     // Metodo individual para instanciar PERSONAJES
-    public void inicializarPersonajes(){
+    public void inicializarPersonajes() {
 
-        Wizard harryPotter = new Wizard("Harry Potter", this.poderes.get(0), false); // El "this.poderes.get(0)" hace referencia al 1er Poder de la lista PODERES de JuegoHP. En este caso es SectumSempra.
+        Wizard harryPotter = new Wizard("Harry Potter", this.poderes.get(0), false); // El "this.poderes.get(0)" hace
+                                                                                     // referencia al 1er Poder de la
+                                                                                     // lista PODERES de JuegoHP. En
+                                                                                     // este caso es SectumSempra.
         this.personajes.add(harryPotter);
 
         Wizard hermioneGranger = new Wizard("Hermione Granger", this.poderes.get(0), false);
         this.personajes.add(hermioneGranger);
     }
 
-
+    public void jugar() {
+        
+    }
 }
