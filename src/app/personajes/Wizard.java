@@ -6,9 +6,6 @@ import app.interfaces.*;
 import app.poderes.*;
 import app.poderes.hechizos.*;
 import app.poderes.hechizos.ataques.*;
-import app.poderes.hechizos.curaciones.HechizoCuracion;
-import app.poderes.hechizos.defensas.HechizoDefensa;
-import app.poderes.hechizos.ocio.HechizoOcio;
 import app.transportes.*;
 
 public class Wizard extends Persona implements IHaceMagia {
@@ -99,39 +96,36 @@ public class Wizard extends Persona implements IHaceMagia {
                     //Agregar qué hace.
                     //Debería usar un cast acá también creo o reutilizar algo para que según qué tipo de hechizo
                     //es que tenga X daño, Y defensa y demás, donde X e Y son enteros (int).
+                } else {
+                    System.out.println("No es posible conjurar el hechizo.");
                 }
             } 
+        } else {
+
         }
-  
+
+    }
+
+    public void atacar(Personaje personaje, Poder p) {
+        //Tenemos ataques que no son hechizos. No sé si podré quitar el método que tiene como 2do parámetro
+        //Hechizo h y dejar este y luego discriminar entre si es uno u otro y que según qué haga X o Y.
     }
 
     @Override
     public void atacar(Personaje personaje, String hechizo) {
-        //Esto podría hacer... ¿Qué cosa? Alfonsina nos tiró la idea de que conjure pero no sabría bien...
+        //Esto podría hacer... ¿Qué cosa? Alfonsina nos tiró la idea de que el método conjure. 
+        //El tema es qué interpretamos por conjurar. 
     }
 
-    //Creé esta función para saber si el hechizo elegido es de cierto tipo y utilizarla en el cuerpo 
-    //del método atacar(Personaje personaje, Hechizo hechizo).
+    //Creé esta función para saber si el hechizo elegido lo tiene aprendido el personaje.
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof HechizoAtaque) {
-            HechizoAtaque hechizoAtaque = (HechizoAtaque)obj;
-            return hechizoAtaque.getNombre().equals(this.getNombre());
-        } else if (obj instanceof HechizoDefensa) {
-            HechizoDefensa hechizoDefensa = (HechizoDefensa)obj;
-            return hechizoDefensa.getNombre().equals(this.getNombre());
-        } else if (obj instanceof HechizoCuracion) {
-            HechizoCuracion hechizoCuracion = (HechizoCuracion)obj;
-            return hechizoCuracion.getNombre().equals(this.getNombre());
-        } else if (obj instanceof HechizoOcio) {
-            HechizoOcio hechizoOcio = (HechizoOcio)obj;
-            return hechizoOcio.getNombre().equals(this.getNombre());
+            Hechizo hechizo = (Hechizo)obj;
+            return hechizo.getNombre().equals(this.getNombre());
         } else {
             return false;
         }    
     }
-    //Me gustaría que este método anterior se rehaga con un switch(key).
-    
-
 
 }

@@ -1,6 +1,7 @@
 package app;
 
 import app.personajes.*;
+import app.poderes.hechizos.Hechizo;
 
 public class Jugador {
     
@@ -17,6 +18,7 @@ public class Jugador {
     private int nroJugador;
     private String nombreJugador;
     private Personaje personajeElegido;
+    private Personaje personajeEnemigo;
 
     // GETTERS Y SETTERS
 
@@ -36,11 +38,20 @@ public class Jugador {
         this.nombreJugador = nombreJugador;
     }
 
-    public Personaje getPersonajeElegido(){
-        return this.personajeElegido;
+    public Personaje getPersonajeElegido() {
+        return this.personajeElegido; 
     }
 
     public void setPersonajeElegido(Personaje personajeElegido){
         this.personajeElegido = personajeElegido;
     }
+
+    public Personaje getPersonajeEnemigo() {
+        return this.personajeEnemigo;
+    }
+
+    public void setPersonajeEnemigo(Personaje personajeEnemigo) {
+        this.personajeEnemigo = personajeEnemigo;
+    }
+    
 }

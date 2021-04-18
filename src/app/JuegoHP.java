@@ -7,7 +7,7 @@ import app.artefactos.varitas.VaritaSauco;
 import app.personajes.*;
 import app.poderes.*;
 import app.poderes.hechizos.*;
-import app.poderes.hechizos.ataques.SectumSempra;
+import app.poderes.hechizos.ataques.*;
 import app.transportes.*;
 
 public class JuegoHP {
@@ -154,18 +154,19 @@ public class JuegoHP {
         } else if (personajeElegido instanceof Elfo) {
             System.out.println("-------------------------------");
             System.out.println("");
-            System.out.println("¡Eligió un Elfo!");
+            System.out.println("¡Eligió un elfo!");
             System.out.println("");
             System.out.println("-------------------------------");
         } else if (personajeElegido instanceof Muggle) {
             System.out.println("-------------------------------");
             System.out.println("");
-            System.out.println("¡Eligió un Muggle!");
+            System.out.println("¡Eligió un muggle!");
             System.out.println("");
             System.out.println("-------------------------------");
         } else if (personajeElegido == null) {
             System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN PERSONAJE.");
         }
+
         return personajeElegido;
     }
 
@@ -177,6 +178,11 @@ public class JuegoHP {
         this.inicializarHechizos();
         this.inicializarTransportes();
         this.inicializarPersonajes();
+        this.darBienvenida();
+        this.inicializarJugadores();
+        this.jugadores.get(0).setPersonajeEnemigo(jugadores.get(1).getPersonajeElegido());
+        this.jugadores.get(1).setPersonajeEnemigo(jugadores.get(0).getPersonajeElegido());
+        //this.jugar();
     }
 
     // Metodo individual para instanciar ARTEFACTOS
@@ -255,9 +261,6 @@ public class JuegoHP {
         Muggle vernonDursley = new Muggle("Vernon Dursley");
         this.personajes.add(vernonDursley);
 
-        Muggle dudleyDursley = new Muggle("Dudley Dursley");
-        this.personajes.add(dudleyDursley);
-
         Muggle petuniaDursley = new Muggle("Petunia Dursley");
         this.personajes.add(petuniaDursley);
 
@@ -279,6 +282,17 @@ public class JuegoHP {
     }
 
     public void jugar() {
-        
+        int numeroRonda = 0;
+        do {
+            for (Jugador jugador : this.jugadores) {
+                if (jugador.getPersonajeElegido() instanceof Wizard) {
+                    ((Wizard) jugador.getPersonajeElegido()).atacar(jugador.getPersonajeEnemigo(), ((Wizard) jugador.getPersonajeElegido()).getPoderInicial());
+                }
+                
+            }
+        } 
+        //while {
+        //}
+       
     }
 }
