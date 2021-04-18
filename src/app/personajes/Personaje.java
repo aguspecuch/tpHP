@@ -2,9 +2,13 @@ package app.personajes;
 
 public abstract class Personaje {
 
+    //ATRIBUTOS
+
     private String nombre;
     private int salud;
     private int edad;
+
+    //GETTERS Y SETTERS
 
     public String getNombre() {
         return this.nombre;

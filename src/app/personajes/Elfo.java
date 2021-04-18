@@ -16,9 +16,13 @@ public class Elfo extends Criatura implements IHaceMagia {
         this.energiaMagica = 150; // Le asigno directamente el máximo.
     }
 
+    //ATRIBUTOS
+
     private int energiaMagica;
     private Artefacto artefacto;
     private List<Hechizo> hechizos = new ArrayList<>();
+
+    //GETTERS Y SETTERS
         
     public int getEnergiaMagica() {
         return this.energiaMagica;

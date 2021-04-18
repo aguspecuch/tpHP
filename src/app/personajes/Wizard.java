@@ -14,11 +14,13 @@ public class Wizard extends Persona implements IHaceMagia {
 
     public Wizard(String nombre, Poder poderInicial, boolean magoOscuro) {
         this.setNombre(nombre);
-        this.setSalud(100); 
+        this.setSalud(100);
         this.energiaMagica = 150; // Le asigno directamente el máximo.
         this.poderInicial = poderInicial;
         this.magoOscuro = magoOscuro;
     }
+
+    // ATRIBUTOS
 
     private int energiaMagica;
     private List<Hechizo> hechizos = new ArrayList<>();
@@ -27,6 +29,8 @@ public class Wizard extends Persona implements IHaceMagia {
     private Artefacto artefacto;
     private boolean magoOscuro;
 
+    // GETTERS Y SETTERS
+
     public int getEnergiaMagica() {
         return this.energiaMagica;
     }
@@ -34,7 +38,7 @@ public class Wizard extends Persona implements IHaceMagia {
     public void setEnergiaMagica(int energiaMagica) {
         this.energiaMagica = energiaMagica;
     }
-    
+
     public List<Hechizo> getHechizos() {
         return this.hechizos;
     }
@@ -50,7 +54,7 @@ public class Wizard extends Persona implements IHaceMagia {
     public void setEscoba(Escoba escoba) {
         this.escoba = escoba;
     }
-    
+
     public Poder getPoderInicial() {
         return this.poderInicial;
     }
@@ -85,7 +89,8 @@ public class Wizard extends Persona implements IHaceMagia {
     @Override
     public void aprender(Hechizo hechizo) {
         this.getHechizos().add(hechizo);
-        //¿Así de una que aprenda el hechizo? Más adelante se le podría añadir alguna dificultad.
+        // ¿Así de una que aprenda el hechizo? Más adelante se le podría añadir alguna
+        // dificultad.
     }
 
     @Override
@@ -93,13 +98,14 @@ public class Wizard extends Persona implements IHaceMagia {
         if (personaje.estaVivo()) {
             for (Hechizo hechizo : this.hechizos) {
                 if (h.equals(hechizo)) {
-                    //Agregar qué hace.
-                    //Debería usar un cast acá también creo o reutilizar algo para que según qué tipo de hechizo
-                    //es que tenga X daño, Y defensa y demás, donde X e Y son enteros (int).
+                    // Agregar qué hace.
+                    // Debería usar un cast acá también creo o reutilizar algo para que según qué
+                    // tipo de hechizo
+                    // es que tenga X daño, Y defensa y demás, donde X e Y son enteros (int).
                 } else {
                     System.out.println("No es posible conjurar el hechizo.");
                 }
-            } 
+            }
         } else {
 
         }
@@ -107,25 +113,29 @@ public class Wizard extends Persona implements IHaceMagia {
     }
 
     public void atacar(Personaje personaje, Poder p) {
-        //Tenemos ataques que no son hechizos. No sé si podré quitar el método que tiene como 2do parámetro
-        //Hechizo h y dejar este y luego discriminar entre si es uno u otro y que según qué haga X o Y.
+        // Tenemos ataques que no son hechizos. No sé si podré quitar el método que
+        // tiene como 2do parámetro
+        // Hechizo h y dejar este y luego discriminar entre si es uno u otro y que según
+        // qué haga X o Y.
     }
 
     @Override
     public void atacar(Personaje personaje, String hechizo) {
-        //Esto podría hacer... ¿Qué cosa? Alfonsina nos tiró la idea de que el método conjure. 
-        //El tema es qué interpretamos por conjurar. 
+        // Esto podría hacer... ¿Qué cosa? Alfonsina nos tiró la idea de que el método
+        // conjure.
+        // El tema es qué interpretamos por conjurar.
     }
 
-    //Creé esta función para saber si el hechizo elegido lo tiene aprendido el personaje.
+    // Creé esta función para saber si el hechizo elegido lo tiene aprendido el
+    // personaje.
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof HechizoAtaque) {
-            Hechizo hechizo = (Hechizo)obj;
+            Hechizo hechizo = (Hechizo) obj;
             return hechizo.getNombre().equals(this.getNombre());
         } else {
             return false;
-        }    
+        }
     }
 
 }

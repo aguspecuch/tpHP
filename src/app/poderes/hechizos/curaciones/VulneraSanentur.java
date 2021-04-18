@@ -1,6 +1,8 @@
 package app.poderes.hechizos.curaciones;
 
 public class VulneraSanentur extends HechizoCuracion {
+
+    // CONSTRUCTOR
     
     public VulneraSanentur(String nombre, boolean esOscuro, int nivelDanio, int nivelCuracion, int energiaMagica){
         this.setNombre(nombre);

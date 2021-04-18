@@ -5,10 +5,14 @@ import app.poderes.*;
 
 public abstract class Artefacto implements IEsMagico {
 
+    // ATRIBUTOS
+
     private String nombre;
     private double amplificadorDeDanio;
     private double amplificadorDeCuracion;
     private Poder poder;
+
+    // GETTERS Y SETTERS
 
     public String getNombre() {
         return this.nombre;

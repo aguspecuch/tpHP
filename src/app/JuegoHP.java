@@ -23,6 +23,8 @@ public class JuegoHP {
         this.nombreJuego = nombreJuego;
     }
 
+    // ATRIBUTOS
+
     private String nombreJuego;
     private List<Personaje> personajes = new ArrayList<>();
     private List<Poder> poderes = new ArrayList<>();
@@ -31,6 +33,8 @@ public class JuegoHP {
     private List<Transporte> transportes = new ArrayList<>();
     private List<Jugador> jugadores = new ArrayList<>();
 
+    // GETTERS Y SETTERS
+    
     public String getNombreJuego() {
         return this.nombreJuego;
     }

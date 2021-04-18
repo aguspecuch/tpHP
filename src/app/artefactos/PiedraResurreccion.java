@@ -5,7 +5,7 @@ import app.interfaces.*;
 public class PiedraResurreccion extends Artefacto implements IReliquiaMuerte {
 
     // CONSTRUCTOR
-    
+
     public PiedraResurreccion(String nombre, double amplificadorDeDanio, double amplificadorDeCuracion) {
         this.setNombre(nombre);
         this.setAmplificadorDeDanio(amplificadorDeDanio);

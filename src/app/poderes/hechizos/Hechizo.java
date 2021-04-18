@@ -4,12 +4,16 @@ import app.poderes.*;
 
 public abstract class Hechizo extends Poder {
 
+    // ATRIBUTOS
+
     private boolean esOscuro;
     private int nivelDanio;
     private int nivelCuracion;
     private int energiaMagica;
     public Object equals;
 
+    // GETTERS Y SETTERS
+    
     public boolean getEsOscuro() {
         return this.esOscuro;
     }

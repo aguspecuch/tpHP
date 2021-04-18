@@ -1,6 +1,8 @@
 package app.poderes.hechizos.defensas;
 
 public class ExpectoPatronum extends HechizoDefensa {
+
+    //CONSTRUCTOR
     
     public ExpectoPatronum(String nombre, boolean esOscuro, int nivelDanio, int nivelCuracion, int energiaMagica){
         this.setNombre(nombre);
