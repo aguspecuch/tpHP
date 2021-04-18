@@ -5,9 +5,6 @@ public class App {
         JuegoHP nombreJuego = new JuegoHP("Tiene este nombre");
 
         nombreJuego.iniciarJuego();
-        nombreJuego.darBienvenida();
-        nombreJuego.inicializarJugadores();
-        
-      
+   
     }
 }
