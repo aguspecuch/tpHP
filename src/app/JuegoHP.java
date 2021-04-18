@@ -1,6 +1,5 @@
 package app;
 
-
 import java.util.*;
 
 import app.artefactos.*;
@@ -9,6 +8,9 @@ import app.personajes.*;
 import app.poderes.*;
 import app.poderes.hechizos.*;
 import app.poderes.hechizos.ataques.*;
+import app.poderes.hechizos.defensas.*;
+import app.poderes.hechizos.curaciones.*;
+import app.poderes.hechizos.ocio.*;
 import app.transportes.*;
 
 public class JuegoHP {
@@ -183,7 +185,6 @@ public class JuegoHP {
         this.inicializarJugadores();
         this.jugadores.get(0).setPersonajeEnemigo(jugadores.get(1).getPersonajeElegido());
         this.jugadores.get(1).setPersonajeEnemigo(jugadores.get(0).getPersonajeElegido());
-        //this.jugar();
     }
 
     // Metodo individual para instanciar ARTEFACTOS
@@ -218,7 +219,7 @@ public class JuegoHP {
         this.hechizos.add(sectumSempra);
 
         AvadaKedavra avadaKedavra = new AvadaKedavra("Avada Kedavra", true, 50, 0, 30);
-        this.hechizos.add(sectumSempra);
+        this.hechizos.add(avadaKedavra);
 
         Cruciatus cruciatus = new Cruciatus("Cruciatus", true, 40, 0, 25);
         this.hechizos.add(cruciatus);
@@ -231,10 +232,6 @@ public class JuegoHP {
 
         ExpectoPatronum expectoPatronum = new ExpectoPatronum("Expecto Patronum", true, 0, 0, 10);
         this.hechizos.add(expectoPatronum);
-        
-        CaveInimicum caveInimicum = new CaveInimicum("Cave Inimicum", true, 0, 0, 10);
-        this.hechizos.add(caveInimicum);
-
         
     }
 
@@ -302,18 +299,22 @@ public class JuegoHP {
         
     }
 
-    public void jugar() {
-        int numeroRonda = 0;
+    /* int numeroTurno = 0;
         do {
             for (Jugador jugador : this.jugadores) {
                 if (jugador.getPersonajeElegido() instanceof Wizard) {
                     ((Wizard) jugador.getPersonajeElegido()).atacar(jugador.getPersonajeEnemigo(), ((Wizard) jugador.getPersonajeElegido()).getPoderInicial());
-                }
-                
+                } else if (jugador.getPersonajeElegido() instanceof Elfo) {
+                    ((Elfo) jugador.getPersonajeElegido()).atacar(jugador.getPersonajeEnemigo(), ((Elfo) jugador.getPersonajeElegido()).getPoderInicial());
+                } else if (jugador.getPersonajeElegido() instanceof Muggle) {
+                    ((Muggle) jugador.getPersonajeElegido()).atacar(jugador.getPersonajeEnemigo(), //qué pongo);
+                } else if (jugador.getPersonajeElegido() instanceof Dementor) {
+                    ((Dementor) jugador.getPersonajeElegido()).atacar(jugador.getPersonajeEnemigo(), ((Elfo) jugador.getPersonajeElegido()).getPoderInicial());
+                } 
+
+                numeroTurno = numeroTurno + 1;
             }
-        } 
-        //while {
-        //}
-       
-    }
+        } while (numeroTurno < 30);      
+    }*/
+
 }
