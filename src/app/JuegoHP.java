@@ -212,10 +212,30 @@ public class JuegoHP {
     // Metodo individual para instanciar HECHIZOS
     public void inicializarHechizos() {
 
-        SectumSempra sectumSempra = new SectumSempra("Sectum Sempra", true, 50, 20, 30); // 50 seria el daño, 20 la
+        SectumSempra sectumSempra = new SectumSempra("Sectum Sempra", true, 30, 0, 20); // 50 seria el daño, 20 la
                                                                                          // curacion y 30 el gasto de
                                                                                          // energiaMagica
         this.hechizos.add(sectumSempra);
+
+        AvadaKedavra avadaKedavra = new AvadaKedavra("Avada Kedavra", true, 50, 0, 30);
+        this.hechizos.add(sectumSempra);
+
+        Cruciatus cruciatus = new Cruciatus("Cruciatus", true, 40, 0, 25);
+        this.hechizos.add(cruciatus);
+
+        Expelliarmus expelliarmus = new Expelliarmus("Expelliarmus", true, 20, 0, 15);
+        this.hechizos.add(expelliarmus);
+
+        CaveInimicum caveInimicum = new CaveInimicum("Cave Inimicum", true, 0, 0, 10);
+        this.hechizos.add(caveInimicum);
+
+        ExpectoPatronum expectoPatronum = new ExpectoPatronum("Expecto Patronum", true, 0, 0, 10);
+        this.hechizos.add(expectoPatronum);
+        
+        CaveInimicum caveInimicum = new CaveInimicum("Cave Inimicum", true, 0, 0, 10);
+        this.hechizos.add(caveInimicum);
+
+        
     }
 
     // Metodo individual para instanciar TRANSPORTES
