@@ -332,7 +332,7 @@ public class JuegoHP {
                         Insertartodo el ataque del jugador2
                     }
 
-                    turnoP1 = !turnoP1;
+                    turnoP1 = !turnoP1;                                                             Aca cambiaria el turno al P2
             }
     */
 }
