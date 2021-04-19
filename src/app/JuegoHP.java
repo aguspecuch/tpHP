@@ -3,8 +3,7 @@ package app;
 import java.util.*;
 
 import app.artefactos.*;
-import app.artefactos.varitas.VaritaComun;
-import app.artefactos.varitas.VaritaSauco;
+import app.artefactos.varitas.*;
 import app.personajes.*;
 import app.poderes.*;
 import app.poderes.hechizos.*;
@@ -92,7 +91,19 @@ public class JuegoHP {
         this.jugadores = jugadores;
     }
 
-    // Y acá se pueden instanciar los poderes y artefactos.
+    // Este seria el metodo principal donde podemos poner todos los metodos
+    // individuales donde instanciamos las cosas.
+    public void iniciarJuego() {
+        this.inicializarArtefactos();
+        this.inicializarPoderes();
+        this.inicializarHechizos();
+        this.inicializarTransportes();
+        this.inicializarPersonajes();
+        this.darBienvenida();
+        this.inicializarJugadores();
+        this.jugadores.get(0).setPersonajeEnemigo(jugadores.get(1).getPersonajeElegido());
+        this.jugadores.get(1).setPersonajeEnemigo(jugadores.get(0).getPersonajeElegido());
+    }
 
     // Esto seria lo primero que aparece cuando arranca el juego. Fijense si les
     // gusta o quieren poner otra cosa.
@@ -178,26 +189,10 @@ public class JuegoHP {
         return personajeElegido;
     }
 
-    // Este seria el metodo principal donde podemos poner todos los metodos
-    // individuales donde instanciamos las cosas.
-    public void iniciarJuego() {
-        this.inicializarArtefactos();
-        this.inicializarPoderes();
-        this.inicializarHechizos();
-        this.inicializarTransportes();
-        this.inicializarPersonajes();
-        this.darBienvenida();
-        this.inicializarJugadores();
-        this.jugadores.get(0).setPersonajeEnemigo(jugadores.get(1).getPersonajeElegido());
-        this.jugadores.get(1).setPersonajeEnemigo(jugadores.get(0).getPersonajeElegido());
-    }
-
     // Metodo individual para instanciar ARTEFACTOS
     public void inicializarArtefactos() {
 
-        CapaInvisibilidad capaInvisibilidad = new CapaInvisibilidad("Capa de Invisibilidad", 0.1, 0.2); // Instancio el
-                                                                                                        // objeto
-                                                                                                        // CapaInvisibilidad
+        CapaInvisibilidad capaInvisibilidad = new CapaInvisibilidad("Capa de Invisibilidad", 0.1, 0.2); // Instancio el objeto CapaInvisibilidad
         this.artefactos.add(capaInvisibilidad); // Lo agrego a la lista de artefactos de JuegoHP
 
         Horrocrux horrocrux = new Horrocrux("Horrocrux", 0.5, 0.5);
@@ -343,4 +338,22 @@ public class JuegoHP {
         } while (numeroTurno < 30);      
     }*/
 
+
+    /* Abril aca te tiro esta otra forma de hacer el juego por turnos basandome en el juego de MK que habia hecho el profe una vez,
+        vos fijate si te copa o te sirve de algo sino borra todo a la mierda jajajajaj.
+
+        boolean turnoP1 = true;
+
+            while (this.getJugadores().get(0).getPersonajeElegido().estaVIVO().equals(true)         Esto es para que el bucle dure solo
+                && this.getJugadores().get(1).getPersonajeElegido().estaVIVO().equals(true)) {      mientras alguno de los jugadores
+                                                                                                    tenga vida.
+                     if (turnoP1) {
+                        Insertar todo el ataque del jugador1                                        Y esto es para que vaya cambiando
+                    } else {                                                                        el turno de quien ataca y eso.
+                        Insertartodo el ataque del jugador2
+                    }
+
+                    turnoP1 = !turnoP1;                                                             Aca cambiaria el turno al P2
+            }
+    */
 }

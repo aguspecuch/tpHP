@@ -1,7 +1,6 @@
 package app;
 
 import app.personajes.*;
-import app.poderes.hechizos.Hechizo;
 
 public class Jugador {
     
