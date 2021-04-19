@@ -32,6 +32,7 @@ public class Wizard extends Persona implements IHaceMagia {
     private Poder poderInicial;
     private Artefacto artefacto;
     private boolean magoOscuro;
+    private List<Poder> poderes = new ArrayList<>();
 
     // GETTERS Y SETTERS
 
@@ -83,6 +84,14 @@ public class Wizard extends Persona implements IHaceMagia {
         this.magoOscuro = magoOscuro;
     }
 
+    public List<Poder> getPoderes() {
+        return this.poderes;
+    }
+
+    public void setPoderes(List<Poder> poderes) {
+        this.poderes = poderes;
+    }
+
     // METODOS DE LAS INTERFACES
 
     @Override
@@ -92,19 +101,16 @@ public class Wizard extends Persona implements IHaceMagia {
 
     @Override
     public void aprender(Hechizo hechizo) {
-        this.setPoder(hechizo);
+        this.poderes.add(hechizo); //Creo que esto funciona.
         // ¿Así de una que aprenda el hechizo? Más adelante se le podría añadir alguna
         // dificultad.
     }
 
     public void aprender(Poder poder) {
-        this.setPoder(poder);
+        this.poderes.add(getPoderInicial());
+        this.poderes.add(poder);
         // ¿Así de una que aprenda el hechizo? Más adelante se le podría añadir alguna
         // dificultad.
-    }
-
-    public List<Poder> utilizarPoderesAprendidos() {
-        this.
     }
 
     @Override
