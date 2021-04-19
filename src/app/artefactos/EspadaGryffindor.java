@@ -1,10 +1,10 @@
 package app.artefactos;
 
-public class Horrocrux extends Artefacto {
+public class EspadaGryffindor extends Artefacto {
 
     // CONSTRUCTOR
-    
-    public Horrocrux(String nombre, double amplificadorDeDanio, double amplificadorDeCuracion) {
+
+    public EspadaGryffindor(String nombre, double amplificadorDeDanio, double amplificadorDeCuracion) {
         this.setNombre(nombre);
         this.setAmplificadorDeDanio(amplificadorDeDanio);
         this.setAmplificadorDeCuracion(amplificadorDeCuracion);

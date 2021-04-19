@@ -1,18 +1,23 @@
 package app.personajes;
 
+import app.poderes.Poder;
+
 public class Dementor extends Criatura {
 
     // CONSTUCTOR
 
-    public Dementor (String nombre) {
+    public Dementor (String nombre, int salud, int energiaMagica, Poder poderInicial) {
         this.setNombre(nombre);
-        this.setSalud(100); // Le asigno directamente el máximo.
-        this.energiaMagica = 150; // Le asigno directamente el máximo.
+        this.setSalud(salud); // Le asigno directamente el máximo.
+        this.energiaMagica = energiaMagica; // Le asigno directamente el máximo.
+        this.poderInicial = poderInicial;
+
     }
 
     // ATRIBUTOS
 
     private int energiaMagica;
+    private Poder poderInicial;
 
     // GETTERS Y SETTERS
 
@@ -24,6 +29,14 @@ public class Dementor extends Criatura {
         this.energiaMagica = energiaMagica;
     }
 
+    public Poder getPoderInicial() {
+        return this.poderInicial;
+    }
+
+    public void setPoderInicial(Poder poderInicial) {
+        this.poderInicial = poderInicial;
+    }
+    
     // METODO DE LAS INTERFASES
 
     @Override

@@ -1,10 +1,10 @@
-package app.artefactos;
+package app.artefactos.varitas;
 
-public class Horrocrux extends Artefacto {
+public class VaritaComun extends Varita {
 
     // CONSTRUCTOR
-    
-    public Horrocrux(String nombre, double amplificadorDeDanio, double amplificadorDeCuracion) {
+
+    public VaritaComun(String nombre, double amplificadorDeDanio, double amplificadorDeCuracion) {
         this.setNombre(nombre);
         this.setAmplificadorDeDanio(amplificadorDeDanio);
         this.setAmplificadorDeCuracion(amplificadorDeCuracion);

@@ -10,12 +10,13 @@ public class Elfo extends Criatura implements IHaceMagia {
     
     // CONSTRUCTOR
 
-    public Elfo(String nombre) {
+    public Elfo(String nombre, int salud, int energiaMagica, Artefacto artefacto) {
         this.setNombre(nombre);
-        this.setSalud(100); // Le asigno directamente el máximo.
-        this.energiaMagica = 150; // Le asigno directamente el máximo.
+        this.setSalud(salud); // Le asigno directamente el máximo.
+        this.energiaMagica = energiaMagica; // Le asigno directamente el máximo.
+        this.artefacto = artefacto;
     }
-
+    
     //ATRIBUTOS
 
     private int energiaMagica;

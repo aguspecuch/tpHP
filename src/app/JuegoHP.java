@@ -3,6 +3,7 @@ package app;
 import java.util.*;
 
 import app.artefactos.*;
+import app.artefactos.varitas.VaritaComun;
 import app.artefactos.varitas.VaritaSauco;
 import app.personajes.*;
 import app.poderes.*;
@@ -198,12 +199,21 @@ public class JuegoHP {
                                                                                                         // objeto
                                                                                                         // CapaInvisibilidad
         this.artefactos.add(capaInvisibilidad); // Lo agrego a la lista de artefactos de JuegoHP
+
         Horrocrux horrocrux = new Horrocrux("Horrocrux", 0.5, 0.5);
         this.artefactos.add(horrocrux);
+
         PiedraResurreccion piedraResurreccion = new PiedraResurreccion("Piedra Resurreccion", 0.2, 0.8);
         this.artefactos.add(piedraResurreccion);
+
         VaritaSauco varitaSauco = new VaritaSauco("Varita de Sauco", 0.8, 0.5);
         this.artefactos.add(varitaSauco);
+
+        EspadaGryffindor espadaGryffindor= new EspadaGryffindor("Espada de Godric Gryffindor", 0.8, 0.5);
+        this.artefactos.add(espadaGryffindor);
+
+        VaritaComun varitaComun = new VaritaComun("Varita Magica", 0.2, 0.2);
+        this.artefactos.add(varitaComun);
 
     }
 
@@ -212,13 +222,22 @@ public class JuegoHP {
 
         Invisibilidad invisibilidad = new Invisibilidad("Invisibilidad", "Poder que te hace invisible");
         this.poderes.add(invisibilidad);
+
+        ParselTongue parcelTongue = new ParselTongue("Parsel Tongue", "Poder que te permite hablar la lengua de serpientes y basiliscos");
+        this.poderes.add(parcelTongue);
+
+        Metamorfosis metamorfosis = new Metamorfosis("Metamorfosis", "Poder que te permite cambiar tu apariencia fisica a voluntad");
+        this.poderes.add(metamorfosis);
+
+        BesoDementor besoDementor = new BesoDementor("Beso del Dementor", "Poder del dementor que permite quitarle el alma a las personas");
+        this.poderes.add(besoDementor);
     }
 
     // Metodo individual para instanciar HECHIZOS
     public void inicializarHechizos() {
 
-        SectumSempra sectumSempra = new SectumSempra("Sectum Sempra", true, 30, 0, 20); // 50 seria el daño, 20 la
-                                                                                         // curacion y 30 el gasto de
+        SectumSempra sectumSempra = new SectumSempra("Sectum Sempra", false, 30, 0, 20); // 30 seria el daño, 0 la
+                                                                                         // curacion y 20 el gasto de
                                                                                          // energiaMagica
         this.hechizos.add(sectumSempra);
 
@@ -228,14 +247,17 @@ public class JuegoHP {
         Cruciatus cruciatus = new Cruciatus("Cruciatus", true, 40, 0, 25);
         this.hechizos.add(cruciatus);
 
-        Expelliarmus expelliarmus = new Expelliarmus("Expelliarmus", true, 20, 0, 15);
+        Expelliarmus expelliarmus = new Expelliarmus("Expelliarmus", false, 20, 0, 15);
         this.hechizos.add(expelliarmus);
 
-        CaveInimicum caveInimicum = new CaveInimicum("Cave Inimicum", true, 0, 0, 10);
+        CaveInimicum caveInimicum = new CaveInimicum("Cave Inimicum", false, 0, 0, 10);
         this.hechizos.add(caveInimicum);
 
-        ExpectoPatronum expectoPatronum = new ExpectoPatronum("Expecto Patronum", true, 0, 0, 10);
+        ExpectoPatronum expectoPatronum = new ExpectoPatronum("Expecto Patronum", false, 0, 0, 20);
         this.hechizos.add(expectoPatronum);
+
+        VulneraSanentur vulneraSanentur = new VulneraSanentur("Vulnera Sanentur", false, 0, 0, 10);
+        this.hechizos.add(vulneraSanentur);
         
     }
 
@@ -243,7 +265,7 @@ public class JuegoHP {
     public void inicializarTransportes() {
 
         TrenExpresoHowards trenExpresoHowards = new TrenExpresoHowards("Tren Expreso de Howards",
-                "Un tren magico que transporta a los estudiantes a Howarts");
+                "ren magico que transporta a los estudiantes a Howarts");
         this.transportes.add(trenExpresoHowards);
     }
 
@@ -262,10 +284,10 @@ public class JuegoHP {
         Wizard albusDumbledore = new Wizard("Albus Dumbledore", this.poderes.get(0), false);
         this.personajes.add(albusDumbledore);
 
-        Wizard lordVoldemort = new Wizard("Lord Voldemort", this.poderes.get(0), false);
+        Wizard lordVoldemort = new Wizard("Lord Voldemort", this.poderes.get(0), true);
         this.personajes.add(lordVoldemort);
 
-        Wizard bellatrixLestrange = new Wizard("Bellatrix Lestrange", this.poderes.get(0), false);
+        Wizard bellatrixLestrange = new Wizard("Bellatrix Lestrange", this.poderes.get(0), true);
         this.personajes.add(bellatrixLestrange);
 
         Wizard ronWeasly = new Wizard("Ron Weasly", this.poderes.get(0), false);
@@ -286,19 +308,19 @@ public class JuegoHP {
         Muggle petuniaDursley = new Muggle("Petunia Dursley");
         this.personajes.add(petuniaDursley);
 
-        Elfo dobby = new Elfo("Dobby");
+        Elfo dobby = new Elfo("Dobby", 100, 150, this.artefactos.get(0));
         this.personajes.add(dobby);
 
-        Elfo kreacher = new Elfo("Kreacher");
+        Elfo kreacher = new Elfo("Kreacher", 100, 150, this.artefactos.get(0));
         this.personajes.add(kreacher);
 
-        Elfo winky = new Elfo("Winky");
+        Elfo winky = new Elfo("Winky", 100, 150, this.artefactos.get(0));
         this.personajes.add(winky);
 
-        Elfo hokey = new Elfo("Hokey");
+        Elfo hokey = new Elfo("Hokey", 100, 150, this.artefactos.get(0));
         this.personajes.add(hokey);
 
-        Dementor dementor = new Dementor("Dementor");
+        Dementor dementor = new Dementor("Dementor", 100, 150, this.poderes.get(0));
         this.personajes.add(dementor);
         
     }
