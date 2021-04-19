@@ -402,10 +402,9 @@ public class JuegoHP {
             //Elegir si atacar o aprender
             //Elegir poder
             //Elegir cambiar de artefacto
-            
-            Artefacto artefactoElegido = this.elegirArtefacto();
-                                                
+                                     
             if (turnoP1) {/*TODO ESTO EN UN METODO*/
+                Artefacto artefactoElegido = this.elegirArtefacto();
                 //Elegir si atacar o aprender por turno
                 if (p1 instanceof Wizard) {
                     ((Wizard) p1).atacar(p2, ((Wizard) p1).getPoderInicial());
@@ -417,6 +416,7 @@ public class JuegoHP {
                     ((Dementor) p1).atacar(p2, ((Dementor) p1).getPoderInicial()); 
                 }
             } else {
+                Artefacto artefactoElegido = this.elegirArtefacto();
                 if (p2 instanceof Wizard) {
                     ((Wizard) p2).atacar(p1, ((Wizard) p2).getPoderInicial());
                 } else if (p2 instanceof Elfo) {
