@@ -1,7 +1,11 @@
 package app.personajes;
 
 import java.util.*;
+
+import javax.swing.text.html.FormSubmitEvent.MethodType;
+
 import app.artefactos.*;
+import app.artefactos.varitas.*;
 import app.interfaces.*;
 import app.poderes.*;
 import app.poderes.hechizos.*;
@@ -88,35 +92,44 @@ public class Wizard extends Persona implements IHaceMagia {
 
     @Override
     public void aprender(Hechizo hechizo) {
-        this.getHechizos().add(hechizo);
+        this.setPoder(hechizo);
         // ¿Así de una que aprenda el hechizo? Más adelante se le podría añadir alguna
         // dificultad.
     }
 
+    public void aprender(Poder poder) {
+        this.setPoder(poder);
+        // ¿Así de una que aprenda el hechizo? Más adelante se le podría añadir alguna
+        // dificultad.
+    }
+
+    public List<Poder> utilizarPoderesAprendidos() {
+        this.
+    }
+
     @Override
     public void atacar(Personaje personaje, Hechizo h) {
-        if (personaje.estaVivo()) {
-            for (Hechizo hechizo : this.hechizos) {
-                if (h.equals(hechizo)) {
-                    // Agregar qué hace.
-                    // Debería usar un cast acá también creo o reutilizar algo para que según qué
-                    // tipo de hechizo
-                    // es que tenga X daño, Y defensa y demás, donde X e Y son enteros (int).
-                } else {
-                    System.out.println("No es posible conjurar el hechizo.");
+        for (Hechizo hechizo : this.hechizos) {
+            if (h.equals(hechizo)) {
+                if (this.getArtefacto() instanceof Varita) {
+                    if (this.getArtefacto() instanceof VaritaComun) {
+                        
+                    } else if (this.getArtefacto() instanceof VaritaSauco) {
+                        
+                    }
                 }
+                else {
+                    System.out.println("Hechizo no conjurado. El personaje no tiene varita.");
+                }
+            } 
+            else {
+                System.out.println("El mago no ha aprendido aún a conjurar este hechizo.");
             }
-        } else {
-
-        }
-
+        } 
     }
 
     public void atacar(Personaje personaje, Poder p) {
-        // Tenemos ataques que no son hechizos. No sé si podré quitar el método que
-        // tiene como 2do parámetro
-        // Hechizo h y dejar este y luego discriminar entre si es uno u otro y que según
-        // qué haga X o Y.
+        //Desps del catalogo: cartelito
     }
 
     @Override
@@ -126,13 +139,15 @@ public class Wizard extends Persona implements IHaceMagia {
         // El tema es qué interpretamos por conjurar.
     }
 
-    // Creé esta función para saber si el hechizo elegido lo tiene aprendido el
-    // personaje.
+    // Creé esta función para saber si el hechizo elegido ya lo tiene aprendido el personaje.
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof HechizoAtaque) {
+        if (obj instanceof Hechizo) {
             Hechizo hechizo = (Hechizo) obj;
-            return hechizo.getNombre().equals(this.getNombre());
+            return hechizo.getNombre().equals(this.getNombre()); // Este equals no es el mismo que el método en sí.
+        } else if (obj instanceof Poder) {
+            Poder poder = (Poder) obj;
+            return poder.getNombre().equals(this.getNombre());// Es uno propio de cadenas, más bien.
         } else {
             return false;
         }

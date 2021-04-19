@@ -1,5 +1,6 @@
 package app.personajes;
 
+import java.util.*;
 import app.poderes.Poder;
 
 public class Dementor extends Criatura {
@@ -11,7 +12,6 @@ public class Dementor extends Criatura {
         this.setSalud(salud); // Le asigno directamente el máximo.
         this.energiaMagica = energiaMagica; // Le asigno directamente el máximo.
         this.poderInicial = poderInicial;
-
     }
 
     // ATRIBUTOS
@@ -36,7 +36,7 @@ public class Dementor extends Criatura {
     public void setPoderInicial(Poder poderInicial) {
         this.poderInicial = poderInicial;
     }
-    
+
     // METODO DE LAS INTERFASES
 
     @Override

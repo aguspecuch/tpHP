@@ -34,7 +34,7 @@ public class JuegoHP {
     private List<Jugador> jugadores = new ArrayList<>();
 
     // GETTERS Y SETTERS
-    
+
     public String getNombreJuego() {
         return this.nombreJuego;
     }
@@ -101,8 +101,7 @@ public class JuegoHP {
         this.inicializarPersonajes();
         this.darBienvenida();
         this.inicializarJugadores();
-        this.jugadores.get(0).setPersonajeEnemigo(jugadores.get(1).getPersonajeElegido());
-        this.jugadores.get(1).setPersonajeEnemigo(jugadores.get(0).getPersonajeElegido());
+        this.jugar();
     }
 
     // Esto seria lo primero que aparece cuando arranca el juego. Fijense si les
@@ -182,17 +181,75 @@ public class JuegoHP {
             System.out.println("¡Eligió un muggle!");
             System.out.println("");
             System.out.println("-------------------------------");
+        } else if (personajeElegido instanceof Dementor) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió un dementor!");
+            System.out.println("");
+            System.out.println("-------------------------------");
         } else if (personajeElegido == null) {
             System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN PERSONAJE.");
         }
-
         return personajeElegido;
+    }
+
+    public Artefacto elegirArtefacto() {
+
+        System.out.println("");
+        System.out.println("♡ Seleccione el número de artefacto:");
+        System.out.println("");
+        int contador = 1;
+        for (Artefacto artefacto : this.artefactos) {
+            System.out.println(contador + ") " + artefacto.getNombre());
+            contador++;
+        }
+        int nroArtefacto = Teclado.nextInt();
+        Teclado.nextLine();
+        nroArtefacto--;
+        Artefacto artefactoElegido = this.artefactos.get(nroArtefacto);
+
+        if (artefactoElegido instanceof Varita) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió una varita!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (artefactoElegido instanceof CapaInvisibilidad) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió una capa de invisibilidad!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (artefactoElegido instanceof EspadaGryffindor) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió una espada!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (artefactoElegido instanceof Horrocrux) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió un horrocrux!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (artefactoElegido instanceof PiedraResurreccion) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió una piedra de la resurrección!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (artefactoElegido == null) {
+            System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN ARTEFACTO.");
+        }
+        return artefactoElegido;
     }
 
     // Metodo individual para instanciar ARTEFACTOS
     public void inicializarArtefactos() {
 
-        CapaInvisibilidad capaInvisibilidad = new CapaInvisibilidad("Capa de Invisibilidad", 0.1, 0.2); // Instancio el objeto CapaInvisibilidad
+        CapaInvisibilidad capaInvisibilidad = new CapaInvisibilidad("Capa de Invisibilidad", 0.1, 0.2); // Instancio el
+                                                                                                        // objeto
+                                                                                                        // CapaInvisibilidad
         this.artefactos.add(capaInvisibilidad); // Lo agrego a la lista de artefactos de JuegoHP
 
         Horrocrux horrocrux = new Horrocrux("Horrocrux", 0.5, 0.5);
@@ -204,7 +261,7 @@ public class JuegoHP {
         VaritaSauco varitaSauco = new VaritaSauco("Varita de Sauco", 0.8, 0.5);
         this.artefactos.add(varitaSauco);
 
-        EspadaGryffindor espadaGryffindor= new EspadaGryffindor("Espada de Godric Gryffindor", 0.8, 0.5);
+        EspadaGryffindor espadaGryffindor = new EspadaGryffindor("Espada de Godric Gryffindor", 0.8, 0.5);
         this.artefactos.add(espadaGryffindor);
 
         VaritaComun varitaComun = new VaritaComun("Varita Magica", 0.2, 0.2);
@@ -218,13 +275,16 @@ public class JuegoHP {
         Invisibilidad invisibilidad = new Invisibilidad("Invisibilidad", "Poder que te hace invisible");
         this.poderes.add(invisibilidad);
 
-        ParselTongue parcelTongue = new ParselTongue("Parsel Tongue", "Poder que te permite hablar la lengua de serpientes y basiliscos");
-        this.poderes.add(parcelTongue);
+        ParselTongue parselTongue = new ParselTongue("Parsel Tongue",
+                "Poder que te permite hablar la lengua de serpientes y basiliscos");
+        this.poderes.add(parselTongue);
 
-        Metamorfosis metamorfosis = new Metamorfosis("Metamorfosis", "Poder que te permite cambiar tu apariencia fisica a voluntad");
+        Metamorfosis metamorfosis = new Metamorfosis("Metamorfosis",
+                "Poder que te permite cambiar tu apariencia fisica a voluntad");
         this.poderes.add(metamorfosis);
 
-        BesoDementor besoDementor = new BesoDementor("Beso del Dementor", "Poder del dementor que permite quitarle el alma a las personas");
+        BesoDementor besoDementor = new BesoDementor("Beso del Dementor",
+                "Poder del dementor que permite quitarle el alma a las personas");
         this.poderes.add(besoDementor);
     }
 
@@ -253,7 +313,6 @@ public class JuegoHP {
 
         VulneraSanentur vulneraSanentur = new VulneraSanentur("Vulnera Sanentur", false, 0, 0, 10);
         this.hechizos.add(vulneraSanentur);
-        
     }
 
     // Metodo individual para instanciar TRANSPORTES
@@ -317,43 +376,59 @@ public class JuegoHP {
 
         Dementor dementor = new Dementor("Dementor", 100, 150, this.poderes.get(0));
         this.personajes.add(dementor);
-        
     }
 
-    /* int numeroTurno = 0;
-        do {
-            for (Jugador jugador : this.jugadores) {
-                if (jugador.getPersonajeElegido() instanceof Wizard) {
-                    ((Wizard) jugador.getPersonajeElegido()).atacar(jugador.getPersonajeEnemigo(), ((Wizard) jugador.getPersonajeElegido()).getPoderInicial());
-                } else if (jugador.getPersonajeElegido() instanceof Elfo) {
-                    ((Elfo) jugador.getPersonajeElegido()).atacar(jugador.getPersonajeEnemigo(), ((Elfo) jugador.getPersonajeElegido()).getPoderInicial());
-                } else if (jugador.getPersonajeElegido() instanceof Muggle) {
-                    ((Muggle) jugador.getPersonajeElegido()).atacar(jugador.getPersonajeEnemigo(), //qué pongo);
-                } else if (jugador.getPersonajeElegido() instanceof Dementor) {
-                    ((Dementor) jugador.getPersonajeElegido()).atacar(jugador.getPersonajeEnemigo(), ((Elfo) jugador.getPersonajeElegido()).getPoderInicial());
-                } 
+    /*
+     * Abril aca te tiro esta otra forma de hacer el juego por turnos basandome en
+     * el juego de MK que habia hecho el profe una vez, vos fijate si te copa o te
+     * sirve de algo sino borra todo a la mierda jajajajaj.
+     */
+    /*
+     * ¡Gracias!  
+     * Fue muy preciso. 
+     */
 
-                numeroTurno = numeroTurno + 1;
-            }
-        } while (numeroTurno < 30);      
-    }*/
-
-
-    /* Abril aca te tiro esta otra forma de hacer el juego por turnos basandome en el juego de MK que habia hecho el profe una vez,
-        vos fijate si te copa o te sirve de algo sino borra todo a la mierda jajajajaj.
+    public void jugar() {
+        Personaje p1 = this.getJugadores().get(0).getPersonajeElegido();
+        Personaje p2 = this.getJugadores().get(1).getPersonajeElegido();
 
         boolean turnoP1 = true;
-
-            while (this.getJugadores().get(0).getPersonajeElegido().estaVIVO().equals(true)         Esto es para que el bucle dure solo
-                && this.getJugadores().get(1).getPersonajeElegido().estaVIVO().equals(true)) {      mientras alguno de los jugadores
-                                                                                                    tenga vida.
-                     if (turnoP1) {
-                        Insertar todo el ataque del jugador1                                        Y esto es para que vaya cambiando
-                    } else {                                                                        el turno de quien ataca y eso.
-                        Insertartodo el ataque del jugador2
-                    }
-
-                    turnoP1 = !turnoP1;                                                             Aca cambiaria el turno al P2
+        int numeroTurno = 1; // Puede no usarse
+        while (p1.estaVivo() == true && p2.estaVivo() && numeroTurno < 20) {    // Esto es para que el bucle dure solo
+                                                                                // mientras alguno de los jugadores
+                                                                                // tenga vida.
+            
+            //Catálogo de artefactos para elegir
+            //Elegir si atacar o aprender
+            //Elegir poder
+            //Elegir cambiar de artefacto
+            
+            Artefacto artefactoElegido = this.elegirArtefacto();
+                                                
+            if (turnoP1) {/*TODO ESTO EN UN METODO*/
+                //Elegir si atacar o aprender por turno
+                if (p1 instanceof Wizard) {
+                    ((Wizard) p1).atacar(p2, ((Wizard) p1).getPoderInicial());
+                } else if (p1 instanceof Elfo) {
+                    ((Elfo) p1).atacar(p2, ((Elfo) p1).getPoderInicial());
+                } else if (p1 instanceof Muggle) {
+                    ((Muggle) p1).atacar(p2, ((Muggle) p1).getPoderInicial());
+                } else if (p1 instanceof Dementor) {
+                    ((Dementor) p1).atacar(p2, ((Dementor) p1).getPoderInicial()); 
+                }
+            } else {
+                if (p2 instanceof Wizard) {
+                    ((Wizard) p2).atacar(p1, ((Wizard) p2).getPoderInicial());
+                } else if (p2 instanceof Elfo) {
+                    ((Elfo) p2).atacar(p1, ((Elfo) p2).getPoderInicial());
+                } else if (p2 instanceof Muggle) {
+                    ((Muggle) p2).atacar(p1, ((Muggle) p2).getPoderInicial());
+                } else if (p2 instanceof Dementor) {
+                    ((Dementor) p2).atacar(p1, ((Dementor) p2).getPoderInicial()); 
+                }
             }
-    */
+            numeroTurno = numeroTurno + 1;
+            turnoP1 = !turnoP1; // Acá cambiaría el turno de P1 a P2
+        }
+    }
 }
