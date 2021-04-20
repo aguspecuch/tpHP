@@ -10,7 +10,6 @@ public abstract class Hechizo extends Poder {
     private int nivelDanio;
     private int nivelCuracion;
     private int energiaMagica;
-    public Object equals;
 
     // GETTERS Y SETTERS
     

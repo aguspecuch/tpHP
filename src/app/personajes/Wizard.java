@@ -101,27 +101,54 @@ public class Wizard extends Persona implements IHaceMagia {
 
     @Override
     public void aprender(Hechizo hechizo) {
-        this.poderes.add(hechizo); //Creo que esto funciona.
-        // ¿Así de una que aprenda el hechizo? Más adelante se le podría añadir alguna
-        // dificultad.
+        this.poderes.add(hechizo);
     }
 
     public void aprender(Poder poder) {
         this.poderes.add(getPoderInicial());
         this.poderes.add(poder);
-        // ¿Así de una que aprenda el hechizo? Más adelante se le podría añadir alguna
-        // dificultad.
     }
 
     @Override
     public void atacar(Personaje personaje, Hechizo h) {
         for (Hechizo hechizo : this.hechizos) {
+            if (getHechizos()) {
+                if (this.magoOscuro(true) || (this.magoOscuro(false) && (this.h.getEsOscuro() == false))) {
+                    //No va a duplicar daño ni curación
+                    if (h instanceof HechizoAtaque) {
+                        
+                    } else if (h instanceof HechizoDefensa) {
+
+                    }
+
+                } else if (this.magoOscuro(false) && this.h.getEsOscuro() == true) {
+                    //Doble daño y curación
+                }
+            } else {
+                System.out.println("El mago no ha aprendido aún a conjurar este hechizo.");
+            } 
+        }
+    }
+
+    /*@Override
+    public void atacar(Personaje personaje, Hechizo h) {
+        for (Hechizo hechizo : this.hechizos) {
             if (h.equals(hechizo)) {
-                if (this.getArtefacto() instanceof Varita) {
-                    if (this.getArtefacto() instanceof VaritaComun) {
-                        
+                if (this.artefactoElegido instanceof Varita) {
+                    if (this.artefactoElegido instanceof VaritaComun) {
+                    
                     } else if (this.getArtefacto() instanceof VaritaSauco) {
-                        
+                        //ESTO NO SE DONDE VA:
+                        if (this.hechizo.esOscuro == true) {
+                            this.magoOscuro(true) 
+                            // Doble daño y curación
+                            // Ocio y defensa se mantienen iguales    
+                        }
+                        else {
+                            //Todo el daño, defensa, ocio y curación normales.
+                            // Este "normal" depende del artefacto.
+                            // El artefacto SÍ modifica el daño, curación, ocio y defensa del hechizo
+                        }
                     }
                 }
                 else {
@@ -132,8 +159,11 @@ public class Wizard extends Persona implements IHaceMagia {
                 System.out.println("El mago no ha aprendido aún a conjurar este hechizo.");
             }
         } 
-    }
+    }*/
 
+
+
+    //ESTO NO IRIA:
     public void atacar(Personaje personaje, Poder p) {
         //Desps del catalogo: cartelito
     }
@@ -158,5 +188,4 @@ public class Wizard extends Persona implements IHaceMagia {
             return false;
         }
     }
-
 }

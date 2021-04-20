@@ -149,7 +149,6 @@ public class JuegoHP {
 
     // Este seria el metodo para que el jugador pueda elegir su personaje.
     public Personaje elegirPersonaje() {
-
         System.out.println("");
         System.out.println("♡ Seleccione su personaje:");
         System.out.println("");
@@ -194,7 +193,6 @@ public class JuegoHP {
     }
 
     public Artefacto elegirArtefacto() {
-
         System.out.println("");
         System.out.println("♡ Seleccione el número de artefacto:");
         System.out.println("");
@@ -242,6 +240,94 @@ public class JuegoHP {
             System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN ARTEFACTO.");
         }
         return artefactoElegido;
+    }
+
+    public Poder elegirPoder() {
+        System.out.println("");
+        System.out.println("♡ Seleccione el número de poder:");
+        System.out.println("");
+        int contador = 1;
+        for (Poder poder : this.poderes) {
+            System.out.println(contador + ") " + poder.getNombre());
+            contador++;
+        }
+        int nroPoder = Teclado.nextInt();
+        Teclado.nextLine();
+        nroPoder--;
+        Poder poderElegido = this.poderes.get(nroPoder);
+
+        if (poderElegido instanceof BesoDementor) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió poder beso de dementor!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (poderElegido instanceof Invisibilidad) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió poder de invisibilidad!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (poderElegido instanceof Metamorfosis) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió poder de metamorfosis!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (poderElegido instanceof ParselTongue) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió poder de parsel tongue!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (poderElegido == null) {
+            System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN PODER.");
+        }
+        return poderElegido;
+    }
+
+    public Poder elegirHechizo() {
+        System.out.println("");
+        System.out.println("♡ Seleccione el número de hechizo:");
+        System.out.println("");
+        int contador = 1;
+        for (Hechizo hechizo : this.hechizos) {
+            System.out.println(contador + ") " + hechizo.getNombre());
+            contador++;
+        }
+        int nroHechizo = Teclado.nextInt();
+        Teclado.nextLine();
+        nroHechizo--;
+        Poder hechizoElegido = this.poderes.get(nroHechizo);
+
+        if (hechizoElegido instanceof HechizoAtaque) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió un hechizo de ataque!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (hechizoElegido instanceof HechizoDefensa) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió un hechizo de defensa!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (hechizoElegido instanceof HechizoCuracion) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió un hechizo de curación!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (hechizoElegido instanceof HechizoOcio) {
+            System.out.println("-------------------------------");
+            System.out.println("");
+            System.out.println("¡Eligió un hechizo de ocio!");
+            System.out.println("");
+            System.out.println("-------------------------------");
+        } else if (hechizoElegido == null) {
+            System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN PODER.");
+        }
+        return hechizoElegido;
     }
 
     // Metodo individual para instanciar ARTEFACTOS
@@ -332,10 +418,10 @@ public class JuegoHP {
                                                                                      // este caso es SectumSempra.
         this.personajes.add(harryPotter);
 
-        Wizard hermioneGranger = new Wizard("Hermione Granger", this.poderes.get(0), false);
+        Wizard hermioneGranger = new Wizard("Hermione Granger", this.poderes.get(1), false);
         this.personajes.add(hermioneGranger);
 
-        Wizard albusDumbledore = new Wizard("Albus Dumbledore", this.poderes.get(0), false);
+        Wizard albusDumbledore = new Wizard("Albus Dumbledore", this.poderes.get(2), false);
         this.personajes.add(albusDumbledore);
 
         Wizard lordVoldemort = new Wizard("Lord Voldemort", this.poderes.get(0), true);
@@ -402,10 +488,17 @@ public class JuegoHP {
             //Elegir si atacar o aprender
             //Elegir poder
             //Elegir cambiar de artefacto
-                                     
-            if (turnoP1) {/*TODO ESTO EN UN METODO*/
+                                    
+            if (turnoP1) {
+
+                Hechizo hechizoElegido = this.elegirHechizo();
                 Artefacto artefactoElegido = this.elegirArtefacto();
-                //Elegir si atacar o aprender por turno
+                // Elegir si atacar o aprender por turno
+
+                // METER TODO ESTO DENTRO DE OTRO METODO ATACAR 
+                // Y USAR EL METODO APRENDER TAMBIEN
+                // También podemos hacer que elijan si atacar o aprender en cada turno.
+                
                 if (p1 instanceof Wizard) {
                     ((Wizard) p1).atacar(p2, ((Wizard) p1).getPoderInicial());
                 } else if (p1 instanceof Elfo) {
@@ -415,7 +508,10 @@ public class JuegoHP {
                 } else if (p1 instanceof Dementor) {
                     ((Dementor) p1).atacar(p2, ((Dementor) p1).getPoderInicial()); 
                 }
+                Poder poderElegido = this.elegirPoder();
             } else {
+                //Mostrar los poderes con otro método que todavía no creé
+                Poder poderElegido = this.elegirPoder();
                 Artefacto artefactoElegido = this.elegirArtefacto();
                 if (p2 instanceof Wizard) {
                     ((Wizard) p2).atacar(p1, ((Wizard) p2).getPoderInicial());
@@ -426,6 +522,7 @@ public class JuegoHP {
                 } else if (p2 instanceof Dementor) {
                     ((Dementor) p2).atacar(p1, ((Dementor) p2).getPoderInicial()); 
                 }
+                
             }
             numeroTurno = numeroTurno + 1;
             turnoP1 = !turnoP1; // Acá cambiaría el turno de P1 a P2
