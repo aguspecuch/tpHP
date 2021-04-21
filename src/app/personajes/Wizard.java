@@ -1,15 +1,10 @@
 package app.personajes;
 
 import java.util.*;
-
-import javax.swing.text.html.FormSubmitEvent.MethodType;
-
 import app.artefactos.*;
-import app.artefactos.varitas.*;
 import app.interfaces.*;
 import app.poderes.*;
 import app.poderes.hechizos.*;
-import app.poderes.hechizos.ataques.*;
 import app.transportes.*;
 
 public class Wizard extends Persona implements IHaceMagia {
@@ -60,18 +55,6 @@ public class Wizard extends Persona implements IHaceMagia {
         this.escoba = escoba;
     }
 
-    public Poder getPoderInicial() {
-        return this.poderInicial;
-    }
-
-    public void setPoderInicial(Poder poderInicial) {
-        this.poderInicial = poderInicial;
-    }
-
-    public Artefacto getArtefacto() {
-        return this.artefacto;
-    }
-
     public void setArtefacto(Artefacto artefacto) {
         this.artefacto = artefacto;
     }
@@ -100,8 +83,18 @@ public class Wizard extends Persona implements IHaceMagia {
     }
 
     @Override
+    public Poder getPoderInicial() {
+        return poderInicial;
+    }
+
+    @Override
+    public Artefacto getArtefacto() {
+        return this.artefacto;
+    }
+
+    @Override
     public void aprender(Hechizo hechizo) {
-        this.poderes.add(hechizo);
+        this.hechizos.add(hechizo);
     }
 
     public void aprender(Poder poder) {
@@ -112,16 +105,16 @@ public class Wizard extends Persona implements IHaceMagia {
     @Override
     public void atacar(Personaje personaje, Hechizo h) {
         for (Hechizo hechizo : this.hechizos) {
-            if (getHechizos()) {
-                if (this.magoOscuro(true) || (this.magoOscuro(false) && (this.h.getEsOscuro() == false))) {
-                    //No va a duplicar daño ni curación
+            if (h.equals(hechizo)) {
+                if (this.getMagoOscuro() == true || (this.getMagoOscuro() == false && h.getEsOscuro() == false) {
+                    //Entonces no se va a duplicar daño ni curación
                     if (h instanceof HechizoAtaque) {
                         
                     } else if (h instanceof HechizoDefensa) {
 
                     }
 
-                } else if (this.magoOscuro(false) && this.h.getEsOscuro() == true) {
+                } else if (this.getMagoOscuro() == false && h.getEsOscuro() == true) {
                     //Doble daño y curación
                 }
             } else {
@@ -130,62 +123,31 @@ public class Wizard extends Persona implements IHaceMagia {
         }
     }
 
-    /*@Override
-    public void atacar(Personaje personaje, Hechizo h) {
-        for (Hechizo hechizo : this.hechizos) {
-            if (h.equals(hechizo)) {
-                if (this.artefactoElegido instanceof Varita) {
-                    if (this.artefactoElegido instanceof VaritaComun) {
-                    
-                    } else if (this.getArtefacto() instanceof VaritaSauco) {
-                        //ESTO NO SE DONDE VA:
-                        if (this.hechizo.esOscuro == true) {
-                            this.magoOscuro(true) 
-                            // Doble daño y curación
-                            // Ocio y defensa se mantienen iguales    
-                        }
-                        else {
-                            //Todo el daño, defensa, ocio y curación normales.
-                            // Este "normal" depende del artefacto.
-                            // El artefacto SÍ modifica el daño, curación, ocio y defensa del hechizo
-                        }
-                    }
-                }
-                else {
-                    System.out.println("Hechizo no conjurado. El personaje no tiene varita.");
-                }
-            } 
-            else {
-                System.out.println("El mago no ha aprendido aún a conjurar este hechizo.");
-            }
-        } 
-    }*/
-
-
-
-    //ESTO NO IRIA:
-    public void atacar(Personaje personaje, Poder p) {
-        //Desps del catalogo: cartelito
-    }
-
     @Override
     public void atacar(Personaje personaje, String hechizo) {
-        // Esto podría hacer... ¿Qué cosa? Alfonsina nos tiró la idea de que el método
-        // conjure.
-        // El tema es qué interpretamos por conjurar.
+        //A esto después lo utilizo en JuegoHP.
     }
 
-    // Creé esta función para saber si el hechizo elegido ya lo tiene aprendido el personaje.
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Hechizo) {
             Hechizo hechizo = (Hechizo) obj;
-            return hechizo.getNombre().equals(this.getNombre()); // Este equals no es el mismo que el método en sí.
+            return hechizo.getNombre().equals(this.getNombre());
         } else if (obj instanceof Poder) {
             Poder poder = (Poder) obj;
-            return poder.getNombre().equals(this.getNombre());// Es uno propio de cadenas, más bien.
+            return poder.getNombre().equals(this.getNombre());
         } else {
             return false;
         }
+    }
+
+    public int devolverNroHechizo(Hechizo hechizo) {
+        int nroHechizo = this.hechizos.indexOf(hechizo);
+        return nroHechizo;
+    }
+
+    public int devolverNroPoder(Poder poder) {
+        int nroPoder = this.poderes.indexOf(poder);
+        return nroPoder;
     }
 }

@@ -286,7 +286,7 @@ public class JuegoHP {
         return poderElegido;
     }
 
-    public Poder elegirHechizo() {
+    public Hechizo elegirHechizo() {
         System.out.println("");
         System.out.println("♡ Seleccione el número de hechizo:");
         System.out.println("");
@@ -298,7 +298,7 @@ public class JuegoHP {
         int nroHechizo = Teclado.nextInt();
         Teclado.nextLine();
         nroHechizo--;
-        Poder hechizoElegido = this.poderes.get(nroHechizo);
+        Hechizo hechizoElegido = this.hechizos.get(nroHechizo);
 
         if (hechizoElegido instanceof HechizoAtaque) {
             System.out.println("-------------------------------");
@@ -325,7 +325,7 @@ public class JuegoHP {
             System.out.println("");
             System.out.println("-------------------------------");
         } else if (hechizoElegido == null) {
-            System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN PODER.");
+            System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN HECHIZO.");
         }
         return hechizoElegido;
     }
@@ -464,68 +464,73 @@ public class JuegoHP {
         this.personajes.add(dementor);
     }
 
-    /*
-     * Abril aca te tiro esta otra forma de hacer el juego por turnos basandome en
-     * el juego de MK que habia hecho el profe una vez, vos fijate si te copa o te
-     * sirve de algo sino borra todo a la mierda jajajajaj.
-     */
-    /*
-     * ¡Gracias!  
-     * Fue muy preciso. 
-     */
-
     public void jugar() {
         Personaje p1 = this.getJugadores().get(0).getPersonajeElegido();
         Personaje p2 = this.getJugadores().get(1).getPersonajeElegido();
 
         boolean turnoP1 = true;
         int numeroTurno = 1; // Puede no usarse
-        while (p1.estaVivo() == true && p2.estaVivo() && numeroTurno < 20) {    // Esto es para que el bucle dure solo
-                                                                                // mientras alguno de los jugadores
-                                                                                // tenga vida.
-            
-            //Catálogo de artefactos para elegir
-            //Elegir si atacar o aprender
-            //Elegir poder
-            //Elegir cambiar de artefacto
-                                    
+        while (p1.estaVivo() == true && p2.estaVivo() && numeroTurno < 20) { // Esto es para que el bucle dure solo
+                                                                             // mientras alguno de los jugadores
+                                                                             // tenga vida.
             if (turnoP1) {
-
-                Hechizo hechizoElegido = this.elegirHechizo();
-                Artefacto artefactoElegido = this.elegirArtefacto();
-                // Elegir si atacar o aprender por turno
-
-                // METER TODO ESTO DENTRO DE OTRO METODO ATACAR 
-                // Y USAR EL METODO APRENDER TAMBIEN
-                // También podemos hacer que elijan si atacar o aprender en cada turno.
-                
+                //Para wizard:
                 if (p1 instanceof Wizard) {
-                    ((Wizard) p1).atacar(p2, ((Wizard) p1).getPoderInicial());
+                    this.aprenderYUsarHechizoOPoder(); //El nombre es largo pero descriptivo.
                 } else if (p1 instanceof Elfo) {
-                    ((Elfo) p1).atacar(p2, ((Elfo) p1).getPoderInicial());
+                    this.aprenderYUsarHechizoOPoder();
                 } else if (p1 instanceof Muggle) {
-                    ((Muggle) p1).atacar(p2, ((Muggle) p1).getPoderInicial());
+                    //El muggle muere por respirar nomás.
                 } else if (p1 instanceof Dementor) {
-                    ((Dementor) p1).atacar(p2, ((Dementor) p1).getPoderInicial()); 
+                    this.aprenderYUsarHechizoOPoder();
                 }
-                Poder poderElegido = this.elegirPoder();
             } else {
-                //Mostrar los poderes con otro método que todavía no creé
-                Poder poderElegido = this.elegirPoder();
-                Artefacto artefactoElegido = this.elegirArtefacto();
                 if (p2 instanceof Wizard) {
-                    ((Wizard) p2).atacar(p1, ((Wizard) p2).getPoderInicial());
+                    this.aprenderYUsarHechizoOPoder();
                 } else if (p2 instanceof Elfo) {
-                    ((Elfo) p2).atacar(p1, ((Elfo) p2).getPoderInicial());
+                    this.aprenderYUsarHechizoOPoder();
                 } else if (p2 instanceof Muggle) {
-                    ((Muggle) p2).atacar(p1, ((Muggle) p2).getPoderInicial());
+                    
                 } else if (p2 instanceof Dementor) {
-                    ((Dementor) p2).atacar(p1, ((Dementor) p2).getPoderInicial()); 
+                    this.aprenderYUsarHechizoOPoder();
                 }
-                
             }
             numeroTurno = numeroTurno + 1;
             turnoP1 = !turnoP1; // Acá cambiaría el turno de P1 a P2
         }
     }
+
+    //Aparte del método que sigue voy a fijarme de hacerle casting a todos los personajes y ubicar esta función nueva
+    //aún no creada dentro de cada case (que reemplazaría a todo lo que está escrito ahora).
+    public void aprenderYUsarHechizoOPoder() {
+        Personaje p1 = this.getJugadores().get(0).getPersonajeElegido();
+        Personaje p2 = this.getJugadores().get(1).getPersonajeElegido();
+
+        Artefacto artefactoElegido = this.elegirArtefacto();
+        ((Wizard) p1).setArtefacto(artefactoElegido);
+        System.out.println("Elegir: ¿Poder o hechizo?");
+        System.out.println("1) Poder");
+        System.out.println("2) Hechizo");
+        int poderOHechizo = Teclado.nextInt();
+        Teclado.nextLine();
+        switch(poderOHechizo) {
+            case 1:
+                Poder poderElegido = this.elegirPoder();
+                ((Wizard) p1).aprender(poderElegido);
+                ((Wizard) p1).getPoderes();
+                int nroPoder = ((Wizard) p1).devolverNroPoder(poderElegido);
+                //((Wizard) p1).otraFuncionQueUsaUnpoder(p2, ((Wizard) p1).getPoderes().get(nroPoder));
+                break;
+            case 2:
+                Hechizo hechizoElegido = this.elegirHechizo();
+                ((Wizard) p1).aprender(hechizoElegido);
+                ((Wizard) p1).getHechizos();
+                int nroHechizo = ((Wizard) p1).devolverNroHechizo(hechizoElegido);
+                ((Wizard) p1).atacar(p2, ((Wizard) p1).getHechizos().get(nroHechizo));
+                break;
+            default:
+                System.out.println("No eligió un número válido.");
+        }
+    }
+
 }
