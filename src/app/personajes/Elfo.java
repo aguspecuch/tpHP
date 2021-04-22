@@ -139,6 +139,9 @@ public class Elfo extends Criatura implements IHaceMagia {
 
             this.setSalud(saludAtacante);
             personaje.setSalud(saludOponente);
+
+            System.out.println("La salud de " + this.getNombre() + " es " + this.getSalud() + 
+            " y la salud de su oponente " + personaje.getNombre() + " es " + personaje.getSalud());
         } else {
             System.out.println("¡No tienes suficiente energia magica para atacar!");
         }
