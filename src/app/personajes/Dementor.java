@@ -1,6 +1,5 @@
 package app.personajes;
 
-import java.util.*;
 import app.poderes.Poder;
 
 public class Dementor extends Criatura {

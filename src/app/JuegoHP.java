@@ -10,7 +10,6 @@ import app.poderes.hechizos.*;
 import app.poderes.hechizos.ataques.*;
 import app.poderes.hechizos.defensas.*;
 import app.poderes.hechizos.curaciones.*;
-import app.poderes.hechizos.ocio.*;
 import app.transportes.*;
 
 public class JuegoHP {
@@ -102,7 +101,6 @@ public class JuegoHP {
         this.darBienvenida();
         this.inicializarJugadores();
         this.jugar();
-        this.jugarVAgus();
     }
 
     // Esto seria lo primero que aparece cuando arranca el juego. Fijense si les
@@ -192,144 +190,6 @@ public class JuegoHP {
         }
         return personajeElegido;
     }
-
-    /*public Artefacto elegirArtefacto() {
-        System.out.println("");
-        System.out.println("♡ Seleccione el número de artefacto:");
-        System.out.println("");
-        int contador = 1;
-        for (Artefacto artefacto : this.artefactos) {
-            System.out.println(contador + ") " + artefacto.getNombre());
-            contador++;
-        }
-        int nroArtefacto = Teclado.nextInt();
-        Teclado.nextLine();
-        nroArtefacto--;
-        Artefacto artefactoElegido = this.artefactos.get(nroArtefacto);
-
-        if (artefactoElegido instanceof Varita) {
-            System.out.println("-------------------------------");
-            System.out.println("");
-            System.out.println("¡Eligió una varita!");
-            System.out.println("");
-            System.out.println("-------------------------------");
-        } else if (artefactoElegido instanceof CapaInvisibilidad) {
-            System.out.println("-------------------------------");
-            System.out.println("");
-            System.out.println("¡Eligió una capa de invisibilidad!");
-            System.out.println("");
-            System.out.println("-------------------------------");
-        } else if (artefactoElegido instanceof EspadaGryffindor) {
-            System.out.println("-------------------------------");
-            System.out.println("");
-            System.out.println("¡Eligió una espada!");
-            System.out.println("");
-            System.out.println("-------------------------------");
-        } else if (artefactoElegido instanceof Horrocrux) {
-            System.out.println("-------------------------------");
-            System.out.println("");
-            System.out.println("¡Eligió un horrocrux!");
-            System.out.println("");
-            System.out.println("-------------------------------");
-        } else if (artefactoElegido instanceof PiedraResurreccion) {
-            System.out.println("-------------------------------");
-            System.out.println("");
-            System.out.println("¡Eligió una piedra de la resurrección!");
-            System.out.println("");
-            System.out.println("-------------------------------");
-        } else if (artefactoElegido == null) {
-            System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN ARTEFACTO.");
-        }
-        return artefactoElegido;
-    }
-
-    public Poder elegirPoder() {
-        System.out.println("");
-        System.out.println("♡ Seleccione el número de poder:");
-        System.out.println("");
-        int contador = 1;
-        for (Poder poder : this.poderes) {
-            System.out.println(contador + ") " + poder.getNombre());
-            contador++;
-        }
-        int nroPoder = Teclado.nextInt();
-        Teclado.nextLine();
-        nroPoder--;
-        Poder poderElegido = this.poderes.get(nroPoder);
-
-        if (poderElegido instanceof BesoDementor) {
-            System.out.println("-------------------------------");
-            System.out.println("");
-            System.out.println("¡Eligió poder beso de dementor!");
-            System.out.println("");
-            System.out.println("-------------------------------");
-        } else if (poderElegido instanceof Invisibilidad) {
-            System.out.println("-------------------------------");
-            System.out.println("");
-            System.out.println("¡Eligió poder de invisibilidad!");
-            System.out.println("");
-            System.out.println("-------------------------------");
-        } else if (poderElegido instanceof Metamorfosis) {
-            System.out.println("-------------------------------");
-            System.out.println("");
-            System.out.println("¡Eligió poder de metamorfosis!");
-            System.out.println("");
-            System.out.println("-------------------------------");
-        } else if (poderElegido instanceof ParselTongue) {
-            System.out.println("-------------------------------");
-            System.out.println("");
-            System.out.println("¡Eligió poder de parsel tongue!");
-            System.out.println("");
-            System.out.println("-------------------------------");
-        } else if (poderElegido == null) {
-            System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN PODER.");
-        }
-        return poderElegido;
-    }
-
-    public Hechizo elegirHechizo() {
-        System.out.println("");
-        System.out.println("♡ Seleccione el número de hechizo:");
-        System.out.println("");
-        int contador = 1;
-        for (Hechizo hechizo : this.hechizos) {
-            System.out.println(contador + ") " + hechizo.getNombre());
-            contador++;
-        }
-        int nroHechizo = Teclado.nextInt();
-        Teclado.nextLine();
-        nroHechizo--;
-        Hechizo hechizoElegido = this.hechizos.get(nroHechizo);
-
-        if (hechizoElegido instanceof HechizoAtaque) {
-            System.out.println("-------------------------------");
-            System.out.println("");
-            System.out.println("¡Eligió un hechizo de ataque!");
-            System.out.println("");
-            System.out.println("-------------------------------");
-        } else if (hechizoElegido instanceof HechizoDefensa) {
-            System.out.println("-------------------------------");
-            System.out.println("");
-            System.out.println("¡Eligió un hechizo de defensa!");
-            System.out.println("");
-            System.out.println("-------------------------------");
-        } else if (hechizoElegido instanceof HechizoCuracion) {
-            System.out.println("-------------------------------");
-            System.out.println("");
-            System.out.println("¡Eligió un hechizo de curación!");
-            System.out.println("");
-            System.out.println("-------------------------------");
-        } else if (hechizoElegido instanceof HechizoOcio) {
-            System.out.println("-------------------------------");
-            System.out.println("");
-            System.out.println("¡Eligió un hechizo de ocio!");
-            System.out.println("");
-            System.out.println("-------------------------------");
-        } else if (hechizoElegido == null) {
-            System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN HECHIZO.");
-        }
-        return hechizoElegido;
-    }*/
 
     // Metodo individual para instanciar ARTEFACTOS
     public void inicializarArtefactos() {
@@ -465,81 +325,12 @@ public class JuegoHP {
         this.personajes.add(dementor);
     }
 
-    public void jugar() {
-        Personaje p1 = this.getJugadores().get(0).getPersonajeElegido();
-        Personaje p2 = this.getJugadores().get(1).getPersonajeElegido();
-
-        boolean turnoP1 = true;
-        int numeroTurno = 1; // Puede no usarse
-        while (p1.estaVivo() == true && p2.estaVivo() && numeroTurno < 20) { // Esto es para que el bucle dure solo
-                                                                             // mientras alguno de los jugadores
-                                                                             // tenga vida.
-            if (turnoP1) {
-                //Para wizard:
-                if (p1 instanceof Wizard) {
-                    this.aprenderYUsarHechizoOPoder(); //El nombre es largo pero descriptivo.
-                } else if (p1 instanceof Elfo) {
-                    this.aprenderYUsarHechizoOPoder();
-                } else if (p1 instanceof Muggle) {
-                    //El muggle muere por respirar nomás.
-                } else if (p1 instanceof Dementor) {
-                    this.aprenderYUsarHechizoOPoder();
-                }
-            } else {
-                if (p2 instanceof Wizard) {
-                    this.aprenderYUsarHechizoOPoder();
-                } else if (p2 instanceof Elfo) {
-                    this.aprenderYUsarHechizoOPoder();
-                } else if (p2 instanceof Muggle) {
-                    
-                } else if (p2 instanceof Dementor) {
-                    this.aprenderYUsarHechizoOPoder();
-                }
-            }
-            numeroTurno = numeroTurno + 1;
-            turnoP1 = !turnoP1; // Acá cambiaría el turno de P1 a P2
-        }
-    }
-
-    //Aparte del método que sigue voy a fijarme de hacerle casting a todos los personajes y ubicar esta función nueva
-    //aún no creada dentro de cada case (que reemplazaría a todo lo que está escrito ahora).
-    public void aprenderYUsarHechizoOPoder() {
-        Personaje p1 = this.getJugadores().get(0).getPersonajeElegido();
-        Personaje p2 = this.getJugadores().get(1).getPersonajeElegido();
-
-        Artefacto artefactoElegido = this.elegirArtefacto();
-        ((Wizard) p1).setArtefacto(artefactoElegido);
-        System.out.println("Elegir: ¿Poder o hechizo?");
-        System.out.println("1) Poder");
-        System.out.println("2) Hechizo");
-        int poderOHechizo = Teclado.nextInt();
-        Teclado.nextLine();
-        switch(poderOHechizo) {
-            case 1:
-                Poder poderElegido = this.elegirPoder();
-                ((Wizard) p1).aprender(poderElegido);
-                ((Wizard) p1).getPoderes();
-                int nroPoder = ((Wizard) p1).devolverNroPoder(poderElegido);
-                //((Wizard) p1).otraFuncionQueUsaUnpoder(p2, ((Wizard) p1).getPoderes().get(nroPoder));
-                break;
-            case 2:
-                Hechizo hechizoElegido = this.elegirHechizo();
-                ((Wizard) p1).aprender(hechizoElegido);
-                ((Wizard) p1).getHechizos();
-                int nroHechizo = ((Wizard) p1).devolverNroHechizo(hechizoElegido);
-                ((Wizard) p1).atacar(p2, ((Wizard) p1).getHechizos().get(nroHechizo));
-                break;
-            default:
-                System.out.println("No eligió un número válido.");
-        }
-    }
-
     // Este seria un metodo SUPER PERO SUPER SENCILLO. Funciona con lo basico, a la hora de atacar el jugador elige el hechizo, 
     // lo aprende y ataca. No hay involucrados artefactos, ni poderes, ni mago oscuro, absolutamente nada.
     // Lo dejo aca para tenerlo de respaldo por si los otros metodos no llegan a funcionar.
     // Si quieren pruebenlo pero tienen que comentar '/*' los otros metodos para que les deje correr el programa.
 
-    public void jugarVAgus(){
+    public void jugar(){
 
         boolean turnoP1 = true;
 
@@ -557,25 +348,47 @@ public class JuegoHP {
             }
 
             if (personajeAtacante instanceof Wizard){
-                Hechizo hechizoParaAtacar = this.seleccionarHechizoParaAtacarVAgus();
+                Artefacto artefactoElegido = this.elegirArtefacto();
+                ((Wizard) personajeAtacante).setArtefacto(artefactoElegido);
+                Hechizo hechizoParaAtacar = this.seleccionarHechizoParaAtacar();
                 ((Wizard)personajeAtacante).aprender(hechizoParaAtacar);
-                ((Wizard)personajeAtacante).atacarVAgus(personajeOponente, hechizoParaAtacar);
+                ((Wizard) personajeAtacante).atacar(personajeOponente, hechizoParaAtacar.getNombre());
+                ((Wizard)personajeAtacante).atacar(personajeOponente, hechizoParaAtacar);
             } else if (personajeAtacante instanceof Elfo){
-                Hechizo hechizoParaAtacar = this.seleccionarHechizoParaAtacarVAgus();
+                Artefacto artefactoElegido = this.elegirArtefacto();
+                ((Elfo) personajeAtacante).setArtefacto(artefactoElegido);
+                Hechizo hechizoParaAtacar = this.seleccionarHechizoParaAtacar();
                 ((Elfo)personajeAtacante).aprender(hechizoParaAtacar);
-                ((Elfo)personajeAtacante).atacarVAgus(personajeOponente, hechizoParaAtacar);
+                ((Elfo) personajeAtacante).atacar(personajeOponente, hechizoParaAtacar.getNombre());
+                ((Elfo)personajeAtacante).atacar(personajeOponente, hechizoParaAtacar);
             } else {
                 System.out.println("¡Eres un MUGGLE no puedes atacar!");
             }
-
-            System.out.println(personajeAtacante.getNombre() + " ataca a: " + personajeOponente.getNombre());
+            
             System.out.println("A " + personajeOponente.getNombre() + " le queda de vida: " + personajeOponente.getSalud());
 
             turnoP1 = !turnoP1;
         }
     }
 
-    public Hechizo seleccionarHechizoParaAtacarVAgus(){
+    public Artefacto elegirArtefacto() {
+        System.out.println("");
+        System.out.println("♡ Seleccione el número de artefacto:");
+        System.out.println("");
+        int contador = 1;
+        for (Artefacto artefacto : this.artefactos) {
+            System.out.println(contador + ") " + artefacto.getNombre());
+            contador++;
+        }
+        int nroArtefacto = Teclado.nextInt();
+        Teclado.nextLine();
+        nroArtefacto--;
+        Artefacto artefactoElegido = this.artefactos.get(nroArtefacto);
+
+        return artefactoElegido;
+    }
+
+    public Hechizo seleccionarHechizoParaAtacar(){
         System.out.println("");
         System.out.println("♡ Seleccione el número de hechizo que desea utilizar:");
         System.out.println("");
@@ -590,6 +403,5 @@ public class JuegoHP {
         Hechizo hechizoElegido = this.hechizos.get(nroHechizo);
         
         return hechizoElegido;
-    }
-    
+    }    
 }

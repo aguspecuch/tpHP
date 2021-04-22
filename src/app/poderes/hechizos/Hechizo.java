@@ -29,7 +29,7 @@ public abstract class Hechizo extends Poder {
         this.nivelDanio = nivelDanio;
     }
 
-    public int getNivelDuracion() {
+    public int getNivelCuracion() {
         return this.nivelCuracion;
     }
 

@@ -72,21 +72,20 @@ public class Elfo extends Criatura implements IHaceMagia {
     }
 
     @Override
-    public void aprender(Hechizo hechizo) {
-        this.hechizos.add(hechizo);
+    public void aprender(Hechizo h) {
+        for (Hechizo hechizo : hechizos) {
+            if (!(h.equals(hechizo))) {
+                this.hechizos.add(hechizo);
+            }
+        }
     }
-
-    @Override
-    public void atacar(Personaje personaje, Hechizo hechizo) {
-    }
-    
 
     @Override
     public void atacar(Personaje personaje, String hechizo) {
-        
+        System.out.println(this.getNombre() + " ataca a: " + personaje.getNombre());
     }
 
-    public void atacarVAgus(Personaje personaje, Hechizo hechizo) {
+    /*public void atacarVAgus(Personaje personaje, Hechizo hechizo) {
         int saludOponente;
         int energiaMagicaAtacante;
         if (this.getEnergiaMagica() > 0){
@@ -98,6 +97,52 @@ public class Elfo extends Criatura implements IHaceMagia {
         } else {
             System.out.println("¡No tienes suficiente energia magica para atacar!");
         }
+    }*/
+
+    //Versión de Agus modificada:
+    //Capa Agus.
+    @Override
+    public void atacar(Personaje personaje, Hechizo hechizo) {
+        int saludAtacante;
+        int saludOponente;
+        int energiaMagicaAtacante;
+        if (this.estaVivo() == true && personaje.estaVivo() == true){
+    
+            Artefacto artefactoElegido = this.getArtefacto();
+            if (artefactoElegido instanceof CapaInvisibilidad) {
+                int nivelDanio = hechizo.getNivelDanio() + 0;
+                int nivelCuracion = hechizo.getNivelCuracion() + 50;
+                hechizo.setNivelDanio(nivelDanio);
+                hechizo.setNivelCuracion(nivelCuracion);
+            } else if (artefactoElegido instanceof EspadaGryffindor) {
+                int nivelDanio = hechizo.getNivelDanio() + 40;
+                int nivelCuracion = hechizo.getNivelCuracion() + 0;
+                hechizo.setNivelDanio(nivelDanio);
+                hechizo.setNivelCuracion(nivelCuracion);
+            } else if (artefactoElegido instanceof Horrocrux) {
+                int nivelDanio = hechizo.getNivelDanio() + 80;
+                int nivelCuracion = hechizo.getNivelCuracion() + 20;
+                hechizo.setNivelDanio(nivelDanio);
+                hechizo.setNivelCuracion(nivelCuracion);
+            } else if (artefactoElegido instanceof PiedraResurreccion) {
+                int nivelDanio = hechizo.getNivelDanio() + 0;
+                int nivelCuracion = hechizo.getNivelCuracion() + 100;
+                hechizo.setNivelDanio(nivelDanio);
+                hechizo.setNivelCuracion(nivelCuracion);
+            }
+
+            saludOponente = personaje.getSalud() - hechizo.getNivelDanio();
+
+            energiaMagicaAtacante = this.getEnergiaMagica() - hechizo.getEnergiaMagica();
+            this.setEnergiaMagica(energiaMagicaAtacante);
+            saludAtacante = this.getEnergiaMagica() + hechizo.getNivelCuracion();
+
+            this.setSalud(saludAtacante);
+            personaje.setSalud(saludOponente);
+        } else {
+            System.out.println("¡No tienes suficiente energia magica para atacar!");
+        }
     }
+
 }
 

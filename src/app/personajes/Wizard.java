@@ -5,6 +5,7 @@ import app.artefactos.*;
 import app.interfaces.*;
 import app.poderes.*;
 import app.poderes.hechizos.*;
+import app.poderes.hechizos.ataques.HechizoAtaque;
 import app.transportes.*;
 
 public class Wizard extends Persona implements IHaceMagia {
@@ -93,75 +94,63 @@ public class Wizard extends Persona implements IHaceMagia {
     }
 
     @Override
-    public void aprender(Hechizo hechizo) {
-        this.hechizos.add(hechizo);
-    }
-
-    public void aprender(Poder poder) {
-        this.poderes.add(getPoderInicial());
-        this.poderes.add(poder);
-    }
-
-    @Override
-    public void atacar(Personaje personaje, Hechizo h) {
-        for (Hechizo hechizo : this.hechizos) {
-            if (h.equals(hechizo)) {
-                if (this.getMagoOscuro() == true || (this.getMagoOscuro() == false && h.getEsOscuro() == false) {
-                    //Entonces no se va a duplicar daño ni curación
-                    if (h instanceof HechizoAtaque) {
-                        
-                    } else if (h instanceof HechizoDefensa) {
-
-                    }
-
-                } else if (this.getMagoOscuro() == false && h.getEsOscuro() == true) {
-                    //Doble daño y curación
-                }
-            } else {
-                System.out.println("El mago no ha aprendido aún a conjurar este hechizo.");
-            } 
+    public void aprender(Hechizo h) {
+        for (Hechizo hechizo : hechizos) {
+            if (!(h.equals(hechizo))) {
+                this.hechizos.add(hechizo);
+            }
         }
     }
 
     @Override
     public void atacar(Personaje personaje, String hechizo) {
-        //A esto después lo utilizo en JuegoHP.
+        System.out.println(this.getNombre() + " ataca a: " + personaje.getNombre());
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Hechizo) {
-            Hechizo hechizo = (Hechizo) obj;
-            return hechizo.getNombre().equals(this.getNombre());
-        } else if (obj instanceof Poder) {
-            Poder poder = (Poder) obj;
-            return poder.getNombre().equals(this.getNombre());
-        } else {
-            return false;
-        }
-    }
-
-    public int devolverNroHechizo(Hechizo hechizo) {
-        int nroHechizo = this.hechizos.indexOf(hechizo);
-        return nroHechizo;
-    }
-
-    public int devolverNroPoder(Poder poder) {
-        int nroPoder = this.poderes.indexOf(poder);
-        return nroPoder;
-    }
-
-    //Version Agus
-
-    public void atacarVAgus(Personaje personaje, Hechizo h) {
-
+    public void atacar(Personaje personaje, Hechizo hechizo) {
+        int saludAtacante;
         int saludOponente;
         int energiaMagicaAtacante;
-        if (this.getEnergiaMagica() > 0){
-            saludOponente = personaje.getSalud() - h.getNivelDanio();
-            energiaMagicaAtacante = this.getEnergiaMagica() - h.getEnergiaMagica();
+        if (this.estaVivo() == true && personaje.estaVivo() == true){
+    
+            if (hechizo instanceof HechizoAtaque && this.getMagoOscuro() == false && hechizo.getEsOscuro() == true) {
+                this.setMagoOscuro(true);
+                System.out.println("El mago ha utilizado un hechizo oscuro. Ahora es un mago oscuro.");
+                int nivelDanio = hechizo.getNivelDanio()*2;
+                hechizo.setNivelDanio(nivelDanio);
+            }
+        
+            Artefacto artefactoElegido = this.getArtefacto();
+            if (artefactoElegido instanceof CapaInvisibilidad) {
+                int nivelDanio = hechizo.getNivelDanio() + 0;
+                int nivelCuracion = hechizo.getNivelCuracion() + 50;
+                hechizo.setNivelDanio(nivelDanio);
+                hechizo.setNivelCuracion(nivelCuracion);
+            } else if (artefactoElegido instanceof EspadaGryffindor) {
+                int nivelDanio = hechizo.getNivelDanio() + 40;
+                int nivelCuracion = hechizo.getNivelCuracion() + 0;
+                hechizo.setNivelDanio(nivelDanio);
+                hechizo.setNivelCuracion(nivelCuracion);
+            } else if (artefactoElegido instanceof Horrocrux) {
+                int nivelDanio = hechizo.getNivelDanio() + 80;
+                int nivelCuracion = hechizo.getNivelCuracion() + 20;
+                hechizo.setNivelDanio(nivelDanio);
+                hechizo.setNivelCuracion(nivelCuracion);
+            } else if (artefactoElegido instanceof PiedraResurreccion) {
+                int nivelDanio = hechizo.getNivelDanio() + 0;
+                int nivelCuracion = hechizo.getNivelCuracion() + 100;
+                hechizo.setNivelDanio(nivelDanio);
+                hechizo.setNivelCuracion(nivelCuracion);
+            }
 
+            saludOponente = personaje.getSalud() - hechizo.getNivelDanio();
+
+            energiaMagicaAtacante = this.getEnergiaMagica() - hechizo.getEnergiaMagica();
             this.setEnergiaMagica(energiaMagicaAtacante);
+            saludAtacante = this.getEnergiaMagica() + hechizo.getNivelCuracion();
+
+            this.setSalud(saludAtacante);
             personaje.setSalud(saludOponente);
         } else {
             System.out.println("¡No tienes suficiente energia magica para atacar!");
