@@ -7,37 +7,37 @@ import app.poderes.Poder;
 import app.poderes.hechizos.*;
 
 public class Elfo extends Criatura implements IHaceMagia {
-    
+
     // CONSTRUCTOR
 
     public Elfo(String nombre) {
         super(nombre);
         setEnergiaMagica(150);
     }
-    
-    //ATRIBUTOS
+
+    // ATRIBUTOS
 
     private int energiaMagica;
     private Artefacto artefacto;
     private List<Hechizo> hechizos = new ArrayList<>();
 
-    //GETTERS Y SETTERS
-        
+    // GETTERS Y SETTERS
+
     public int getEnergiaMagica() {
         return this.energiaMagica;
     }
-    
+
     public void setEnergiaMagica(int energiaMagica) {
-        this.energiaMagica = energiaMagica; 
-    }   
+        this.energiaMagica = energiaMagica;
+    }
 
     public Artefacto getArtefacto() {
         return this.artefacto;
     }
-    
+
     public void setArtefacto(Artefacto artefacto) {
-        this.artefacto = artefacto; 
-    } 
+        this.artefacto = artefacto;
+    }
 
     public List<Hechizo> getHechizos() {
         return this.hechizos;
@@ -61,7 +61,7 @@ public class Elfo extends Criatura implements IHaceMagia {
 
     @Override
     public void setPoder(Poder poder) {
-       
+
     }
 
     @Override
@@ -81,7 +81,8 @@ public class Elfo extends Criatura implements IHaceMagia {
     @Override
     public void atacar(Personaje personaje, String hechizo) {
         System.out.println("");
-        System.out.println("→ " + this.getNombre() + " ataca a: " + personaje.getNombre() + " con el hechizo: " + hechizo);
+        System.out.println(
+                "→ " + this.getNombre() + " ataca a: " + personaje.getNombre() + " con el hechizo: " + hechizo);
         System.out.println("");
     }
 
@@ -91,8 +92,8 @@ public class Elfo extends Criatura implements IHaceMagia {
         int saludOponente;
         int energiaMagicaAtacante;
 
-        if (this.getEnergiaMagica() > 0){
-    
+        if (this.getEnergiaMagica() > 0) {
+
             Artefacto artefactoElegido = this.getArtefacto();
 
             if (artefactoElegido != null) {
@@ -111,8 +112,8 @@ public class Elfo extends Criatura implements IHaceMagia {
             personaje.setSalud(saludOponente);
 
             System.out.println("");
-            System.out.println("☆ La salud de " + this.getNombre() + " es " + this.getSalud() + 
-            " y la salud de su oponente " + personaje.getNombre() + " es " + personaje.getSalud() + " ☆");
+            System.out.println("☆ La salud de " + this.getNombre() + " es " + this.getSalud()
+                    + " y la salud de su oponente " + personaje.getNombre() + " es " + personaje.getSalud() + " ☆");
             System.out.println("");
 
         } else {
@@ -123,4 +124,3 @@ public class Elfo extends Criatura implements IHaceMagia {
     }
 
 }
-

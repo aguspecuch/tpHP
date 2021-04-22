@@ -3,12 +3,10 @@ package app;
 import app.personajes.*;
 
 public class Jugador {
-    
-    // Cree esta clase nueva para que podamos tener una lista de jugadores en JuegoHP.java
 
     // CONSTRUCTOR
 
-    public Jugador(int nroJugador, String nombreJugador, Personaje personajeElegido){
+    public Jugador(int nroJugador, String nombreJugador, Personaje personajeElegido) {
         this.setNroJugador(nroJugador);
         this.setNombreJugador(nombreJugador);
         this.setPersonajeElegido(personajeElegido);
@@ -21,27 +19,27 @@ public class Jugador {
 
     // GETTERS Y SETTERS
 
-    public int getNroJugador(){
+    public int getNroJugador() {
         return this.nroJugador;
     }
 
-    public void setNroJugador(int nroJugador){
+    public void setNroJugador(int nroJugador) {
         this.nroJugador = nroJugador;
     }
 
-    public String getNombreJugador(){
+    public String getNombreJugador() {
         return this.nombreJugador;
     }
 
-    public void setNombreJugador(String nombreJugador){
+    public void setNombreJugador(String nombreJugador) {
         this.nombreJugador = nombreJugador;
     }
 
     public Personaje getPersonajeElegido() {
-        return this.personajeElegido; 
+        return this.personajeElegido;
     }
 
-    public void setPersonajeElegido(Personaje personajeElegido){
+    public void setPersonajeElegido(Personaje personajeElegido) {
         this.personajeElegido = personajeElegido;
     }
 
@@ -52,5 +50,5 @@ public class Jugador {
     public void setPersonajeEnemigo(Personaje personajeEnemigo) {
         this.personajeEnemigo = personajeEnemigo;
     }
-    
+
 }

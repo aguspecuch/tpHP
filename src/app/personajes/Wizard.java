@@ -103,7 +103,8 @@ public class Wizard extends Persona implements IHaceMagia {
     @Override
     public void atacar(Personaje personaje, String hechizo) {
         System.out.println("");
-        System.out.println("→ " + this.getNombre() + " ataca a: " + personaje.getNombre() + " con el hechizo: " + hechizo);
+        System.out.println(
+                "→ " + this.getNombre() + " ataca a: " + personaje.getNombre() + " con el hechizo: " + hechizo);
         System.out.println("");
     }
 
@@ -113,15 +114,15 @@ public class Wizard extends Persona implements IHaceMagia {
         int saludOponente;
         int energiaMagicaAtacante;
 
-        if (this.getEnergiaMagica() > 0){
-    
+        if (this.getEnergiaMagica() > 0) {
+
             if (this.getMagoOscuro() == false && hechizo.getEsOscuro() == true) {
                 this.setMagoOscuro(true);
                 System.out.println("☠  El mago ha utilizado un hechizo oscuro. Ahora es un mago oscuro  ☠ ");
                 int nivelDanio = (hechizo.getNivelDanio() * 2);
                 hechizo.setNivelDanio(nivelDanio);
             }
-        
+
             Artefacto artefactoElegido = this.getArtefacto();
 
             if (artefactoElegido != null) {
@@ -140,10 +141,10 @@ public class Wizard extends Persona implements IHaceMagia {
             personaje.setSalud(saludOponente);
 
             System.out.println("");
-            System.out.println("☆ La salud de " + this.getNombre() + " es " + this.getSalud() + 
-            " y la salud de su oponente " + personaje.getNombre() + " es " + personaje.getSalud() + " ☆");
+            System.out.println("☆ La salud de " + this.getNombre() + " es " + this.getSalud()
+                    + " y la salud de su oponente " + personaje.getNombre() + " es " + personaje.getSalud() + " ☆");
             System.out.println("");
-        
+
         } else {
             System.out.println("");
             System.out.println("¡No tienes suficiente energia magica para atacar!");

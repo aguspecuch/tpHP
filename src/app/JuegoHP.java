@@ -374,7 +374,7 @@ public class JuegoHP {
             } else {
                 System.out.println("");
                 System.out.println(
-                        "¡El personaje elegido no posee habilidades magicas! Lo siento pero no puedes atacar."); 
+                        "¡El personaje elegido no posee habilidades magicas! Lo siento pero no puedes atacar.");
                 System.out.println("");
             }
 
