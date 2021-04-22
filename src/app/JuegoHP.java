@@ -309,19 +309,19 @@ public class JuegoHP {
         Muggle petuniaDursley = new Muggle("Petunia Dursley");
         this.personajes.add(petuniaDursley);
 
-        Elfo dobby = new Elfo("Dobby", 100, 150, this.artefactos.get(0));
+        Elfo dobby = new Elfo("Dobby", this.artefactos.get(0));
         this.personajes.add(dobby);
 
-        Elfo kreacher = new Elfo("Kreacher", 100, 150, this.artefactos.get(0));
+        Elfo kreacher = new Elfo("Kreacher", this.artefactos.get(0));
         this.personajes.add(kreacher);
 
-        Elfo winky = new Elfo("Winky", 100, 150, this.artefactos.get(0));
+        Elfo winky = new Elfo("Winky", this.artefactos.get(0));
         this.personajes.add(winky);
 
-        Elfo hokey = new Elfo("Hokey", 100, 150, this.artefactos.get(0));
+        Elfo hokey = new Elfo("Hokey", this.artefactos.get(0));
         this.personajes.add(hokey);
 
-        Dementor dementor = new Dementor("Dementor", 100, 150, this.poderes.get(0));
+        Dementor dementor = new Dementor("Dementor", this.poderes.get(0));
         this.personajes.add(dementor);
     }
 
@@ -332,12 +332,12 @@ public class JuegoHP {
 
     public void jugar(){
 
+        Personaje personajeAtacante;
+        Personaje personajeOponente;
+
         boolean turnoP1 = true;
 
         while(this.getJugadores().get(0).getPersonajeElegido().getSalud() > 0 && this.getJugadores().get(1).getPersonajeElegido().getSalud() > 0) {
-
-            Personaje personajeAtacante;
-            Personaje personajeOponente;
 
             if (turnoP1) {
                 personajeAtacante = this.getJugadores().get(0).getPersonajeElegido();

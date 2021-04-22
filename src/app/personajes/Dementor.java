@@ -6,10 +6,9 @@ public class Dementor extends Criatura {
 
     // CONSTUCTOR
 
-    public Dementor (String nombre, int salud, int energiaMagica, Poder poderInicial) {
-        this.setNombre(nombre);
-        this.setSalud(salud); // Le asigno directamente el máximo.
-        this.energiaMagica = energiaMagica; // Le asigno directamente el máximo.
+    public Dementor (String nombre, Poder poderInicial) {
+        super(nombre);
+        this.setEnergiaMagica(150);
         this.poderInicial = poderInicial;
     }
 

@@ -13,9 +13,8 @@ public class Wizard extends Persona implements IHaceMagia {
     // CONSTRUCTOR
 
     public Wizard(String nombre, Poder poderInicial, boolean magoOscuro) {
-        this.setNombre(nombre);
-        this.setSalud(100);
-        this.energiaMagica = 150; // Le asigno directamente el máximo.
+        super(nombre);
+        this.setEnergiaMagica(150);
         this.poderInicial = poderInicial;
         this.magoOscuro = magoOscuro;
     }
@@ -117,29 +116,29 @@ public class Wizard extends Persona implements IHaceMagia {
             if (hechizo instanceof HechizoAtaque && this.getMagoOscuro() == false && hechizo.getEsOscuro() == true) {
                 this.setMagoOscuro(true);
                 System.out.println("El mago ha utilizado un hechizo oscuro. Ahora es un mago oscuro.");
-                int nivelDanio = hechizo.getNivelDanio()*2;
+                int nivelDanio = (hechizo.getNivelDanio() * 2);
                 hechizo.setNivelDanio(nivelDanio);
             }
         
             Artefacto artefactoElegido = this.getArtefacto();
             if (artefactoElegido instanceof CapaInvisibilidad) {
-                int nivelDanio = hechizo.getNivelDanio() + 0;
-                int nivelCuracion = hechizo.getNivelCuracion() + 50;
+                int nivelDanio = (int) (hechizo.getNivelDanio() + artefactoElegido.getAmplificadorDeDanio());
+                int nivelCuracion = (int) (hechizo.getNivelCuracion() + artefactoElegido.getAmplificadorDeCuracion());
                 hechizo.setNivelDanio(nivelDanio);
                 hechizo.setNivelCuracion(nivelCuracion);
             } else if (artefactoElegido instanceof EspadaGryffindor) {
-                int nivelDanio = hechizo.getNivelDanio() + 40;
-                int nivelCuracion = hechizo.getNivelCuracion() + 0;
+                int nivelDanio = (int) (hechizo.getNivelDanio() + artefactoElegido.getAmplificadorDeDanio());
+                int nivelCuracion = (int) (hechizo.getNivelCuracion() + artefactoElegido.getAmplificadorDeCuracion());
                 hechizo.setNivelDanio(nivelDanio);
                 hechizo.setNivelCuracion(nivelCuracion);
             } else if (artefactoElegido instanceof Horrocrux) {
-                int nivelDanio = hechizo.getNivelDanio() + 80;
-                int nivelCuracion = hechizo.getNivelCuracion() + 20;
+                int nivelDanio = (int) (hechizo.getNivelDanio() + artefactoElegido.getAmplificadorDeDanio());
+                int nivelCuracion = (int) (hechizo.getNivelCuracion() + artefactoElegido.getAmplificadorDeCuracion());
                 hechizo.setNivelDanio(nivelDanio);
                 hechizo.setNivelCuracion(nivelCuracion);
             } else if (artefactoElegido instanceof PiedraResurreccion) {
-                int nivelDanio = hechizo.getNivelDanio() + 0;
-                int nivelCuracion = hechizo.getNivelCuracion() + 100;
+                int nivelDanio = (int) (hechizo.getNivelDanio() + artefactoElegido.getAmplificadorDeDanio());
+                int nivelCuracion = (int) (hechizo.getNivelCuracion() + artefactoElegido.getAmplificadorDeCuracion());
                 hechizo.setNivelDanio(nivelDanio);
                 hechizo.setNivelCuracion(nivelCuracion);
             }

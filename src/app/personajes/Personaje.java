@@ -2,13 +2,20 @@ package app.personajes;
 
 public abstract class Personaje {
 
-    //ATRIBUTOS
+    // CONSTRUCTOR
+
+    public Personaje(String nombre) {
+        this.setNombre(nombre);
+        this.setSalud(100);
+    }
+
+    // ATRIBUTOS
 
     private String nombre;
     private int salud;
     private int edad;
 
-    //GETTERS Y SETTERS
+    // GETTERS Y SETTERS
 
     public String getNombre() {
         return this.nombre;
