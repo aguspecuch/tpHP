@@ -102,6 +102,7 @@ public class JuegoHP {
         this.darBienvenida();
         this.inicializarJugadores();
         this.jugar();
+        this.jugarVAgus();
     }
 
     // Esto seria lo primero que aparece cuando arranca el juego. Fijense si les
@@ -192,7 +193,7 @@ public class JuegoHP {
         return personajeElegido;
     }
 
-    public Artefacto elegirArtefacto() {
+    /*public Artefacto elegirArtefacto() {
         System.out.println("");
         System.out.println("♡ Seleccione el número de artefacto:");
         System.out.println("");
@@ -328,7 +329,7 @@ public class JuegoHP {
             System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN HECHIZO.");
         }
         return hechizoElegido;
-    }
+    }*/
 
     // Metodo individual para instanciar ARTEFACTOS
     public void inicializarArtefactos() {
@@ -533,4 +534,62 @@ public class JuegoHP {
         }
     }
 
+    // Este seria un metodo SUPER PERO SUPER SENCILLO. Funciona con lo basico, a la hora de atacar el jugador elige el hechizo, 
+    // lo aprende y ataca. No hay involucrados artefactos, ni poderes, ni mago oscuro, absolutamente nada.
+    // Lo dejo aca para tenerlo de respaldo por si los otros metodos no llegan a funcionar.
+    // Si quieren pruebenlo pero tienen que comentar '/*' los otros metodos para que les deje correr el programa.
+
+    public void jugarVAgus(){
+
+        boolean turnoP1 = true;
+
+        while(this.getJugadores().get(0).getPersonajeElegido().getSalud() > 0 && this.getJugadores().get(1).getPersonajeElegido().getSalud() > 0) {
+
+            Personaje personajeAtacante;
+            Personaje personajeOponente;
+
+            if (turnoP1) {
+                personajeAtacante = this.getJugadores().get(0).getPersonajeElegido();
+                personajeOponente = this.getJugadores().get(1).getPersonajeElegido();
+             } else {
+                personajeAtacante = this.getJugadores().get(1).getPersonajeElegido();
+                personajeOponente = this.getJugadores().get(0).getPersonajeElegido();
+            }
+
+            if (personajeAtacante instanceof Wizard){
+                Hechizo hechizoParaAtacar = this.seleccionarHechizoParaAtacarVAgus();
+                ((Wizard)personajeAtacante).aprender(hechizoParaAtacar);
+                ((Wizard)personajeAtacante).atacarVAgus(personajeOponente, hechizoParaAtacar);
+            } else if (personajeAtacante instanceof Elfo){
+                Hechizo hechizoParaAtacar = this.seleccionarHechizoParaAtacarVAgus();
+                ((Elfo)personajeAtacante).aprender(hechizoParaAtacar);
+                ((Elfo)personajeAtacante).atacarVAgus(personajeOponente, hechizoParaAtacar);
+            } else {
+                System.out.println("¡Eres un MUGGLE no puedes atacar!");
+            }
+
+            System.out.println(personajeAtacante.getNombre() + " ataca a: " + personajeOponente.getNombre());
+            System.out.println("A " + personajeOponente.getNombre() + " le queda de vida: " + personajeOponente.getSalud());
+
+            turnoP1 = !turnoP1;
+        }
+    }
+
+    public Hechizo seleccionarHechizoParaAtacarVAgus(){
+        System.out.println("");
+        System.out.println("♡ Seleccione el número de hechizo que desea utilizar:");
+        System.out.println("");
+        int contador = 1;
+        for (Hechizo hechizo : this.hechizos) {
+            System.out.println(contador + ") " + hechizo.getNombre());
+            contador++;
+        }
+        int nroHechizo = Teclado.nextInt();
+        Teclado.nextLine();
+        nroHechizo--;
+        Hechizo hechizoElegido = this.hechizos.get(nroHechizo);
+        
+        return hechizoElegido;
+    }
+    
 }

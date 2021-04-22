@@ -73,17 +73,31 @@ public class Elfo extends Criatura implements IHaceMagia {
 
     @Override
     public void aprender(Hechizo hechizo) {
-        
+        this.hechizos.add(hechizo);
     }
 
     @Override
     public void atacar(Personaje personaje, Hechizo hechizo) {
-        
     }
+    
 
     @Override
     public void atacar(Personaje personaje, String hechizo) {
         
+    }
+
+    public void atacarVAgus(Personaje personaje, Hechizo hechizo) {
+        int saludOponente;
+        int energiaMagicaAtacante;
+        if (this.getEnergiaMagica() > 0){
+            saludOponente = personaje.getSalud() - hechizo.getNivelDanio();
+            energiaMagicaAtacante = this.getEnergiaMagica() - hechizo.getEnergiaMagica();
+
+            this.setEnergiaMagica(energiaMagicaAtacante);
+            personaje.setSalud(saludOponente);
+        } else {
+            System.out.println("¡No tienes suficiente energia magica para atacar!");
+        }
     }
 }
 

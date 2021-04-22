@@ -150,4 +150,21 @@ public class Wizard extends Persona implements IHaceMagia {
         int nroPoder = this.poderes.indexOf(poder);
         return nroPoder;
     }
+
+    //Version Agus
+
+    public void atacarVAgus(Personaje personaje, Hechizo h) {
+
+        int saludOponente;
+        int energiaMagicaAtacante;
+        if (this.getEnergiaMagica() > 0){
+            saludOponente = personaje.getSalud() - h.getNivelDanio();
+            energiaMagicaAtacante = this.getEnergiaMagica() - h.getEnergiaMagica();
+
+            this.setEnergiaMagica(energiaMagicaAtacante);
+            personaje.setSalud(saludOponente);
+        } else {
+            System.out.println("¡No tienes suficiente energia magica para atacar!");
+        }
+    }
 }
