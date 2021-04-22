@@ -7,5 +7,4 @@ public class HechizoAtaque extends Hechizo {
     public HechizoAtaque() {
         this.setNombre(nombre);
     }
-    //CREO que podemos tener un super constructor (este) y un constructor (SectumSempra).
 }

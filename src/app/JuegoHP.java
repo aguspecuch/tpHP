@@ -9,6 +9,7 @@ import app.poderes.*;
 import app.poderes.hechizos.*;
 import app.poderes.hechizos.ataques.*;
 import app.poderes.hechizos.defensas.*;
+import app.poderes.hechizos.ocio.WingardiumLeviosa;
 import app.poderes.hechizos.curaciones.*;
 import app.transportes.*;
 
@@ -90,8 +91,8 @@ public class JuegoHP {
         this.jugadores = jugadores;
     }
 
-    // Este seria el metodo principal donde podemos poner todos los metodos
-    // individuales donde instanciamos las cosas.
+    // METODO PRINCIPAL DEL JUEGO
+
     public void iniciarJuego() {
         this.inicializarArtefactos();
         this.inicializarPoderes();
@@ -101,11 +102,9 @@ public class JuegoHP {
         this.darBienvenida();
         this.inicializarJugadores();
         this.jugar();
+        this.mostrarGanador();
     }
 
-    // Esto seria lo primero que aparece cuando arranca el juego. Fijense si les
-    // gusta o quieren poner otra cosa.
-    // Le puse "Duelo Magico" para no ponerle tpHP lol
     public void darBienvenida() {
         System.out.println(" ______________________________");
         System.out.println("|                              |");
@@ -113,13 +112,6 @@ public class JuegoHP {
         System.out.println("|______________________________|");
         System.out.println("");
     }
-
-    // Esto seria un metodo para inicializar 2 jugadores (metodologia player vs
-    // player). Se les pide que ingrese su nombre y
-    // se llama a otro metodo elegirPersonaje() para que cada jugador pueda elegir
-    // su personaje de la lista. A su vez, dependiendo
-    // del personaje que elija le avisa que clase de personaje eligio (Mago, Elfo o
-    // Muggle).
 
     public void inicializarJugadores() {
 
@@ -129,6 +121,15 @@ public class JuegoHP {
         String nombreJugador = Teclado.nextLine();
 
         Personaje personajeElegido = this.elegirPersonaje();
+        Artefacto artefactoElegido;
+
+        if (personajeElegido instanceof Wizard) {
+            artefactoElegido = this.elegirArtefacto();
+            ((Wizard) personajeElegido).setArtefacto(artefactoElegido);
+        } else if (personajeElegido instanceof Elfo) {
+            artefactoElegido = this.elegirArtefacto();
+            ((Elfo) personajeElegido).setArtefacto(artefactoElegido);
+        }
 
         Jugador player1 = new Jugador(1, nombreJugador, personajeElegido);
         this.getJugadores().add(player1);
@@ -142,11 +143,18 @@ public class JuegoHP {
 
         personajeElegido = this.elegirPersonaje();
 
+        if (personajeElegido instanceof Wizard) {
+            artefactoElegido = this.elegirArtefacto();
+            ((Wizard) personajeElegido).setArtefacto(artefactoElegido);
+        } else if (personajeElegido instanceof Elfo) {
+            artefactoElegido = this.elegirArtefacto();
+            ((Elfo) personajeElegido).setArtefacto(artefactoElegido);
+        }
+
         Jugador player2 = new Jugador(2, nombreJugador, personajeElegido);
         this.getJugadores().add(player2);
     }
 
-    // Este seria el metodo para que el jugador pueda elegir su personaje.
     public Personaje elegirPersonaje() {
         System.out.println("");
         System.out.println("♡ Seleccione su personaje:");
@@ -162,42 +170,52 @@ public class JuegoHP {
         Personaje personajeElegido = this.personajes.get(nroPersonaje);
 
         if (personajeElegido instanceof Wizard) {
-            System.out.println("-------------------------------");
             System.out.println("");
-            System.out.println("¡Eligió un mago!");
+            System.out.println("----->  ¡Eligió un mago!");
             System.out.println("");
-            System.out.println("-------------------------------");
         } else if (personajeElegido instanceof Elfo) {
-            System.out.println("-------------------------------");
             System.out.println("");
-            System.out.println("¡Eligió un elfo!");
+            System.out.println("-----> ¡Eligió un elfo!");
             System.out.println("");
-            System.out.println("-------------------------------");
         } else if (personajeElegido instanceof Muggle) {
-            System.out.println("-------------------------------");
             System.out.println("");
-            System.out.println("¡Eligió un muggle!");
+            System.out.println("-----> ¡Eligió un muggle!");
             System.out.println("");
-            System.out.println("-------------------------------");
         } else if (personajeElegido instanceof Dementor) {
-            System.out.println("-------------------------------");
             System.out.println("");
-            System.out.println("¡Eligió un dementor!");
+            System.out.println("-----> ¡Eligió un dementor!");
             System.out.println("");
-            System.out.println("-------------------------------");
         } else if (personajeElegido == null) {
             System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN PERSONAJE.");
         }
         return personajeElegido;
     }
 
-    // Metodo individual para instanciar ARTEFACTOS
+    public Artefacto elegirArtefacto() {
+        System.out.println("");
+        System.out.println("♡ Seleccione el número de artefacto que desea usar:");
+        System.out.println("");
+        int contador = 1;
+        for (Artefacto artefacto : this.artefactos) {
+            System.out.println(contador + ") " + artefacto.getNombre());
+            contador++;
+        }
+        int nroArtefacto = Teclado.nextInt();
+        Teclado.nextLine();
+        nroArtefacto--;
+        Artefacto artefactoElegido = this.artefactos.get(nroArtefacto);
+
+        System.out.println("");
+        System.out.println("-----> ¡Eligio " + artefactoElegido.getNombre() + "!");
+        System.out.println("");
+
+        return artefactoElegido;
+    }
+
     public void inicializarArtefactos() {
 
-        CapaInvisibilidad capaInvisibilidad = new CapaInvisibilidad("Capa de Invisibilidad", 0.1, 0.2); // Instancio el
-                                                                                                        // objeto
-                                                                                                        // CapaInvisibilidad
-        this.artefactos.add(capaInvisibilidad); // Lo agrego a la lista de artefactos de JuegoHP
+        CapaInvisibilidad capaInvisibilidad = new CapaInvisibilidad("Capa de Invisibilidad", 0.1, 0.2);
+        this.artefactos.add(capaInvisibilidad);
 
         Horrocrux horrocrux = new Horrocrux("Horrocrux", 0.5, 0.5);
         this.artefactos.add(horrocrux);
@@ -216,7 +234,6 @@ public class JuegoHP {
 
     }
 
-    // Metodo individual para instanciar PODERES
     public void inicializarPoderes() {
 
         Invisibilidad invisibilidad = new Invisibilidad("Invisibilidad", "Poder que te hace invisible");
@@ -235,12 +252,9 @@ public class JuegoHP {
         this.poderes.add(besoDementor);
     }
 
-    // Metodo individual para instanciar HECHIZOS
     public void inicializarHechizos() {
 
-        SectumSempra sectumSempra = new SectumSempra("Sectum Sempra", false, 30, 0, 20); // 30 seria el daño, 0 la
-                                                                                         // curacion y 20 el gasto de
-                                                                                         // energiaMagica
+        SectumSempra sectumSempra = new SectumSempra("Sectum Sempra", false, 30, 0, 20);
         this.hechizos.add(sectumSempra);
 
         AvadaKedavra avadaKedavra = new AvadaKedavra("Avada Kedavra", true, 50, 0, 30);
@@ -252,31 +266,29 @@ public class JuegoHP {
         Expelliarmus expelliarmus = new Expelliarmus("Expelliarmus", false, 20, 0, 15);
         this.hechizos.add(expelliarmus);
 
-        CaveInimicum caveInimicum = new CaveInimicum("Cave Inimicum", false, 0, 0, 10);
+        CaveInimicum caveInimicum = new CaveInimicum("Cave Inimicum", false, 0, 10, 10);
         this.hechizos.add(caveInimicum);
 
-        ExpectoPatronum expectoPatronum = new ExpectoPatronum("Expecto Patronum", false, 0, 0, 20);
+        ExpectoPatronum expectoPatronum = new ExpectoPatronum("Expecto Patronum", false, 0, 20, 20);
         this.hechizos.add(expectoPatronum);
 
-        VulneraSanentur vulneraSanentur = new VulneraSanentur("Vulnera Sanentur", false, 0, 0, 10);
+        VulneraSanentur vulneraSanentur = new VulneraSanentur("Vulnera Sanentur", false, 0, 50, 10);
         this.hechizos.add(vulneraSanentur);
+
+        WingardiumLeviosa wingardiumLeviosa = new WingardiumLeviosa("Wingardium Leviosa", false, 0, 0, 0);
+        this.hechizos.add(wingardiumLeviosa);
     }
 
-    // Metodo individual para instanciar TRANSPORTES
     public void inicializarTransportes() {
 
         TrenExpresoHowards trenExpresoHowards = new TrenExpresoHowards("Tren Expreso de Howards",
-                "ren magico que transporta a los estudiantes a Howarts");
+                "Tren magico que transporta a los estudiantes a Howarts");
         this.transportes.add(trenExpresoHowards);
     }
 
-    // Metodo individual para instanciar PERSONAJES
     public void inicializarPersonajes() {
 
-        Wizard harryPotter = new Wizard("Harry Potter", this.poderes.get(0), false); // El "this.poderes.get(0)" hace
-                                                                                     // referencia al 1er Poder de la
-                                                                                     // lista PODERES de JuegoHP. En
-                                                                                     // este caso es SectumSempra.
+        Wizard harryPotter = new Wizard("Harry Potter", this.poderes.get(0), false);
         this.personajes.add(harryPotter);
 
         Wizard hermioneGranger = new Wizard("Hermione Granger", this.poderes.get(1), false);
@@ -285,16 +297,16 @@ public class JuegoHP {
         Wizard albusDumbledore = new Wizard("Albus Dumbledore", this.poderes.get(2), false);
         this.personajes.add(albusDumbledore);
 
-        Wizard lordVoldemort = new Wizard("Lord Voldemort", this.poderes.get(0), true);
+        Wizard lordVoldemort = new Wizard("Lord Voldemort", this.poderes.get(2), true);
         this.personajes.add(lordVoldemort);
 
-        Wizard bellatrixLestrange = new Wizard("Bellatrix Lestrange", this.poderes.get(0), true);
+        Wizard bellatrixLestrange = new Wizard("Bellatrix Lestrange", this.poderes.get(2), true);
         this.personajes.add(bellatrixLestrange);
 
         Wizard ronWeasly = new Wizard("Ron Weasly", this.poderes.get(0), false);
         this.personajes.add(ronWeasly);
 
-        Wizard severusSnape = new Wizard("Severus Snape", this.poderes.get(0), false);
+        Wizard severusSnape = new Wizard("Severus Snape", this.poderes.get(2), false);
         this.personajes.add(severusSnape);
 
         Wizard dracoMalfoy = new Wizard("Draco Malfoy", this.poderes.get(0), false);
@@ -309,88 +321,70 @@ public class JuegoHP {
         Muggle petuniaDursley = new Muggle("Petunia Dursley");
         this.personajes.add(petuniaDursley);
 
-        Elfo dobby = new Elfo("Dobby", this.artefactos.get(0));
+        Elfo dobby = new Elfo("Dobby");
         this.personajes.add(dobby);
 
-        Elfo kreacher = new Elfo("Kreacher", this.artefactos.get(0));
+        Elfo kreacher = new Elfo("Kreacher");
         this.personajes.add(kreacher);
 
-        Elfo winky = new Elfo("Winky", this.artefactos.get(0));
+        Elfo winky = new Elfo("Winky");
         this.personajes.add(winky);
 
-        Elfo hokey = new Elfo("Hokey", this.artefactos.get(0));
+        Elfo hokey = new Elfo("Hokey");
         this.personajes.add(hokey);
 
-        Dementor dementor = new Dementor("Dementor", this.poderes.get(0));
+        Dementor dementor = new Dementor("Dementor", this.poderes.get(3));
         this.personajes.add(dementor);
     }
 
-    // Este seria un metodo SUPER PERO SUPER SENCILLO. Funciona con lo basico, a la hora de atacar el jugador elige el hechizo, 
-    // lo aprende y ataca. No hay involucrados artefactos, ni poderes, ni mago oscuro, absolutamente nada.
-    // Lo dejo aca para tenerlo de respaldo por si los otros metodos no llegan a funcionar.
-    // Si quieren pruebenlo pero tienen que comentar '/*' los otros metodos para que les deje correr el programa.
+    public void jugar() {
 
-    public void jugar(){
+        System.out.println("");
+        System.out.println("Es hora de que ...");
+        System.out.println("");
+        System.out.println(" (ง︡'-'︠)ง ¡COMIENCE EL DUELO! ");
+        System.out.println("");
 
         Personaje personajeAtacante;
         Personaje personajeOponente;
 
         boolean turnoP1 = true;
 
-        while(this.getJugadores().get(0).getPersonajeElegido().getSalud() > 0 && this.getJugadores().get(1).getPersonajeElegido().getSalud() > 0) {
+        while (this.getJugadores().get(0).getPersonajeElegido().estaVivo() == true
+                && this.getJugadores().get(1).getPersonajeElegido().estaVivo() == true) {
 
             if (turnoP1) {
                 personajeAtacante = this.getJugadores().get(0).getPersonajeElegido();
                 personajeOponente = this.getJugadores().get(1).getPersonajeElegido();
-             } else {
+            } else {
                 personajeAtacante = this.getJugadores().get(1).getPersonajeElegido();
                 personajeOponente = this.getJugadores().get(0).getPersonajeElegido();
             }
 
-            if (personajeAtacante instanceof Wizard){
-                Artefacto artefactoElegido = this.elegirArtefacto();
-                ((Wizard) personajeAtacante).setArtefacto(artefactoElegido);
+            if (personajeAtacante instanceof Wizard) {
                 Hechizo hechizoParaAtacar = this.seleccionarHechizoParaAtacar();
-                ((Wizard)personajeAtacante).aprender(hechizoParaAtacar);
+                ((Wizard) personajeAtacante).aprender(hechizoParaAtacar);
                 ((Wizard) personajeAtacante).atacar(personajeOponente, hechizoParaAtacar.getNombre());
-                ((Wizard)personajeAtacante).atacar(personajeOponente, hechizoParaAtacar);
-            } else if (personajeAtacante instanceof Elfo){
-                Artefacto artefactoElegido = this.elegirArtefacto();
-                ((Elfo) personajeAtacante).setArtefacto(artefactoElegido);
+                ((Wizard) personajeAtacante).atacar(personajeOponente, hechizoParaAtacar);
+            } else if (personajeAtacante instanceof Elfo) {
                 Hechizo hechizoParaAtacar = this.seleccionarHechizoParaAtacar();
-                ((Elfo)personajeAtacante).aprender(hechizoParaAtacar);
+                ((Elfo) personajeAtacante).aprender(hechizoParaAtacar);
                 ((Elfo) personajeAtacante).atacar(personajeOponente, hechizoParaAtacar.getNombre());
-                ((Elfo)personajeAtacante).atacar(personajeOponente, hechizoParaAtacar);
+                ((Elfo) personajeAtacante).atacar(personajeOponente, hechizoParaAtacar);
             } else {
-                System.out.println("¡Eres un MUGGLE no puedes atacar!");
+                System.out.println("");
+                System.out.println(
+                        "¡El personaje elegido no posee habilidades magicas! Lo siento pero no puedes atacar."); 
+                System.out.println("");
             }
-            
-            System.out.println("A " + personajeOponente.getNombre() + " le queda de vida: " + personajeOponente.getSalud());
 
             turnoP1 = !turnoP1;
         }
     }
 
-    public Artefacto elegirArtefacto() {
+    public Hechizo seleccionarHechizoParaAtacar() {
         System.out.println("");
-        System.out.println("♡ Seleccione el número de artefacto:");
-        System.out.println("");
-        int contador = 1;
-        for (Artefacto artefacto : this.artefactos) {
-            System.out.println(contador + ") " + artefacto.getNombre());
-            contador++;
-        }
-        int nroArtefacto = Teclado.nextInt();
-        Teclado.nextLine();
-        nroArtefacto--;
-        Artefacto artefactoElegido = this.artefactos.get(nroArtefacto);
-
-        return artefactoElegido;
-    }
-
-    public Hechizo seleccionarHechizoParaAtacar(){
-        System.out.println("");
-        System.out.println("♡ Seleccione el número de hechizo que desea utilizar:");
+        System.out.println("♡ Seleccione el número de hechizo que desea aprender y utilizar:");
         System.out.println("");
         int contador = 1;
         for (Hechizo hechizo : this.hechizos) {
@@ -401,7 +395,25 @@ public class JuegoHP {
         Teclado.nextLine();
         nroHechizo--;
         Hechizo hechizoElegido = this.hechizos.get(nroHechizo);
-        
+
         return hechizoElegido;
-    }    
+    }
+
+    public void mostrarGanador() {
+
+        System.out.println("");
+        System.out.println(" |    ¡GAME OVER!      |");
+        System.out.println("");
+
+        if (this.getJugadores().get(0).getPersonajeElegido().getSalud() > 0) {
+            System.out.println("");
+            System.out.println("ʕ•́ᴥ•̀ʔっ  " + this.getJugadores().get(0).getNombreJugador() + " es el ganador!!!");
+            System.out.println("");
+        } else {
+            System.out.println("");
+            System.out.println("ʕ•́ᴥ•̀ʔっ  " + this.getJugadores().get(1).getNombreJugador() + " es el ganador!!!");
+            System.out.println("");
+        }
+    }
+
 }

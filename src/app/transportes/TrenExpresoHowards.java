@@ -11,7 +11,7 @@ public class TrenExpresoHowards extends Transporte implements IEsMagico {
         this.setDescripcion(descripcion);
     }
 
-    // METODOS DE LAS INTERFACES
+    // METODOS
 
     @Override
     public boolean esInvisibleAMuggles() {

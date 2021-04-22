@@ -12,7 +12,7 @@ public class VaritaSauco extends Varita implements IReliquiaMuerte {
         this.setAmplificadorDeCuracion(amplificadorDeCuracion);
     }
 
-    // METODOS DE LAS INTERFACES
+    // METODOS
     
     @Override
     public boolean esReliquiaMuerte() {

@@ -35,7 +35,7 @@ public class Dementor extends Criatura {
         this.poderInicial = poderInicial;
     }
 
-    // METODO DE LAS INTERFASES
+    // METODO
 
     @Override
     public boolean esInvisibleAMuggles() {

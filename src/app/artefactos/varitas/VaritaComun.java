@@ -10,7 +10,7 @@ public class VaritaComun extends Varita {
         this.setAmplificadorDeCuracion(amplificadorDeCuracion);
     }
 
-    // METODOS DE LAS INTERFACES
+    // METODOS
 
     @Override
     public boolean esInvisibleAMuggles() {

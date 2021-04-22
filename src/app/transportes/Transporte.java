@@ -2,9 +2,12 @@ package app.transportes;
 
 public abstract class Transporte {
     
+    // ATRIBUTOS
+
     private String nombre;
     private String descripcion;
 
+    // GETTERS Y SETTERS
     
     public String getNombre(){
         return this.nombre;

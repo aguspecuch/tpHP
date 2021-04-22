@@ -5,7 +5,6 @@ import app.artefactos.*;
 import app.interfaces.*;
 import app.poderes.*;
 import app.poderes.hechizos.*;
-import app.poderes.hechizos.ataques.HechizoAtaque;
 import app.transportes.*;
 
 public class Wizard extends Persona implements IHaceMagia {
@@ -75,7 +74,7 @@ public class Wizard extends Persona implements IHaceMagia {
         this.poderes = poderes;
     }
 
-    // METODOS DE LAS INTERFACES
+    // METODOS
 
     @Override
     public void setPoder(Poder poder) {
@@ -103,7 +102,9 @@ public class Wizard extends Persona implements IHaceMagia {
 
     @Override
     public void atacar(Personaje personaje, String hechizo) {
-        System.out.println(this.getNombre() + " ataca a: " + personaje.getNombre());
+        System.out.println("");
+        System.out.println("→ " + this.getNombre() + " ataca a: " + personaje.getNombre() + " con el hechizo: " + hechizo);
+        System.out.println("");
     }
 
     @Override
@@ -111,32 +112,19 @@ public class Wizard extends Persona implements IHaceMagia {
         int saludAtacante;
         int saludOponente;
         int energiaMagicaAtacante;
-        if (this.estaVivo() == true && personaje.estaVivo() == true){
+
+        if (this.getEnergiaMagica() > 0){
     
-            if (hechizo instanceof HechizoAtaque && this.getMagoOscuro() == false && hechizo.getEsOscuro() == true) {
+            if (this.getMagoOscuro() == false && hechizo.getEsOscuro() == true) {
                 this.setMagoOscuro(true);
-                System.out.println("El mago ha utilizado un hechizo oscuro. Ahora es un mago oscuro.");
+                System.out.println("☠  El mago ha utilizado un hechizo oscuro. Ahora es un mago oscuro  ☠ ");
                 int nivelDanio = (hechizo.getNivelDanio() * 2);
                 hechizo.setNivelDanio(nivelDanio);
             }
         
             Artefacto artefactoElegido = this.getArtefacto();
-            if (artefactoElegido instanceof CapaInvisibilidad) {
-                int nivelDanio = (int) (hechizo.getNivelDanio() + artefactoElegido.getAmplificadorDeDanio());
-                int nivelCuracion = (int) (hechizo.getNivelCuracion() + artefactoElegido.getAmplificadorDeCuracion());
-                hechizo.setNivelDanio(nivelDanio);
-                hechizo.setNivelCuracion(nivelCuracion);
-            } else if (artefactoElegido instanceof EspadaGryffindor) {
-                int nivelDanio = (int) (hechizo.getNivelDanio() + artefactoElegido.getAmplificadorDeDanio());
-                int nivelCuracion = (int) (hechizo.getNivelCuracion() + artefactoElegido.getAmplificadorDeCuracion());
-                hechizo.setNivelDanio(nivelDanio);
-                hechizo.setNivelCuracion(nivelCuracion);
-            } else if (artefactoElegido instanceof Horrocrux) {
-                int nivelDanio = (int) (hechizo.getNivelDanio() + artefactoElegido.getAmplificadorDeDanio());
-                int nivelCuracion = (int) (hechizo.getNivelCuracion() + artefactoElegido.getAmplificadorDeCuracion());
-                hechizo.setNivelDanio(nivelDanio);
-                hechizo.setNivelCuracion(nivelCuracion);
-            } else if (artefactoElegido instanceof PiedraResurreccion) {
+
+            if (artefactoElegido != null) {
                 int nivelDanio = (int) (hechizo.getNivelDanio() + artefactoElegido.getAmplificadorDeDanio());
                 int nivelCuracion = (int) (hechizo.getNivelCuracion() + artefactoElegido.getAmplificadorDeCuracion());
                 hechizo.setNivelDanio(nivelDanio);
@@ -144,18 +132,22 @@ public class Wizard extends Persona implements IHaceMagia {
             }
 
             saludOponente = personaje.getSalud() - hechizo.getNivelDanio();
-
             energiaMagicaAtacante = this.getEnergiaMagica() - hechizo.getEnergiaMagica();
-            this.setEnergiaMagica(energiaMagicaAtacante);
-            saludAtacante = this.getEnergiaMagica() + hechizo.getNivelCuracion();
+            saludAtacante = this.getSalud() + hechizo.getNivelCuracion();
 
+            this.setEnergiaMagica(energiaMagicaAtacante);
             this.setSalud(saludAtacante);
             personaje.setSalud(saludOponente);
 
-            System.out.println("La salud de " + this.getNombre() + " es " + this.getSalud() + 
-            " y la salud de su oponente " + personaje.getNombre() + " es " + personaje.getSalud());
+            System.out.println("");
+            System.out.println("☆ La salud de " + this.getNombre() + " es " + this.getSalud() + 
+            " y la salud de su oponente " + personaje.getNombre() + " es " + personaje.getSalud() + " ☆");
+            System.out.println("");
+        
         } else {
+            System.out.println("");
             System.out.println("¡No tienes suficiente energia magica para atacar!");
+            System.out.println("");
         }
     }
 }

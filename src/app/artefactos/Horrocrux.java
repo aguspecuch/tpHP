@@ -10,7 +10,7 @@ public class Horrocrux extends Artefacto {
         this.setAmplificadorDeCuracion(amplificadorDeCuracion);
     }
 
-    // METODOS DE LAS INTERFACES
+    // METODOS
 
     @Override
     public boolean esInvisibleAMuggles() {
