@@ -2,22 +2,13 @@ package app.personajes;
 
 public abstract class Personaje {
 
-    // CONSTRUCTOR
-
-    public Personaje(String nombre, int edad) {
-        this.setNombre(nombre);
-        this.setEdad(edad);
-        this.setSalud(100);
-        this.setEdad(edad);
-    }
-
-    // ATRIBUTOS
+    //ATRIBUTOS
 
     private String nombre;
     private int salud;
     private int edad;
 
-    // GETTERS Y SETTERS
+    //GETTERS Y SETTERS
 
     public String getNombre() {
         return this.nombre;
@@ -50,6 +41,8 @@ public abstract class Personaje {
             return true;
         }
         return false;
+
+    
     }
 
 }
