@@ -263,7 +263,7 @@ public class JuegoHP {
         desmaius.setDescripcion("Encantamiento estupefactor, deja inconsciente a las victimas");
         this.hechizos.add(desmaius);
 
-        PetrificusTotalus petrificusTotalus = new PetrificusTotales("Petrificus Totalus", false, 30, 0, 20);
+        PetrificusTotalus petrificusTotalus = new PetrificusTotalus("Petrificus Totalus", false, 30, 0, 20);
         petrificusTotalus.setDescripcion("Maldicion de paralisis que deja a la victima totalmente inmovil");
         this.hechizos.add(petrificusTotalus);
 
@@ -420,15 +420,18 @@ public class JuegoHP {
     public void mostrarGanador() {
         System.out.println("");
         System.out.println(" |    ¡GAME OVER!      |");
-        System.out.println("");
-
-        if (this.getJugadores().get(0).getPersonajeElegido().getSalud() > 0) {
+        
+        if (this.getJugadores().get(0).getPersonajeElegido().getSalud() <= 0) {
+            System.out.println("");
+            System.out.println("ʕ•́ᴥ•̀ʔっ  " + this.getJugadores().get(1).getNombreJugador() + " es el ganador!!!");
+            System.out.println("");
+        } else if (this.getJugadores().get(1).getPersonajeElegido().getSalud() <= 0){
             System.out.println("");
             System.out.println("ʕ•́ᴥ•̀ʔっ  " + this.getJugadores().get(0).getNombreJugador() + " es el ganador!!!");
             System.out.println("");
         } else {
             System.out.println("");
-            System.out.println("ʕ•́ᴥ•̀ʔっ  " + this.getJugadores().get(1).getNombreJugador() + " es el ganador!!!");
+            System.out.println("¡Nadie es el ganador!");
             System.out.println("");
         }
     }

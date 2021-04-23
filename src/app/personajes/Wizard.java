@@ -15,7 +15,6 @@ public class Wizard extends Persona implements IHaceMagia {
         super(nombre, edad);
         this.setEnergiaMagica(150);
         this.poderInicial = poderInicial;
-        this.artefacto = artefacto;
         this.magoOscuro = magoOscuro;
             }
 

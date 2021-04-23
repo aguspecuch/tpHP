@@ -1,4 +1,4 @@
-package app.poderes.hechizos.ataques;
+package app.poderes.hechizos.defensas;
 
 public class Expelliarmus extends HechizoDefensa {
     
