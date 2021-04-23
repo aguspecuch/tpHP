@@ -11,7 +11,7 @@ public class Wizard extends Persona implements IHaceMagia {
 
     // CONSTRUCTOR
 
-    public Wizard(String nombre, int edad, Poder poderInicial, Artefacto artefacto, boolean magoOscuro) {
+    public Wizard(String nombre, int edad, Poder poderInicial, boolean magoOscuro) {
         super(nombre, edad);
         this.setEnergiaMagica(150);
         this.poderInicial = poderInicial;

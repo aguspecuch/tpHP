@@ -302,34 +302,34 @@ public class JuegoHP {
 
     public void inicializarPersonajes() {
 
-        Wizard harryPotter = new Wizard("Harry Potter", 17, this.poderes.get(0), this.artefacto.get(3), false);
+        Wizard harryPotter = new Wizard("Harry Potter", 17, this.poderes.get(0), false);
         this.personajes.add(harryPotter);
 
-        Wizard hermioneGranger = new Wizard("Hermione Granger", 18, this.poderes.get(1), this.artefacto.get(5), false);
+        Wizard hermioneGranger = new Wizard("Hermione Granger", 18, this.poderes.get(1), false);
         this.personajes.add(hermioneGranger);
 
-        Wizard albusDumbledore = new Wizard("Albus Dumbledore", 116, this.poderes.get(2), this.artefacto.get(3), false);
+        Wizard albusDumbledore = new Wizard("Albus Dumbledore", 116, this.poderes.get(2), false);
         this.personajes.add(albusDumbledore);
 
-        Wizard lordVoldemort = new Wizard("Lord Voldemort", 71, this.poderes.get(2), this.artefacto.get(3), true);
+        Wizard lordVoldemort = new Wizard("Lord Voldemort", 71, this.poderes.get(2), true);
         this.personajes.add(lordVoldemort);
 
-        Wizard bellatrixLestrange = new Wizard("Bellatrix Lestrange", 46, this.poderes.get(2), this.artefacto.get(5), true);
+        Wizard bellatrixLestrange = new Wizard("Bellatrix Lestrange", 46, this.poderes.get(2), true);
         this.personajes.add(bellatrixLestrange);
 
-        Wizard ronWeasly = new Wizard("Ron Weasly", 17,  this.poderes.get(0), this.artefacto.get(5), false);
+        Wizard ronWeasly = new Wizard("Ron Weasly", 17,  this.poderes.get(0), false);
         this.personajes.add(ronWeasly);
 
-        Wizard severusSnape = new Wizard("Severus Snape", 37, this.poderes.get(2), this.artefacto.get(5), false);
+        Wizard severusSnape = new Wizard("Severus Snape", 37, this.poderes.get(2), false);
         this.personajes.add(severusSnape);
 
-        Wizard siriusBlack = new Wizard("Sirius Black", 38, this.poderes.get(1), this.artefacto.get(5), false);
+        Wizard siriusBlack = new Wizard("Sirius Black", 38, this.poderes.get(1), false);
         this.personajes.add(siriusBlack);
 
-        Wizard remusLupin = new Wizard("Remus Lupin", 37, this.poderes.get(2), this.artefacto.get(5), false);
+        Wizard remusLupin = new Wizard("Remus Lupin", 37, this.poderes.get(2), false);
         this.personajes.add(remusLupin);
 
-        Wizard dracoMalfoy = new Wizard("Draco Malfoy", 17,  this.poderes.get(0), this.artefacto.get(5), false);
+        Wizard dracoMalfoy = new Wizard("Draco Malfoy", 17,  this.poderes.get(0), false);
         this.personajes.add(dracoMalfoy);
 
         Muggle dudleyDursley = new Muggle("Dudley Dursley", 17);
@@ -375,7 +375,11 @@ public class JuegoHP {
                 personajeOponente = this.getJugadores().get(0).getPersonajeElegido();
             }
 
-            if (personajeAtacante instanceof Wizard) {
+            if (personajeAtacante instanceof Muggle && personajeOponente instanceof Muggle){
+                System.out.println("");
+                System.out.println("¿Una pelea entre 2 Muggles? ¡ESO NO ES POSIBLE!");
+                break;
+            } else if (personajeAtacante instanceof Wizard) {
                 Hechizo hechizoParaAtacar = this.seleccionarHechizoParaAtacar();
                 ((Wizard) personajeAtacante).aprender(hechizoParaAtacar);
                 ((Wizard) personajeAtacante).atacar(personajeOponente, hechizoParaAtacar.getNombre());
