@@ -1,11 +1,10 @@
 package app.poderes.hechizos.ataques;
 
-public class Expelliarmus extends HechizoAtaque {
+public class Expelliarmus extends HechizoDefensa {
     
     // CONSTRUCTOR
     
     public Expelliarmus(String nombre, boolean esOscuro, int nivelDanio, int nivelCuracion, int energiaMagica){
-        super();
         this.setNombre(nombre);
         this.setEsOscuro(esOscuro);
         this.setNivelDanio(nivelDanio);

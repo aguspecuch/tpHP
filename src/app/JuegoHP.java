@@ -248,30 +248,47 @@ public class JuegoHP {
     public void inicializarHechizos() {
 
         SectumSempra sectumSempra = new SectumSempra("Sectum Sempra", false, 30, 0, 20);
+        sectumSempra.setDescripcion("Maldición que produce cortes profundos generando hemorragias a la victima");
         this.hechizos.add(sectumSempra);
 
         AvadaKedavra avadaKedavra = new AvadaKedavra("Avada Kedavra", true, 50, 0, 30);
+        avadaKedavra.setDescripcion("Maldicion imperdonable, produce la muerte instantanea a la victima");
         this.hechizos.add(avadaKedavra);
 
         Cruciatus cruciatus = new Cruciatus("Cruciatus", true, 40, 0, 25);
+        cruciatus.setDescripcion("Maldición imperdonable, genera un dolor intenso y agonico en la victima");
         this.hechizos.add(cruciatus);
 
+        Desmaius desmaius = new Desmaius("Desmaius", false, 25, 0, 15);
+        desmaius.setDescripcion("Encantamiento estupefactor, deja inconsciente a las victimas");
+        this.hechizos.add(desmaius);
+
+        PetrificusTotalus petrificusTotalus = new PetrificusTotales("Petrificus Totalus", false, 30, 0, 20);
+        petrificusTotalus.setDescripcion("Maldicion de paralisis que deja a la victima totalmente inmovil");
+        this.hechizos.add(petrificusTotalus);
+
         Expelliarmus expelliarmus = new Expelliarmus("Expelliarmus", false, 20, 0, 15);
+        expelliarmus.setDescripcion("Encantamiento defensivo que fuerza a la victima a soltar lo que este sujetando");
         this.hechizos.add(expelliarmus);
 
         CaveInimicum caveInimicum = new CaveInimicum("Cave Inimicum", false, 0, 10, 10);
+        caveInimicum.setDescripcion("Hechizo de proteccion que mantiene a los enemigos alejados");
         this.hechizos.add(caveInimicum);
 
         ExpectoPatronum expectoPatronum = new ExpectoPatronum("Expecto Patronum", false, 0, 20, 20);
+        expectoPatronum.setDescripcion("Encantamiento defensivo que genera una fuerza de energia positiva parcialmente tangible");
         this.hechizos.add(expectoPatronum);
 
         VulneraSanentur vulneraSanentur = new VulneraSanentur("Vulnera Sanentur", false, 0, 50, 10);
+        vulneraSanentur.setDescripcion("Hechizo de curacion para sanar lesiones, desde cortes menores hasta heridas profundas");
         this.hechizos.add(vulneraSanentur);
 
         BrackiumEmendo brackiumEmendo = new BrackiumEmendo("Brackium Emendo", false, 0, 45, 15);
+        brackiumEmendo.setDescripcion("Hechizo sanador que se utiliza para reparar huesos rotos");
         this.hechizos.add(brackiumEmendo);
 
         WingardiumLeviosa wingardiumLeviosa = new WingardiumLeviosa("Wingardium Leviosa", false, 0, 0, 0);
+        wingardiumLeviosa.setDescripcion("Encantamiento usado para hacer que los objetos leviten");
         this.hechizos.add(wingardiumLeviosa);
     }
 
@@ -284,34 +301,34 @@ public class JuegoHP {
 
     public void inicializarPersonajes() {
 
-        Wizard harryPotter = new Wizard("Harry Potter", 17, this.poderes.get(0), false);
+        Wizard harryPotter = new Wizard("Harry Potter", 17, this.poderes.get(0), this.artefacto.get(3), false);
         this.personajes.add(harryPotter);
 
-        Wizard hermioneGranger = new Wizard("Hermione Granger", 18, this.poderes.get(1), false);
+        Wizard hermioneGranger = new Wizard("Hermione Granger", 18, this.poderes.get(1), this.artefacto.get(5), false);
         this.personajes.add(hermioneGranger);
 
-        Wizard albusDumbledore = new Wizard("Albus Dumbledore", 116, this.poderes.get(2), false);
+        Wizard albusDumbledore = new Wizard("Albus Dumbledore", 116, this.poderes.get(2), this.artefacto.get(3), false);
         this.personajes.add(albusDumbledore);
 
-        Wizard lordVoldemort = new Wizard("Lord Voldemort", 71, this.poderes.get(2), true);
+        Wizard lordVoldemort = new Wizard("Lord Voldemort", 71, this.poderes.get(2), this.artefacto.get(3), true);
         this.personajes.add(lordVoldemort);
 
-        Wizard bellatrixLestrange = new Wizard("Bellatrix Lestrange", 46, this.poderes.get(2), true);
+        Wizard bellatrixLestrange = new Wizard("Bellatrix Lestrange", 46, this.poderes.get(2), this.artefacto.get(5), true);
         this.personajes.add(bellatrixLestrange);
 
-        Wizard ronWeasly = new Wizard("Ron Weasly", 17,  this.poderes.get(0), false);
+        Wizard ronWeasly = new Wizard("Ron Weasly", 17,  this.poderes.get(0), this.artefacto.get(5), false);
         this.personajes.add(ronWeasly);
 
-        Wizard severusSnape = new Wizard("Severus Snape", 37, this.poderes.get(2), false);
+        Wizard severusSnape = new Wizard("Severus Snape", 37, this.poderes.get(2), this.artefacto.get(5), false);
         this.personajes.add(severusSnape);
 
-        Wizard siriusBlack = new Wizard("Sirius Black", 38, this.poderes.get(1), false);
+        Wizard siriusBlack = new Wizard("Sirius Black", 38, this.poderes.get(1), this.artefacto.get(5), false);
         this.personajes.add(siriusBlack);
 
-        Wizard remusLupin = new Wizard("Remus Lupin", 37, this.poderes.get(2), false);
+        Wizard remusLupin = new Wizard("Remus Lupin", 37, this.poderes.get(2), this.artefacto.get(5), false);
         this.personajes.add(remusLupin);
 
-        Wizard dracoMalfoy = new Wizard("Draco Malfoy", 17,  this.poderes.get(0), false);
+        Wizard dracoMalfoy = new Wizard("Draco Malfoy", 17,  this.poderes.get(0), this.artefacto.get(5), false);
         this.personajes.add(dracoMalfoy);
 
         Muggle dudleyDursley = new Muggle("Dudley Dursley", 17);
@@ -323,19 +340,16 @@ public class JuegoHP {
         Muggle petuniaDursley = new Muggle("Petunia Dursley", 40);
         this.personajes.add(petuniaDursley);
 
-        Elfo dobby = new Elfo("Dobby");
+        Elfo dobby = new Elfo("Dobby", 9);
         this.personajes.add(dobby);
 
-        Elfo kreacher = new Elfo("Kreacher");
+        Elfo kreacher = new Elfo("Kreacher", 666);
         this.personajes.add(kreacher);
 
-        Elfo winky = new Elfo("Winky");
+        Elfo winky = new Elfo("Winky", 60);
         this.personajes.add(winky);
 
-        Elfo hokey = new Elfo("Hokey");
-        this.personajes.add(hokey);
-
-    }
+        }
 
     public void jugar() {
 
