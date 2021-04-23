@@ -6,6 +6,7 @@ public abstract class Personaje {
 
     public Personaje(String nombre, int edad) {
         this.setNombre(nombre);
+        this.setEdad(edad);
         this.setSalud(100);
         this.setEdad(edad);
     }

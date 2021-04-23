@@ -118,7 +118,7 @@ public class Wizard extends Persona implements IHaceMagia {
 
             if (this.getMagoOscuro() == false && hechizo.getEsOscuro() == true) {
                 this.setMagoOscuro(true);
-                System.out.println("☠  El mago ha utilizado un hechizo oscuro. Ahora es un mago oscuro  ☠ ");
+                System.out.println("☠  El mago ha utilizado un hechizo oscuro. Ahora es un mago oscuro ☠ ");
                 int nivelDanio = (hechizo.getNivelDanio() * 2);
                 hechizo.setNivelDanio(nivelDanio);
             }
@@ -132,13 +132,21 @@ public class Wizard extends Persona implements IHaceMagia {
                 hechizo.setNivelCuracion(nivelCuracion);
             }
 
-            saludOponente = personaje.getSalud() - hechizo.getNivelDanio();
-            energiaMagicaAtacante = this.getEnergiaMagica() - hechizo.getEnergiaMagica();
+            energiaMagicaAtacante = this.getEnergiaMagica() - hechizo.getEnergiaMagica(); 
             saludAtacante = this.getSalud() + hechizo.getNivelCuracion();
 
             this.setEnergiaMagica(energiaMagicaAtacante);
             this.setSalud(saludAtacante);
-            personaje.setSalud(saludOponente);
+
+            if(personaje instanceof Wizard) {
+                int curacionArtefactoOponente = (int) ((Wizard) personaje).getArtefacto().getAmplificadorDeCuracion();
+                saludOponente = personaje.getSalud() - hechizo.getNivelDanio() + curacionArtefactoOponente;
+                personaje.setSalud(saludOponente);
+            } else if (personaje instanceof Elfo) {
+                int curacionArtefactoOponente = (int) ((Elfo) personaje).getArtefacto().getAmplificadorDeCuracion();
+                saludOponente = personaje.getSalud() - hechizo.getNivelDanio() + curacionArtefactoOponente;
+                personaje.setSalud(saludOponente);
+            }
 
             System.out.println("");
             System.out.println("☆ La salud de " + this.getNombre() + " es " + this.getSalud()
