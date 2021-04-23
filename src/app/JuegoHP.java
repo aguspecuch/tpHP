@@ -181,10 +181,6 @@ public class JuegoHP {
             System.out.println("");
             System.out.println("-----> ¡Eligió un muggle!");
             System.out.println("");
-        } else if (personajeElegido instanceof Dementor) {
-            System.out.println("");
-            System.out.println("-----> ¡Eligió un dementor!");
-            System.out.println("");
         } else if (personajeElegido == null) {
             System.out.println("EL NÚMERO INGRESADO NO CORRESPONDE A NINGÚN PERSONAJE.");
         }
@@ -247,9 +243,6 @@ public class JuegoHP {
                 "Poder que te permite cambiar tu apariencia fisica a voluntad");
         this.poderes.add(metamorfosis);
 
-        BesoDementor besoDementor = new BesoDementor("Beso del Dementor",
-                "Poder del dementor que permite quitarle el alma a las personas");
-        this.poderes.add(besoDementor);
     }
 
     public void inicializarHechizos() {
@@ -275,6 +268,9 @@ public class JuegoHP {
         VulneraSanentur vulneraSanentur = new VulneraSanentur("Vulnera Sanentur", false, 0, 50, 10);
         this.hechizos.add(vulneraSanentur);
 
+        BrackiumEmendo brackiumEmendo = new BrackiumEmendo("Brackium Emendo", false, 0, 45, 15);
+        this.hechizos.add(brackiumEmendo);
+
         WingardiumLeviosa wingardiumLeviosa = new WingardiumLeviosa("Wingardium Leviosa", false, 0, 0, 0);
         this.hechizos.add(wingardiumLeviosa);
     }
@@ -288,37 +284,43 @@ public class JuegoHP {
 
     public void inicializarPersonajes() {
 
-        Wizard harryPotter = new Wizard("Harry Potter", this.poderes.get(0), false);
+        Wizard harryPotter = new Wizard("Harry Potter", 17, this.poderes.get(0), false);
         this.personajes.add(harryPotter);
 
-        Wizard hermioneGranger = new Wizard("Hermione Granger", this.poderes.get(1), false);
+        Wizard hermioneGranger = new Wizard("Hermione Granger", 18, this.poderes.get(1), false);
         this.personajes.add(hermioneGranger);
 
-        Wizard albusDumbledore = new Wizard("Albus Dumbledore", this.poderes.get(2), false);
+        Wizard albusDumbledore = new Wizard("Albus Dumbledore", 116, this.poderes.get(2), false);
         this.personajes.add(albusDumbledore);
 
-        Wizard lordVoldemort = new Wizard("Lord Voldemort", this.poderes.get(2), true);
+        Wizard lordVoldemort = new Wizard("Lord Voldemort", 71, this.poderes.get(2), true);
         this.personajes.add(lordVoldemort);
 
-        Wizard bellatrixLestrange = new Wizard("Bellatrix Lestrange", this.poderes.get(2), true);
+        Wizard bellatrixLestrange = new Wizard("Bellatrix Lestrange", 46, this.poderes.get(2), true);
         this.personajes.add(bellatrixLestrange);
 
-        Wizard ronWeasly = new Wizard("Ron Weasly", this.poderes.get(0), false);
+        Wizard ronWeasly = new Wizard("Ron Weasly", 17,  this.poderes.get(0), false);
         this.personajes.add(ronWeasly);
 
-        Wizard severusSnape = new Wizard("Severus Snape", this.poderes.get(2), false);
+        Wizard severusSnape = new Wizard("Severus Snape", 37, this.poderes.get(2), false);
         this.personajes.add(severusSnape);
 
-        Wizard dracoMalfoy = new Wizard("Draco Malfoy", this.poderes.get(0), false);
+        Wizard siriusBlack = new Wizard("Sirius Black", 38, this.poderes.get(1), false);
+        this.personajes.add(siriusBlack);
+
+        Wizard remusLupin = new Wizard("Remus Lupin", 37, this.poderes.get(2), false);
+        this.personajes.add(remusLupin);
+
+        Wizard dracoMalfoy = new Wizard("Draco Malfoy", 17,  this.poderes.get(0), false);
         this.personajes.add(dracoMalfoy);
 
-        Muggle dudleyDursley = new Muggle("Dudley Dursley");
+        Muggle dudleyDursley = new Muggle("Dudley Dursley", 17);
         this.personajes.add(dudleyDursley);
 
-        Muggle vernonDursley = new Muggle("Vernon Dursley");
+        Muggle vernonDursley = new Muggle("Vernon Dursley", 42);
         this.personajes.add(vernonDursley);
 
-        Muggle petuniaDursley = new Muggle("Petunia Dursley");
+        Muggle petuniaDursley = new Muggle("Petunia Dursley", 40);
         this.personajes.add(petuniaDursley);
 
         Elfo dobby = new Elfo("Dobby");
@@ -333,8 +335,6 @@ public class JuegoHP {
         Elfo hokey = new Elfo("Hokey");
         this.personajes.add(hokey);
 
-        Dementor dementor = new Dementor("Dementor", this.poderes.get(3));
-        this.personajes.add(dementor);
     }
 
     public void jugar() {
