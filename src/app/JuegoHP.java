@@ -202,7 +202,7 @@ public class JuegoHP {
         Artefacto artefactoElegido = this.artefactos.get(nroArtefacto);
 
         System.out.println("");
-        System.out.println("-----> ¡Eligio " + artefactoElegido.getNombre() + "!");
+        System.out.println("-----> ¡Eligió " + artefactoElegido.getNombre() + "!");
         System.out.println("");
 
         return artefactoElegido;

@@ -8,7 +8,6 @@ public abstract class Personaje {
         this.setNombre(nombre);
         this.setEdad(edad);
         this.setSalud(100);
-        this.setEdad(edad);
     }
 
     // ATRIBUTOS
