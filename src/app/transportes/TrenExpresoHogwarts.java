@@ -2,11 +2,11 @@ package app.transportes;
 
 import app.interfaces.IEsMagico;
 
-public class TrenExpresoHowards extends Transporte implements IEsMagico {
+public class TrenExpresoHogwarts extends Transporte implements IEsMagico {
 
     // CONSTRUCTOR
     
-    public TrenExpresoHowards(String nombre, String descripcion) {
+    public TrenExpresoHogwarts(String nombre, String descripcion) {
         this.setNombre(nombre);
         this.setDescripcion(descripcion);
     }

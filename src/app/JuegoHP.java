@@ -290,13 +290,14 @@ public class JuegoHP {
         WingardiumLeviosa wingardiumLeviosa = new WingardiumLeviosa("Wingardium Leviosa", false, 0, 0, 0);
         wingardiumLeviosa.setDescripcion("Encantamiento usado para hacer que los objetos leviten");
         this.hechizos.add(wingardiumLeviosa);
+
     }
 
     public void inicializarTransportes() {
 
-        TrenExpresoHowards trenExpresoHowards = new TrenExpresoHowards("Tren Expreso de Howards",
-                "Tren magico que transporta a los estudiantes a Howarts");
-        this.transportes.add(trenExpresoHowards);
+        TrenExpresoHogwarts trenExpresoHogwarts = new TrenExpresoHogwarts("Tren Expreso de Hogwarts",
+                "Tren magico que transporta a los estudiantes a Hogwarts");
+        this.transportes.add(trenExpresoHogwarts);
     }
 
     public void inicializarPersonajes() {
@@ -352,7 +353,6 @@ public class JuegoHP {
         }
 
     public void jugar() {
-
         System.out.println("");
         System.out.println("Es hora de que ...");
         System.out.println("");
@@ -414,7 +414,6 @@ public class JuegoHP {
     }
 
     public void mostrarGanador() {
-
         System.out.println("");
         System.out.println(" |    ¡GAME OVER!      |");
         System.out.println("");
