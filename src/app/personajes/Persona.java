@@ -2,8 +2,10 @@ package app.personajes;
 
 public abstract class Persona extends Personaje {
 
-    public Persona(String nombre) {
-        super(nombre);
+    public Persona(String nombre, int edad) {
+        super(nombre, edad);
     }
+
+    
     
 }

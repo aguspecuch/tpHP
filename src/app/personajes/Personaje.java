@@ -4,8 +4,9 @@ public abstract class Personaje {
 
     // CONSTRUCTOR
 
-    public Personaje(String nombre) {
+    public Personaje(String nombre, int edad) {
         this.setNombre(nombre);
+        this.setEdad(edad);
         this.setSalud(100);
     }
 

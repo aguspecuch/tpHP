@@ -6,8 +6,8 @@ public class Dementor extends Criatura {
 
     // CONSTUCTOR
 
-    public Dementor(String nombre, Poder poderInicial) {
-        super(nombre);
+    public Dementor(String nombre, int edad, Poder poderInicial) {
+        super(nombre, edad);
         this.setEnergiaMagica(150);
         this.poderInicial = poderInicial;
     }

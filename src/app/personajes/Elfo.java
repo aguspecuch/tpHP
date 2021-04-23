@@ -10,8 +10,8 @@ public class Elfo extends Criatura implements IHaceMagia {
 
     // CONSTRUCTOR
 
-    public Elfo(String nombre) {
-        super(nombre);
+    public Elfo(String nombre, int edad) {
+        super(nombre, edad);
         setEnergiaMagica(150);
     }
 
@@ -103,13 +103,21 @@ public class Elfo extends Criatura implements IHaceMagia {
                 hechizo.setNivelCuracion(nivelCuracion);
             }
 
-            saludOponente = personaje.getSalud() - hechizo.getNivelDanio();
             energiaMagicaAtacante = this.getEnergiaMagica() - hechizo.getEnergiaMagica();
             saludAtacante = this.getSalud() + hechizo.getNivelCuracion();
 
             this.setEnergiaMagica(energiaMagicaAtacante);
             this.setSalud(saludAtacante);
-            personaje.setSalud(saludOponente);
+            
+            if(personaje instanceof Wizard) {
+                int curacionArtefactoOponente = (int) ((Wizard) personaje).getArtefacto().getAmplificadorDeCuracion();
+                saludOponente = personaje.getSalud() - hechizo.getNivelDanio() + curacionArtefactoOponente;
+                personaje.setSalud(saludOponente);
+            } else if (personaje instanceof Elfo) {
+                int curacionArtefactoOponente = (int) ((Elfo) personaje).getArtefacto().getAmplificadorDeCuracion();
+                saludOponente = personaje.getSalud() - hechizo.getNivelDanio() + curacionArtefactoOponente;
+                personaje.setSalud(saludOponente);
+            }
 
             System.out.println("");
             System.out.println("☆ La salud de " + this.getNombre() + " es " + this.getSalud()
