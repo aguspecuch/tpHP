@@ -16,7 +16,7 @@ public abstract class Personaje {
     private int salud;
     private int edad;
 
-    //GETTERS Y SETTERS
+    // GETTERS Y SETTERS
 
     public String getNombre() {
         return this.nombre;
@@ -49,8 +49,6 @@ public abstract class Personaje {
             return true;
         }
         return false;
-
-    
     }
 
 }

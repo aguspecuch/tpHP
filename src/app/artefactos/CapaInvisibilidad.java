@@ -21,12 +21,12 @@ public class CapaInvisibilidad extends Artefacto implements IReliquiaMuerte {
 
     @Override
     public boolean esInvisibleAMuggles() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean esInvisible() {
-        return true;
+        return false;
     }
 
 }
