@@ -1,10 +1,12 @@
 package app.personajes;
 
-import java.util.*;
-import app.artefactos.*;
-import app.interfaces.*;
+import app.artefactos.Artefacto;
+import app.interfaces.IHaceMagia;
 import app.poderes.Poder;
-import app.poderes.hechizos.*;
+import app.poderes.hechizos.Hechizo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Elfo extends Criatura implements IHaceMagia {
 
@@ -108,8 +110,8 @@ public class Elfo extends Criatura implements IHaceMagia {
 
             this.setEnergiaMagica(energiaMagicaAtacante);
             this.setSalud(saludAtacante);
-            
-            if(personaje instanceof Wizard) {
+
+            if (personaje instanceof Wizard) {
                 int curacionArtefactoOponente = (int) ((Wizard) personaje).getArtefacto().getAmplificadorDeCuracion();
                 saludOponente = personaje.getSalud() - hechizo.getNivelDanio() + curacionArtefactoOponente;
                 personaje.setSalud(saludOponente);
