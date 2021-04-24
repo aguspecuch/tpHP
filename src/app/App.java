@@ -1,10 +1,9 @@
 package app;
 
-
 public class App {
 
     public static void main(String[] args) throws Exception {
-        JuegoHP nombreJuego = new JuegoHP("Duelo Magico");
-        nombreJuego.iniciarJuego();
+        JuegoHP gameHP1 = new JuegoHP("Harry Potter: Final Magic Battle");
+        gameHP1.iniciarJuego();
     }
 }

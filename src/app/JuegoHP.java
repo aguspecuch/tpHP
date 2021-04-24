@@ -202,7 +202,7 @@ public class JuegoHP {
         Artefacto artefactoElegido = this.artefactos.get(nroArtefacto);
 
         System.out.println("");
-        System.out.println("-----> ¡Eligio " + artefactoElegido.getNombre() + "!");
+        System.out.println("-----> ¡Eligió " + artefactoElegido.getNombre() + "!");
         System.out.println("");
 
         return artefactoElegido;
@@ -240,7 +240,7 @@ public class JuegoHP {
         this.poderes.add(parselTongue);
 
         Metamorfosis metamorfosis = new Metamorfosis("Metamorfosis",
-                "Poder que te permite cambiar tu apariencia fisica a voluntad");
+                "Poder que te permite cambiar tu apariencia física a voluntad");
         this.poderes.add(metamorfosis);
 
     }
@@ -248,39 +248,39 @@ public class JuegoHP {
     public void inicializarHechizos() {
 
         SectumSempra sectumSempra = new SectumSempra("Sectum Sempra", false, 30, 0, 20);
-        sectumSempra.setDescripcion("Maldición que produce cortes profundos generando hemorragias a la victima");
+        sectumSempra.setDescripcion("Maldición que produce cortes profundos generando hemorragias a la víctima");
         this.hechizos.add(sectumSempra);
 
         AvadaKedavra avadaKedavra = new AvadaKedavra("Avada Kedavra", true, 50, 0, 30);
-        avadaKedavra.setDescripcion("Maldicion imperdonable, produce la muerte instantanea a la victima");
+        avadaKedavra.setDescripcion("Maldición imperdonable, produce la muerte instantánea a la víctima");
         this.hechizos.add(avadaKedavra);
 
         Cruciatus cruciatus = new Cruciatus("Cruciatus", true, 40, 0, 25);
-        cruciatus.setDescripcion("Maldición imperdonable, genera un dolor intenso y agonico en la victima");
+        cruciatus.setDescripcion("Maldición imperdonable, genera un dolor intenso y agónico en la victima");
         this.hechizos.add(cruciatus);
 
         Desmaius desmaius = new Desmaius("Desmaius", false, 25, 0, 15);
-        desmaius.setDescripcion("Encantamiento estupefactor, deja inconsciente a las victimas");
+        desmaius.setDescripcion("Encantamiento estupefactor, deja inconsciente a las víctimas");
         this.hechizos.add(desmaius);
 
         PetrificusTotalus petrificusTotalus = new PetrificusTotalus("Petrificus Totalus", false, 30, 0, 20);
-        petrificusTotalus.setDescripcion("Maldicion de paralisis que deja a la victima totalmente inmovil");
+        petrificusTotalus.setDescripcion("Maldición de parálisis que deja a la víctima totalmente inmóvil");
         this.hechizos.add(petrificusTotalus);
 
         Expelliarmus expelliarmus = new Expelliarmus("Expelliarmus", false, 20, 0, 15);
-        expelliarmus.setDescripcion("Encantamiento defensivo que fuerza a la victima a soltar lo que este sujetando");
+        expelliarmus.setDescripcion("Encantamiento defensivo que fuerza a la víctima a soltar lo que este sujetando");
         this.hechizos.add(expelliarmus);
 
         CaveInimicum caveInimicum = new CaveInimicum("Cave Inimicum", false, 0, 10, 10);
-        caveInimicum.setDescripcion("Hechizo de proteccion que mantiene a los enemigos alejados");
+        caveInimicum.setDescripcion("Hechizo de protección que mantiene a los enemigos alejados");
         this.hechizos.add(caveInimicum);
 
         ExpectoPatronum expectoPatronum = new ExpectoPatronum("Expecto Patronum", false, 0, 20, 20);
-        expectoPatronum.setDescripcion("Encantamiento defensivo que genera una fuerza de energia positiva parcialmente tangible");
+        expectoPatronum.setDescripcion("Encantamiento defensivo que genera una fuerza de energía positiva parcialmente tangible");
         this.hechizos.add(expectoPatronum);
 
         VulneraSanentur vulneraSanentur = new VulneraSanentur("Vulnera Sanentur", false, 0, 50, 10);
-        vulneraSanentur.setDescripcion("Hechizo de curacion para sanar lesiones, desde cortes menores hasta heridas profundas");
+        vulneraSanentur.setDescripcion("Hechizo de curación para sanar lesiones, desde cortes menores hasta heridas profundas");
         this.hechizos.add(vulneraSanentur);
 
         BrackiumEmendo brackiumEmendo = new BrackiumEmendo("Brackium Emendo", false, 0, 45, 15);
@@ -296,7 +296,7 @@ public class JuegoHP {
     public void inicializarTransportes() {
 
         TrenExpresoHogwarts trenExpresoHogwarts = new TrenExpresoHogwarts("Tren Expreso de Hogwarts",
-                "Tren magico que transporta a los estudiantes a Hogwarts");
+                "Tren mágico que transporta a los estudiantes a Hogwarts");
         this.transportes.add(trenExpresoHogwarts);
     }
 
