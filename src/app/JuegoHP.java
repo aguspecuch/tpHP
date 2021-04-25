@@ -329,7 +329,7 @@ public class JuegoHP {
 
         Wizard hermioneGranger = new Wizard("Hermione Granger", 18, this.poderes.get(1), false);
         this.personajes.add(hermioneGranger);
-        Escoba estrellaFugaz = (Escoba) this.transportes.get(6); 
+        Escoba estrellaFugaz = (Escoba) this.transportes.get(5); 
         harryPotter.setEscoba(estrellaFugaz);
 
         Wizard albusDumbledore = new Wizard("Albus Dumbledore", 116, this.poderes.get(2), false);
