@@ -298,15 +298,39 @@ public class JuegoHP {
         TrenExpresoHogwarts trenExpresoHogwarts = new TrenExpresoHogwarts("Tren Expreso de Hogwarts",
                 "Tren mágico que transporta a los estudiantes a Hogwarts");
         this.transportes.add(trenExpresoHogwarts);
+
+        Escoba saetaFuego = new Escoba("Saeta de Fuego", 
+        "Escoba voladora de talle internacional, utilizada para jugar Quidditch, alcanza hasta los 150 Km/h");
+        this.transportes.add(saetaFuego);
+
+        Escoba nimbusDosMil = new Escoba("Nimbus 2000", 
+        "Escoba voladora utilizada para jugar Quidditch");
+        this.transportes.add(nimbusDosMil);
+
+        Escoba cometa = new Escoba("Cometa 260", 
+        "Escoba voladora utilizada para jugar Quidditch  o viajar, alcanza hasta los 93 Km/h");
+        this.transportes.add(cometa);
+
+        Escoba barredoraOnce = new Escoba("Barredora 11", 
+        "Escoba voladora utilizada para jugar Quidditch, alcanza hasta los 100 Km/h");
+        this.transportes.add(barredoraOnce);
+
+        Escoba estrellaFugaz = new Escoba("Estrella Fugaz", 
+        "Escoba voladora utilizada para jugar Quidditch");
+        this.transportes.add(estrellaFugaz);
     }
 
     public void inicializarPersonajes() {
 
         Wizard harryPotter = new Wizard("Harry Potter", 17, this.poderes.get(0), false);
         this.personajes.add(harryPotter);
+        Escoba saetaFuego = (Escoba) this.transportes.get(1); 
+        harryPotter.setEscoba(saetaFuego);
 
         Wizard hermioneGranger = new Wizard("Hermione Granger", 18, this.poderes.get(1), false);
         this.personajes.add(hermioneGranger);
+        Escoba estrellaFugaz = (Escoba) this.transportes.get(6); 
+        harryPotter.setEscoba(estrellaFugaz);
 
         Wizard albusDumbledore = new Wizard("Albus Dumbledore", 116, this.poderes.get(2), false);
         this.personajes.add(albusDumbledore);
@@ -319,6 +343,8 @@ public class JuegoHP {
 
         Wizard ronWeasly = new Wizard("Ron Weasly", 17,  this.poderes.get(0), false);
         this.personajes.add(ronWeasly);
+        Escoba barredoraOnce = (Escoba) this.transportes.get(4);
+        ronWeasly.setEscoba(barredoraOnce);
 
         Wizard severusSnape = new Wizard("Severus Snape", 37, this.poderes.get(2), false);
         this.personajes.add(severusSnape);
@@ -331,6 +357,8 @@ public class JuegoHP {
 
         Wizard dracoMalfoy = new Wizard("Draco Malfoy", 17,  this.poderes.get(0), false);
         this.personajes.add(dracoMalfoy);
+        Escoba cometa = (Escoba) this.transportes.get(3);
+        dracoMalfoy.setEscoba(cometa);
 
         Muggle dudleyDursley = new Muggle("Dudley Dursley", 17);
         this.personajes.add(dudleyDursley);
